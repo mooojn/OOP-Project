@@ -53,6 +53,7 @@
     <Compile Include="UI\UserUi.cs" />
     <Compile Include="UI\UtilUi.cs" />
     <Compile Include="Util\Choice.cs" />
+    <Compile Include="Util\Validation.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

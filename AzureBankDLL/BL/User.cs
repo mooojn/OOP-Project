@@ -14,6 +14,7 @@ namespace AzureBankDLL.BL
         private string name;
         private string password;
         private int cash;
+        private bool transactionStatus;
         private List<History> history;
         // constructor for initializing
         public User(string name, string pass)
@@ -28,6 +29,14 @@ namespace AzureBankDLL.BL
             this.name = name;
             this.password = pass;
             this.cash = cash;  // default val
+            this.history = new List<History>();
+        }
+        public User(string name, string pass, int cash, bool status)
+        {
+            this.name = name;
+            this.password = pass;
+            this.cash = cash;  // default val
+            this.transactionStatus = status;
             this.history = new List<History>();
         }
         public User(string name, string pass, int cash, List<History> history)
@@ -46,7 +55,7 @@ namespace AzureBankDLL.BL
                 return -2;
             // adding cash
             cash += depositAmount;
-            HistoryDL.SaveTransactionHistory(name, new History("Deposit", depositAmount));
+            //HistoryDL.SaveTransactionHistory(name, new History("Deposit", depositAmount));
             return 0;        // success
         }
         public int WithdrawCash(int withdrawAmount)
@@ -60,7 +69,7 @@ namespace AzureBankDLL.BL
                 return -3;
             // withdrawing cash
             cash -= withdrawAmount;
-            HistoryDL.SaveTransactionHistory(name, new History("Withdraw", withdrawAmount));
+            //HistoryDL.SaveTransactionHistory(name, new History("Withdraw", withdrawAmount));
             return 0;        // success
         }
         public int TransferCash(User user, int transferAmount)
@@ -75,7 +84,7 @@ namespace AzureBankDLL.BL
             // transferring cash
             cash -= transferAmount;
             user.DepositCash(transferAmount);
-            HistoryDL.SaveTransactionHistory(name, new History("Transfer", transferAmount));
+            //HistoryDL.SaveTransactionHistory(name, new History("Transfer", transferAmount));
             return 0;        // success
         }
         public void ShowCash()
@@ -105,6 +114,14 @@ namespace AzureBankDLL.BL
         public List<History> getHistory()
         {
             return history;
+        }
+        public bool getTransactionStatus()
+        {
+            return transactionStatus;
+        }
+        public void setTransactionStatus(bool status)
+        {
+            transactionStatus = status;
         }
     }
 }

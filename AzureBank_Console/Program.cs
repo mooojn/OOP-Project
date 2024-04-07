@@ -16,8 +16,12 @@ namespace AzureBankConsole
         static void Main(string[] args)
         {
             IUser userDL = new UserDB();
+            IUserFunc userFunc = new UserFuncDB();
 
         logout:
+            User user = null;
+            string name = "";
+            string password = "";
             string choice = "";
             while (true)
             {
@@ -26,18 +30,25 @@ namespace AzureBankConsole
                 {
                     case Choice.LOGIN:
                         MainUi.Header();
-                        User user = UserUi.GetUserInput();
 
-                        UtilUi.Process();
+                        name = UserUi.GetName();
+
                         //admin password is correct
-                        if (!userDL.UserNameExists(user.getName()))
+                        if (!userDL.UserNameExists(name))
                         {
+                            UtilUi.Process();
                             UtilUi.Error("User does not exist...");
                             break;
                         }
+                        password = UtilUi.GetMaskedInput();
+                        UtilUi.Process();
+                        user = new User(name, password);
                         int res = userDL.FindUser(user);        // 1 for admin, 2 for user, 0 for invalid password
                         if (res == 1 || res == 2)
+                        {
+                            user = userDL.Read(user.getName());
                             UtilUi.Success("Authentication was Successful");
+                        }
                         if (res == 1)
                             goto adminLogin;
                         else if (res == 2)
@@ -49,7 +60,7 @@ namespace AzureBankConsole
                         }
                     case Choice.USER_SIGN_UP:
                         MainUi.Header();
-                        string name = UserUi.GetName();
+                        name = UserUi.GetName();
                         //userName is not unique so back to menu
                         if (userDL.UserNameExists(name))
                         {
@@ -57,7 +68,7 @@ namespace AzureBankConsole
                             UtilUi.Error("User already exists.");
                             break;
                         }
-                        string password = UtilUi.GetMaskedInput();   // as user unique so getting password
+                        password = UtilUi.GetMaskedInput();   // as user unique so getting password
                         UtilUi.Process();
                         userDL.Create(new User(name, password));
                         UtilUi.Success("User Created Successfully");
@@ -105,30 +116,102 @@ namespace AzureBankConsole
                 }
             }
         userLogin:
+            int amount = 0;
+            int status = 0;
             while (true)
             {
                 choice = MainUi.UserMenu();
                 switch (choice)
                 {
                     case Choice.CHECK_PORTFOLIO:
-                        //UserFunc.CheckPortfolio();
+                        MainUi.Header();
+                        Console.WriteLine($"Cash: ${user.getCash()}");
+                        Console.ReadKey();
                         break;
 
                     case Choice.DEPOSIT_CASH:
-                        //UserFunc.DepositCash();
+                        if (!user.getTransactionStatus())
+                        {
+                            UtilUi.Error("Transactions are Blocked");
+                            break;
+                        }
+                        MainUi.Header();
+                        amount = UserUi.GetDepositAmount();
+                        status = user.DepositCash(amount);
+                        if (status == -1)
+                            UtilUi.Error("Invalid Amount");
+                        else if (status == -2)
+                            UtilUi.Error("Deposit Amount can't be Zero");
+                        else
+                        {
+                            UtilUi.Success("Cash Deposited Successfully");
+                            userDL.Update(user);
+                        }
+
                         break;
 
                     case Choice.WITHDRAW_CASH:
-                        //UserFunc.WithdrawCash();
+                        if (!user.getTransactionStatus())
+                        {
+                            UtilUi.Error("Transactions are Blocked");
+                            break;
+                        }
+                        MainUi.Header();
+                        amount = UserUi.GetWithdrawAmount();
+                        status = user.WithdrawCash(amount);
+                        if (status == -1)
+                            UtilUi.Error("Invalid Amount");
+                        else if (status == -2)
+                            UtilUi.Error("Deposit Amount can't be Zero");
+                        else if (status == -3)
+                            UtilUi.Error("Deposit Amount was greater than available Balance");
+                        else
+                        {
+                            UtilUi.Success("Cash Withdrawal was Successful");
+                            userDL.Update(user);
+                        }
+                        break;
+                    case Choice.TRANSFER_CASH:
+                        if (!user.getTransactionStatus())
+                        {
+                            UtilUi.Error("Transactions are Blocked");
+                            break;
+                        }
+                        MainUi.Header();
+                        amount = UserUi.GetWithdrawAmount();
+                        name = UserUi.GetName();
+                        User usr = userDL.Read(name);
+                        if (usr == null)
+                        {
+                            UtilUi.Error("User does not exist");
+                            break;
+                        }
+                        status = user.TransferCash(usr, amount);
+                        if (status == -1)
+                            UtilUi.Error("Invalid Amount");
+                        else if (status == -2)
+                            UtilUi.Error("Transfer Amount can't be Zero");
+                        else if (status == -3)
+                            UtilUi.Error("Transfer Amount was greater than available Balance");
+                        else
+                        {
+                            UtilUi.Success("Cash Transfer was Successful");
+                            userDL.Update(user);
+                            userDL.Update(usr);
+                        }
                         break;
 
                     case Choice.BLOCK_TRANSACTIONS:
-                        Console.WriteLine("Block Transactions");
+                        bool flag = user.getTransactionStatus();
+                        string res = flag ? "Blocked" : "Unblocked";
+                        user.setTransactionStatus(!flag);
+                        userDL.Update(user);
+                        UtilUi.Success($"Transaction Status {res} Successfully");
                         break;
 
                     case Choice.DELETE_ACCOUNT:
-                    //UserFunc.DeleteAccount();
-                    //goto logout;   // after deleting account, user is logged out
+                        userDL.Delete(user.getName());
+                        goto logout;   // after deleting account, user is logged out
 
                     case Choice.USER_LOGOUT:
                         goto logout;

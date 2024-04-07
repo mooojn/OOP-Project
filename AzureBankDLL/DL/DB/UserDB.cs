@@ -18,7 +18,7 @@ namespace AzureBankDLL.DL.DB
         {
             // insert vals into db
             Program.connection.Open();
-            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0)";
+            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";
             SqlCommand cmd = new SqlCommand(query, Program.connection);
             cmd.ExecuteNonQuery();
             Program.connection.Close();
@@ -37,7 +37,8 @@ namespace AzureBankDLL.DL.DB
                 string name = reader["name"].ToString();
                 string pass = reader["password"].ToString();
                 int cash = Convert.ToInt32(reader["cash"]);
-                user = new User(name, pass, cash);
+                bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
+                user = new User(name, pass, cash, transactionStatus);
             }
             Program.connection.Close();
             return user;
@@ -45,7 +46,7 @@ namespace AzureBankDLL.DL.DB
         public bool Update(User user)
         {
             Program.connection.Open();
-            string query = $"UPDATE Users SET cash = {user.getCash()}, password = '{user.getPassword()}' WHERE name = '{user.getName()}'";
+            string query = $"UPDATE Users SET cash = {user.getCash()}, password = '{user.getPassword()}', transactionStatus = {Convert.ToInt32(user.getTransactionStatus())} WHERE name = '{user.getName()}'";
             SqlCommand cmd = new SqlCommand(query, Program.connection);
             cmd.ExecuteNonQuery();
             Program.connection.Close();
