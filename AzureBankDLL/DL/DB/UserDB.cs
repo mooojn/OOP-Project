@@ -16,15 +16,12 @@ namespace AzureBankDLL.DL.DB
     {
         public bool Create(User user)
         {
-            if (UserNameExists(user.getName()))
-            {
-                MessageUi.ShowMessage("User Exists", "User with this user name already exists\nPlease use a different user name");
-                return false;
-            }
             // insert vals into db
+            Program.connection.Open();
             string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0)";
             SqlCommand cmd = new SqlCommand(query, Program.connection);
             cmd.ExecuteNonQuery();
+            Program.connection.Close();
             return true;
 
         }
@@ -65,25 +62,25 @@ namespace AzureBankDLL.DL.DB
             Program.connection.Close();
             return true;
         }
-        public bool IsAdmin(User user)
-        {
-            if (user.getName() != "admin")
-            {
-                return false;
-            }
-            bool flag = false;
-            Program.connection.Open();
-            string query = $"SELECT * FROM Users WHERE name = 'admin' AND password = '{user.getPassword()}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-            if (reader.Read())
-            {
-                flag = true;
-            }
-            Program.connection.Close();
-            return flag;
-        }
-        public bool FindUser(User usr)
+        //public bool IsAdmin(User user)
+        //{
+        //    if (user.getName() != "admin")
+        //    {
+        //        return false;
+        //    }
+        //    bool flag = false;
+        //    Program.connection.Open();
+        //    string query = $"SELECT * FROM Users WHERE name = 'admin' AND password = '{user.getPassword()}'";
+        //    SqlCommand cmd = new SqlCommand(query, Program.connection);
+        //    SqlDataReader reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        flag = true;
+        //    }
+        //    Program.connection.Close();
+        //    return flag;
+        //}
+        public int FindUser(User usr)
         {
             bool flag = false;
             Program.connection.Open();
@@ -95,7 +92,12 @@ namespace AzureBankDLL.DL.DB
                 flag = true;
             }
             Program.connection.Close();
-            return flag;
+            if (flag && usr.getName() == "admin")
+                return 1;
+            else if (flag && usr.getName() != "admin")
+                return 2;
+            else
+                return 0;
         }
         public bool UserNameExists(string name)
         {

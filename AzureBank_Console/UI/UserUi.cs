@@ -14,17 +14,11 @@ namespace AzureBankConsole
             Console.Write("Enter Name: ");
             return Console.ReadLine();
         }
-        public static string GetPassword()
-        {
-            Console.Write("Enter Password: ");
-            return Console.ReadLine();
-        }
         public static User GetUserInput()
         {
             Console.Write("Enter Name: ");
             string name = Console.ReadLine();
-            Console.Write("Enter Password: ");
-            string password = Console.ReadLine();
+            string password = UtilUi.GetMaskedInput();
             return new User(name, password);
         }
         public static int GetDepositAmount()

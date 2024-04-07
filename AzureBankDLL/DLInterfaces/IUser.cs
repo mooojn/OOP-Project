@@ -13,8 +13,8 @@ namespace AzureBankDLL.DLInterfaces
         User Read(string userName);
         bool Update(User user);
         bool Delete(string userName);
-        bool IsAdmin(User user);
+        //bool IsAdmin(User user);
         bool UserNameExists(string name);
-        bool FindUser(User usr);
+        int FindUser(User usr);
     }
 }

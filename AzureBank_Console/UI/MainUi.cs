@@ -17,11 +17,10 @@ namespace AzureBankConsole
         {
             Header();
             // menu
-            Console.WriteLine("1. Sign-in as an Administrator");
-            Console.WriteLine("2. Sign-in as a User");
-            Console.WriteLine("3. Sign-up as a User");
+            Console.WriteLine("1. Sign-in");
+            Console.WriteLine("2. Sign-up as a User");
 
-            Console.WriteLine("4. Exit");
+            Console.WriteLine("3. Exit");
 
             // input
             return UtilUi.GetChoice();

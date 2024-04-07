@@ -9,10 +9,9 @@ namespace AzureBankConsole.Util
     internal class Choice
     {
         // main choices
-        public const string ADMIN_LOGIN = "1";
-        public const string USER_SIGN_IN = "2";
-        public const string USER_SIGN_UP = "3";
-        public const string EXIT = "4";
+        public const string LOGIN = "1";
+        public const string USER_SIGN_UP = "2";
+        public const string EXIT = "3";
         // user choices
         public const string CHECK_PORTFOLIO = "1";
         public const string DEPOSIT_CASH = "2";
