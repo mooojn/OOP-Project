@@ -1,0 +1,11 @@
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankConsole.exe.config
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankConsole.exe
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankConsole.pdb
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankDLL.dll
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\Guna.UI2.dll
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankDLL.pdb
+D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.csproj.AssemblyReference.cache
+D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.csproj.CoreCompileInputs.cache
+D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.csproj.CopyComplete
+D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.exe
+D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.pdb
