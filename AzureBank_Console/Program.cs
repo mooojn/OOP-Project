@@ -16,7 +16,7 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserDB();
+            IUser userDL = new UserFH();
 
         logout:
             User user;

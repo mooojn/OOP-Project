@@ -23,7 +23,6 @@ namespace AzureBankDLL.DL.DB
             cmd.ExecuteNonQuery();
             Program.connection.Close();
             return true;
-
         }
         public User Read(string userName)
         {
@@ -63,24 +62,28 @@ namespace AzureBankDLL.DL.DB
             Program.connection.Close();
             return true;
         }
-        //public bool IsAdmin(User user)
-        //{
-        //    if (user.getName() != "admin")
-        //    {
-        //        return false;
-        //    }
-        //    bool flag = false;
-        //    Program.connection.Open();
-        //    string query = $"SELECT * FROM Users WHERE name = 'admin' AND password = '{user.getPassword()}'";
-        //    SqlCommand cmd = new SqlCommand(query, Program.connection);
-        //    SqlDataReader reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        flag = true;
-        //    }
-        //    Program.connection.Close();
-        //    return flag;
-        //}
+        public List<User> ReadAll()
+        {
+            List<User> users = null;
+            string query = "SELECT * FROM Users";
+            Program.connection.Open();
+            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            reader.Read();      // skipping admin
+            while (reader.Read())
+            {
+                if (users == null)
+                    users = new List<User>();
+                string name = reader["name"].ToString();
+                string pass = reader["password"].ToString();
+                int cash = Convert.ToInt32(reader["cash"]);
+                bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
+                users.Add(new User(name, pass, cash, transactionStatus));
+            }
+            Program.connection.Close();
+            return users;
+        }
         public int FindUser(User usr)
         {
             bool flag = false;
@@ -93,10 +96,9 @@ namespace AzureBankDLL.DL.DB
                 flag = true;
             }
             Program.connection.Close();
-            if (flag && usr.getName() == "admin")
-                return 1;
-            else if (flag && usr.getName() != "admin")
-                return 2;
+            if (flag) {
+                return usr.getName() == "admin" ? 1 : 2;
+            }
             else
                 return 0;
         }
@@ -115,26 +117,24 @@ namespace AzureBankDLL.DL.DB
             Program.connection.Close();
             return flag;
         }
-        public List<User> ReadAll()
-        {
-            List<User> users = null;
-            string query = "SELECT * FROM Users";
-            Program.connection.Open();
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
-            SqlDataReader reader = cmd.ExecuteReader();
-                
-            reader.Read();      // skipping admin
-            while (reader.Read()) {
-                if (users == null)
-                    users = new List<User>();
-                string name = reader["name"].ToString();
-                string pass = reader["password"].ToString();
-                int cash = Convert.ToInt32(reader["cash"]);
-                bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
-                users.Add(new User(name, pass, cash, transactionStatus));
-            }
-            Program.connection.Close();
-            return users;
-        }
+        //// xtra
+        //public bool IsAdmin(User user)
+        //{
+        //    if (user.getName() != "admin")
+        //    {
+        //        return false;
+        //    }
+        //    bool flag = false;
+        //    Program.connection.Open();
+        //    string query = $"SELECT * FROM Users WHERE name = 'admin' AND password = '{user.getPassword()}'";
+        //    SqlCommand cmd = new SqlCommand(query, Program.connection);
+        //    SqlDataReader reader = cmd.ExecuteReader();
+        //    if (reader.Read())
+        //    {
+        //        flag = true;
+        //    }
+        //    Program.connection.Close();
+        //    return flag;
+        //}
     }
 }
