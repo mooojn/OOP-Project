@@ -23,8 +23,8 @@ namespace AzureBankConsole.Util
         // admin choices
         public const string ADD_USER = "1";
         public const string VIEW_USERS = "2";
-        public const string CHANGE_USER_NAME = "3";
-        public const string DELETE_USER = "4";
+        public const string DELETE_USER = "3";
+        public const string CHANGE_ADMIN_Password = "4";
         public const string ADMIN_LOGOUT = "5";
     }
 }

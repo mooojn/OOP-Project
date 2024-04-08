@@ -11,7 +11,7 @@ namespace AzureBankConsole
     {
         public static string GetName()
         {
-            Console.Write("Enter Name: ");
+            Console.Write("Enter name: ");
             return Console.ReadLine();
         }
         public static User GetUserInput()

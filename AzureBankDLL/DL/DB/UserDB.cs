@@ -115,5 +115,26 @@ namespace AzureBankDLL.DL.DB
             Program.connection.Close();
             return flag;
         }
+        public List<User> ReadAll()
+        {
+            List<User> users = null;
+            string query = "SELECT * FROM Users";
+            Program.connection.Open();
+            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+                
+            reader.Read();      // skipping admin
+            while (reader.Read()) {
+                if (users == null)
+                    users = new List<User>();
+                string name = reader["name"].ToString();
+                string pass = reader["password"].ToString();
+                int cash = Convert.ToInt32(reader["cash"]);
+                bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
+                users.Add(new User(name, pass, cash, transactionStatus));
+            }
+            Program.connection.Close();
+            return users;
+        }
     }
 }

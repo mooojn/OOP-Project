@@ -1,6 +1,7 @@
 ﻿using AzureBankDLL.DL;
 using System;
 using System.Collections.Generic;
+using System.Data.Design;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -122,6 +123,10 @@ namespace AzureBankDLL.BL
         public void setTransactionStatus(bool status)
         {
             transactionStatus = status;
+        }
+        public string toString()
+        {
+             return $"{name}, {cash}, {transactionStatus.ToString()}";
         }
     }
 }

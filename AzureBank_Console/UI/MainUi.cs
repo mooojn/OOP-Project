@@ -47,8 +47,8 @@ namespace AzureBankConsole
             // menu
             Console.WriteLine("1. Add New User");
             Console.WriteLine("2. View Users");
-            Console.WriteLine("3. Change User Name");
-            Console.WriteLine("4. Delete User");
+            Console.WriteLine("3. Delete User");
+            Console.WriteLine("4. Change Admin Password");
 
             Console.WriteLine("5. Logout");
 

@@ -8,7 +8,7 @@ using AzureBankDLL.DLInterfaces;
 
 namespace AzureBankDLL.DL.FH
 {
-    public class UserFH  : IUser           /// removee this commmecntt pzllzzz
+    public class UserFH  //: IUser           /// removee this commmecntt pzllzzz
     {
         public bool Create(User user)
         {

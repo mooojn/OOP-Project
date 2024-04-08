@@ -58,9 +58,9 @@ namespace AzureBankConsole
             Console.Write("Enter your choice: ");
             return Console.ReadLine();
         }
-        public static string GetMaskedInput()
+        public static string GetMaskedInput(string msg = "Enter Password: ")
         {
-            Console.Write("Enter Password: ");
+            Console.Write(msg);
             string pass = "";
             ConsoleKeyInfo key;
 
