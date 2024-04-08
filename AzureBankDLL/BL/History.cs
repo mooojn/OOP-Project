@@ -35,5 +35,9 @@ namespace AzureBankDLL.BL
         {
             return date;
         }
+        public string toString()
+        {
+            return $"{type}, {amount}, {date}";
+        }
     }
 }

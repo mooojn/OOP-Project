@@ -9,9 +9,9 @@ namespace AzureBankConsole
 {
     internal class UserUi
     {
-        public static string GetName()
+        public static string GetName(string msg = "Enter name: ")
         {
-            Console.Write("Enter name: ");
+            Console.Write(msg);
             return Console.ReadLine();
         }
         public static User GetUserInput()
@@ -21,15 +21,16 @@ namespace AzureBankConsole
             string password = UtilUi.GetMaskedInput();
             return new User(name, password);
         }
-        public static int GetDepositAmount()
+        public static int GetAmount(string type)
         {
-            Console.Write("Enter amount you want to deposit: $");
+            Console.Write($"Enter the amount you want to {type}: $");
             return int.Parse(Console.ReadLine());
         }
-        public static int GetWithdrawAmount()
+        public static void TransactionHeader()
         {
-            Console.Write("Enter the amount you want to withdraw: $");
-            return int.Parse(Console.ReadLine());
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"type, amount, date");
+            Console.ResetColor();
         }
     }
 }

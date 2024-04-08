@@ -56,7 +56,7 @@ namespace AzureBankDLL.BL
                 return -2;
             // adding cash
             cash += depositAmount;
-            //HistoryDL.SaveTransactionHistory(name, new History("Deposit", depositAmount));
+            
             return 0;        // success
         }
         public int WithdrawCash(int withdrawAmount)
@@ -70,23 +70,16 @@ namespace AzureBankDLL.BL
                 return -3;
             // withdrawing cash
             cash -= withdrawAmount;
-            //HistoryDL.SaveTransactionHistory(name, new History("Withdraw", withdrawAmount));
+            
             return 0;        // success
         }
         public int TransferCash(User user, int transferAmount)
         {
-            // error encountered so returning
-            if (transferAmount < 0)
-                return -1;
-            else if (transferAmount == 0)
-                return -2;
-            else if (transferAmount > cash)
-                return -3;
             // transferring cash
-            cash -= transferAmount;
-            user.DepositCash(transferAmount);
-            //HistoryDL.SaveTransactionHistory(name, new History("Transfer", transferAmount));
-            return 0;        // success
+            int res = WithdrawCash(transferAmount);
+            if (res == 0)
+                return user.DepositCash(transferAmount);
+            return res;
         }
         public void ShowCash()
         {

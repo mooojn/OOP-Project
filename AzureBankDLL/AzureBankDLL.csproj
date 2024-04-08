@@ -52,10 +52,11 @@
     <Compile Include="BL\History.cs" />
     <Compile Include="BL\User.cs" />
     <Compile Include="Class1.cs" />
+    <Compile Include="DLInterfaces\ITransaction.cs" />
     <Compile Include="DLInterfaces\IUser.cs" />
-    <Compile Include="DLInterfaces\IUserFunc.cs" />
+    <Compile Include="DL\DB\TransactionDB.cs" />
     <Compile Include="DL\DB\UserDB.cs" />
-    <Compile Include="DL\DB\UserFuncDB.cs" />
+    <Compile Include="DL\FH\TransactionFH.cs" />
     <Compile Include="DL\FH\UserFH.cs" />
     <Compile Include="DL\HistoryDL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

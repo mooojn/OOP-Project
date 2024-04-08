@@ -16,7 +16,8 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserFH();
+            IUser userDL = new UserDB();
+            ITransaction transactionDL = new TransactionDB();
 
         logout:
             User user;
@@ -137,7 +138,7 @@ namespace AzureBankConsole
                             break;
                         }
                         MainUi.Header();
-                        amount = UserUi.GetDepositAmount();
+                        amount = UserUi.GetAmount("Deposit");
                         status = user.DepositCash(amount);
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
@@ -146,6 +147,7 @@ namespace AzureBankConsole
                         else {
                             UtilUi.Success("Cash Deposited Successfully");
                             userDL.Update(user);
+                            transactionDL.Save(user.getName(), new History("Deposit", amount));
                         }
 
                         break;
@@ -156,17 +158,18 @@ namespace AzureBankConsole
                             break;
                         }
                         MainUi.Header();
-                        amount = UserUi.GetWithdrawAmount();
+                        amount = UserUi.GetAmount("Withdraw");
                         status = user.WithdrawCash(amount);
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
-                            UtilUi.Error("Deposit Amount can't be Zero");
+                            UtilUi.Error("Withdraw Amount can't be Zero");
                         else if (status == -3)
-                            UtilUi.Error("Deposit Amount was greater than available Balance");
+                            UtilUi.Error("Withdraw Amount was greater than available Balance");
                         else {
                             UtilUi.Success("Cash Withdrawal was Successful");
                             userDL.Update(user);
+                            transactionDL.Save(user.getName(), new History("Withdraw", amount));
                         }
                         break;
                     case Choice.TRANSFER_CASH:
@@ -175,8 +178,8 @@ namespace AzureBankConsole
                             break;
                         }
                         MainUi.Header();
-                        amount = UserUi.GetWithdrawAmount();
-                        name = UserUi.GetName();
+                        amount = UserUi.GetAmount("Transfer");
+                        name = UserUi.GetName("Enter the name of the reciever");
                         User usr = userDL.Read(name);
                         if (usr == null) {
                             UtilUi.Error("User does not exist");
@@ -193,7 +196,20 @@ namespace AzureBankConsole
                             UtilUi.Success("Cash Transfer was Successful");
                             userDL.Update(user);
                             userDL.Update(usr);
+                            // as in transfer, amount is withdrawn from one account and deposited in another
+                            transactionDL.Save(user.getName(), new History("Withdraw", amount));
+                            transactionDL.Save(usr.getName(), new History("Deposit", amount));
                         }
+                        break;
+
+                    case Choice.VIEW_TRANSACTIONS_HISTORY:
+                        MainUi.Header();
+                        List<History> history = transactionDL.ReadAll(user.getName());
+                        UserUi.TransactionHeader();
+                        foreach (History h in history) {
+                            Console.WriteLine(h.toString());
+                        }
+                        UtilUi.PressAnyKey();
                         break;
 
                     case Choice.BLOCK_TRANSACTIONS:
