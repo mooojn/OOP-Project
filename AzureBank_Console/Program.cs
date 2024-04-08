@@ -7,6 +7,7 @@ using AzureBankDLL.DLInterfaces;
 using AzureBankDLL.DL;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL.DB;
+using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
 
 namespace AzureBankConsole
@@ -16,7 +17,6 @@ namespace AzureBankConsole
         static void Main(string[] args)
         {
             IUser userDL = new UserDB();
-            IUserFunc userFunc = new UserFuncDB();
 
         logout:
             User user = null;

@@ -8,7 +8,7 @@ using AzureBankDLL.DLInterfaces;
 
 namespace AzureBankDLL.DL.FH
 {
-    internal class StudentFH // : IUser           /// removee this commmecntt pzllzzz
+    public class UserFH  : IUser           /// removee this commmecntt pzllzzz
     {
         public bool Create(User user)
         {
@@ -25,6 +25,14 @@ namespace AzureBankDLL.DL.FH
         public bool Delete(string userName)
         {
             return false;
+        }
+        public bool UserNameExists(string name)
+        {
+            return false;
+        }
+        public int FindUser(User usr)
+        {
+            return 0;
         }
     }
 }
