@@ -1,5 +1,6 @@
 ﻿using AzureBankDLL.BL;
 using AzureBankDLL.DL;
+using Guna.UI2.AnimatorNS;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -26,6 +27,9 @@ namespace AzureBankGui
             
             panel = mainPanel;
             userPage = f;
+
+            string msg = !UserPage.user.getTransactionStatus() ? "Enable" : "Disable";
+            guna2Button3.Text = $"{msg} Transactions";
         }
 
         private void Main_Load(object sender, EventArgs e)
@@ -45,12 +49,22 @@ namespace AzureBankGui
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            if (!UserPage.user.getTransactionStatus()) 
+            {
+                MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
+                return;
+            }
             Form f = new DepositWithdraw();
             f.Show();
         }
 
         private void guna2ImageButton4_Click(object sender, EventArgs e)
         {
+            if (!UserPage.user.getTransactionStatus())
+            {
+                MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
+                return;
+            }
             Form f = new Transfer();
             f.Show();
         }
@@ -94,6 +108,16 @@ namespace AzureBankGui
             }
 
             
+        }
+
+        private void guna2Button3_Click(object sender, EventArgs e)
+        {
+            bool flag = !UserPage.user.getTransactionStatus();  // toggling the status
+            UserPage.user.setTransactionStatus(flag);
+            ObjectHandler.GetUserDL().Update(UserPage.user);
+            
+            string msg = !flag ? "Enable" : "Disable";
+            guna2Button3.Text = $"{msg} Transactions";
         }
     }
 }

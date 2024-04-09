@@ -21,6 +21,9 @@ namespace AzureBankGui
             InitializeComponent();
             this.Size = new Size(1200, 1200);
             admin = adm;
+
+
+            UtilDL.activeButtonStateChange(guna2Button1);
         }
 
         private void iconToolStripButton1_Click(object sender, EventArgs e)
@@ -40,7 +43,7 @@ namespace AzureBankGui
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button2);
-            UtilDL.openChildForm(new UserManager(), mainPanel);
+            UtilDL.openChildForm(new AddUser(), mainPanel);
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)

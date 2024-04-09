@@ -64,6 +64,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectHandler.cs" />
+    <Compile Include="UI\AdminPages\AddUser.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminPages\AddUser.Designer.cs">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AdminPages\AdminDashboard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminPages\AdminDashboard.Designer.cs">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserPages\AuthPromptForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -128,6 +140,12 @@
       <DependentUpon>UserPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Validation.cs" />
+    <EmbeddedResource Include="UI\AdminPages\AddUser.resx">
+      <DependentUpon>AddUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AdminPages\AdminDashboard.resx">
+      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\AuthPromptForm.resx">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
     </EmbeddedResource>

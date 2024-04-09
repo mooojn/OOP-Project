@@ -40,8 +40,9 @@
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel3 = new Guna.UI2.WinForms.Guna2GradientPanel();
             this.label5 = new System.Windows.Forms.Label();
-            this.cashAmount = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.cashAmount = new System.Windows.Forms.Label();
+            this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2GradientPanel2.SuspendLayout();
             this.guna2GradientPanel3.SuspendLayout();
             this.SuspendLayout();
@@ -151,9 +152,9 @@
             this.guna2Button1.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(210)))), ((int)(((byte)(43)))), ((int)(((byte)(43)))));
             this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(625, 484);
+            this.guna2Button1.Location = new System.Drawing.Point(697, 481);
             this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(168, 87);
+            this.guna2Button1.Size = new System.Drawing.Size(199, 87);
             this.guna2Button1.TabIndex = 10;
             this.guna2Button1.Text = "Delete Account";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
@@ -167,9 +168,9 @@
             this.guna2Button2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(170)))), ((int)(((byte)(231)))));
             this.guna2Button2.Font = new System.Drawing.Font("Segoe UI", 9F);
             this.guna2Button2.ForeColor = System.Drawing.Color.White;
-            this.guna2Button2.Location = new System.Drawing.Point(309, 484);
+            this.guna2Button2.Location = new System.Drawing.Point(186, 481);
             this.guna2Button2.Name = "guna2Button2";
-            this.guna2Button2.Size = new System.Drawing.Size(168, 87);
+            this.guna2Button2.Size = new System.Drawing.Size(199, 87);
             this.guna2Button2.TabIndex = 11;
             this.guna2Button2.Text = "Edit Password";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
@@ -201,19 +202,6 @@
             this.label5.TabIndex = 5;
             this.label5.Text = "$";
             // 
-            // cashAmount
-            // 
-            this.cashAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.cashAmount.AutoSize = true;
-            this.cashAmount.BackColor = System.Drawing.Color.Transparent;
-            this.cashAmount.Font = new System.Drawing.Font("Consolas", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cashAmount.ForeColor = System.Drawing.Color.White;
-            this.cashAmount.Location = new System.Drawing.Point(216, 92);
-            this.cashAmount.Name = "cashAmount";
-            this.cashAmount.Size = new System.Drawing.Size(172, 62);
-            this.cashAmount.TabIndex = 4;
-            this.cashAmount.Text = "30.00";
-            // 
             // label3
             // 
             this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
@@ -227,11 +215,41 @@
             this.label3.TabIndex = 3;
             this.label3.Text = "USD";
             // 
+            // cashAmount
+            // 
+            this.cashAmount.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.cashAmount.AutoSize = true;
+            this.cashAmount.BackColor = System.Drawing.Color.Transparent;
+            this.cashAmount.Font = new System.Drawing.Font("Consolas", 19.875F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cashAmount.ForeColor = System.Drawing.Color.White;
+            this.cashAmount.Location = new System.Drawing.Point(216, 92);
+            this.cashAmount.Name = "cashAmount";
+            this.cashAmount.Size = new System.Drawing.Size(172, 62);
+            this.cashAmount.TabIndex = 4;
+            this.cashAmount.Text = "30.00";
+            // 
+            // guna2Button3
+            // 
+            this.guna2Button3.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
+            this.guna2Button3.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
+            this.guna2Button3.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
+            this.guna2Button3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(240)))));
+            this.guna2Button3.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.guna2Button3.ForeColor = System.Drawing.Color.White;
+            this.guna2Button3.Location = new System.Drawing.Point(437, 481);
+            this.guna2Button3.Name = "guna2Button3";
+            this.guna2Button3.Size = new System.Drawing.Size(199, 87);
+            this.guna2Button3.TabIndex = 18;
+            this.guna2Button3.Text = "Toggle Transactions";
+            this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 977);
+            this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2GradientPanel3);
             this.Controls.Add(this.guna2Button2);
             this.Controls.Add(this.guna2Button1);
@@ -263,5 +281,6 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label3;
         public System.Windows.Forms.Label cashAmount;
+        private Guna.UI2.WinForms.Guna2Button guna2Button3;
     }
 }
