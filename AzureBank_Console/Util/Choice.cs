@@ -19,8 +19,9 @@ namespace AzureBankConsole.Util
         public const string TRANSFER_CASH = "4";
         public const string VIEW_TRANSACTIONS_HISTORY = "5";
         public const string BLOCK_TRANSACTIONS = "6";
-        public const string DELETE_ACCOUNT = "7";
-        public const string USER_LOGOUT = "8";
+        public const string CHANGE_USER_PASSWORD = "7";
+        public const string DELETE_ACCOUNT = "8";
+        public const string USER_LOGOUT = "9";
         // admin choices
         public const string ADD_USER = "1";
         public const string VIEW_USERS = "2";

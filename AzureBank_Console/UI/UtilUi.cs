@@ -1,9 +1,11 @@
-﻿using System;
+﻿using AzureBankConsole.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace AzureBankConsole
 {
@@ -16,12 +18,13 @@ namespace AzureBankConsole
             Console.ResetColor();
             Console.ReadKey();
         }
-        public static void Error(string type)
+        public static void Error(string type, bool flag = true)
         {
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(type);
             Console.ResetColor();
-            PressAnyKey();
+            if (flag)
+                PressAnyKey();
         }
         public static void Success(string msg)
         {
@@ -85,7 +88,11 @@ namespace AzureBankConsole
             // Stops Receving Keys Once Enter is Pressed
             while (key.Key != ConsoleKey.Enter);
             Console.WriteLine();
-            return pass;
+
+            if (Validation.IsValid("Password", pass, false))
+                return pass;
+            else
+                return GetMaskedInput(msg);     // not valid so try again
         }
     }
 }

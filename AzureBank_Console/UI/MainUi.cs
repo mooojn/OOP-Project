@@ -35,9 +35,10 @@ namespace AzureBankConsole
             Console.WriteLine("4. Transfer Cash");
             Console.WriteLine("5. View Transactions");
             Console.WriteLine("6. Block/Unblock Transactions");
-            Console.WriteLine("7. Delete Account");
+            Console.WriteLine("7. Change Password");
+            Console.WriteLine("8. Delete Account");
 
-            Console.WriteLine("8. Logout");
+            Console.WriteLine("9. Logout");
 
             // getting input
             return UtilUi.GetChoice();

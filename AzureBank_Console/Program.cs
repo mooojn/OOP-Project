@@ -16,8 +16,8 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserDB();
-            ITransaction transactionDL = new TransactionDB();
+            IUser userDL = new UserFH();
+            ITransaction transactionDL = new TransactionFH();
 
         logout:
             User user;
@@ -102,15 +102,7 @@ namespace AzureBankConsole
 
                         break;
                     case Choice.CHANGE_ADMIN_Password:
-                        MainUi.Header();
-
-                        string newPass = UtilUi.GetMaskedInput("Set new password: ");
-
-                        UtilUi.Process();
-                        user.setPassword(newPass);
-                        userDL.Update(user);
-
-                        UtilUi.Success("Password Changed Successfully");
+                        Common.ChangePassword(userDL, user);
                         break;
                     case Choice.ADMIN_LOGOUT:
                         goto logout;
@@ -219,7 +211,9 @@ namespace AzureBankConsole
                         userDL.Update(user);
                         UtilUi.Success($"Transaction Status {res} Successfully");
                         break;
-
+                    case Choice.CHANGE_USER_PASSWORD:
+                        Common.ChangePassword(userDL, user);
+                        break;
                     case Choice.DELETE_ACCOUNT:
                         userDL.Delete(user.getName());
                         goto logout;   // after deleting account, user is logged out

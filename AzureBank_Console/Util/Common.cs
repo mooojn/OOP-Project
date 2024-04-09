@@ -22,6 +22,19 @@ namespace AzureBankConsole.Util
                 i++;
             }
         }
+        public static void ChangePassword(IUser userDL, User user) 
+        {
+            MainUi.Header();
+
+            string newPass = UtilUi.GetMaskedInput("Set new password: ");
+
+            UtilUi.Process();
+            user.setPassword(newPass);
+            userDL.Update(user);
+
+            UtilUi.Success("Password Changed Successfully");
+        }
+
         public static void SignUp(IUser userDL)
         {
             MainUi.Header();
