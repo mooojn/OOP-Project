@@ -8,7 +8,7 @@ using System.Windows.Forms;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     internal static class Program
     {
@@ -20,7 +20,7 @@ namespace AzureBank
         [STAThread]
         static void Main()
         {
-            UserDL.LoadUsers();
+            //UserDL.LoadUsers();
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

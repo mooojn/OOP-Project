@@ -8,13 +8,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public class HistoryACC
     {       
         public static DataTable Load()
         {
-            UserPage.user.setHistory(HistoryDL.LoadTransactionHistory(UserPage.user.getName()));
+            //UserPage.user.setHistory(HistoryDL.LoadTransactionHistory(UserPage.user.getName()));
             
             DataTable dt = new DataTable();
 

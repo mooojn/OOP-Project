@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class UserManager : Form
     {

@@ -12,7 +12,7 @@ using Guna.UI2.AnimatorNS;
 using Guna.UI2.WinForms;
 using AzureBankDLL.DL;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class Transact : Form
     {
@@ -43,7 +43,7 @@ namespace AzureBank
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
-                UserDL.UpdateInfo(UserPage.user);
+                //UserDL.UpdateInfo(UserPage.user);
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Deposit");
@@ -60,7 +60,7 @@ namespace AzureBank
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
-                UserDL.UpdateInfo(UserPage.user);
+                //UserDL.UpdateInfo(UserPage.user);
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Withdraw");
@@ -86,19 +86,20 @@ namespace AzureBank
             {
                 int cash = Convert.ToInt32(amountBox.Text);
 
-                User user = UserDL.GetUserFromName(transferName.Text);
-                if (user == null)
-                {
-                    MessageUi.ShowMessage("Invalid User", "User not found in the database");
-                    return;
-                }
+                //User user = UserDL.GetUserFromName(transferName.Text);
+                //if (user == null)
+                //{
+                //    MessageUi.ShowMessage("Invalid User", "User not found in the database");
+                //    return;
+                //}
 
-                int flag = UserPage.user.TransferCash(user, cash);
+                //int flag = UserPage.user.TransferCash(user, cash);
+                int flag = 1; /// removeee
                 if (flag == 0)
                 {
                     MessageUi.ShowMessage("Success", $"Cash has been Transfered to {transferName.Text}", MessageDialogIcon.Information);
-                    UserDL.UpdateInfo(UserPage.user);  // Update the user info who is sending the money
-                    UserDL.UpdateInfo(user);          // Update the user info who is receiving the money
+                    //UserDL.UpdateInfo(UserPage.user);  // Update the user info who is sending the money
+                    //UserDL.UpdateInfo(user);          // Update the user info who is receiving the money
                 }
                 else if (flag == -1)
                     MessageUi.NegativeAmountError("Transfer");

@@ -11,7 +11,7 @@ using System.Windows.Forms;
 using AzureBankDLL.BL;
 
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class AdminPage : Form
     {

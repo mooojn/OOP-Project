@@ -9,7 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class EditInformation : Form
     {
@@ -26,7 +26,7 @@ namespace AzureBank
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             UserPage.user.setPassword(passBox.Text);
-            UserDL.UpdateInfo(UserPage.user);
+            //UserDL.UpdateInfo(UserPage.user);
         }
     }
 }

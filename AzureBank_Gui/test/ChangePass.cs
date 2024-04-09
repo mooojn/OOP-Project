@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank.test
+namespace AzureBankGui.test
 {
     public partial class ChangePass : Form
     {

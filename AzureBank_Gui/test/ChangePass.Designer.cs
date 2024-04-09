@@ -1,4 +1,4 @@
-﻿namespace AzureBank.test
+﻿namespace AzureBankGui.test
 {
     partial class ChangePass
     {

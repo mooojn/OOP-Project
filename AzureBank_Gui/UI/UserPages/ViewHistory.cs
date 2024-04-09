@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.DL;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class ViewHistory : Form
     {
@@ -43,7 +43,8 @@ namespace AzureBank
         }
         private List<History> LoadHistory(string name)
         {
-            return HistoryDL.LoadTransactionHistory(name);
+            //return HistoryDL.LoadTransactionHistory(name);
+            return null;      /// removeevev
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)

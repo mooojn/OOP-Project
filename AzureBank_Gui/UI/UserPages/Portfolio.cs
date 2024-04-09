@@ -8,7 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class Portfolio : Form
     {
@@ -19,6 +19,11 @@ namespace AzureBank
         }
 
         private void guna2GradientPanel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void cashAmount_Click(object sender, EventArgs e)
         {
 
         }

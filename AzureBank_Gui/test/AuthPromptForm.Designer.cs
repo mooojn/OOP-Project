@@ -1,4 +1,4 @@
-﻿namespace AzureBank
+﻿namespace AzureBankGui
 {
     partial class AuthPromptForm
     {

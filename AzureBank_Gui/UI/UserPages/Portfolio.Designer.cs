@@ -1,4 +1,4 @@
-﻿namespace AzureBank
+﻿namespace AzureBankGui
 {
     partial class Portfolio
     {
@@ -97,6 +97,7 @@
             this.cashAmount.Size = new System.Drawing.Size(172, 62);
             this.cashAmount.TabIndex = 1;
             this.cashAmount.Text = "30.00";
+            this.cashAmount.Click += new System.EventHandler(this.cashAmount_Click);
             // 
             // label3
             // 

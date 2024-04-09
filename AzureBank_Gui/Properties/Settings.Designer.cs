@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AzureBank.Properties
+namespace AzureBankGui.Properties
 {
 
 

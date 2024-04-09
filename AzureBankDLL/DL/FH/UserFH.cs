@@ -11,8 +11,8 @@ namespace AzureBankDLL.DL.FH
 {
     public class UserFH  : IUser           
     {
-        private string fileName = "users.txt";
-        private string tempFileName = "temp_users.txt";   // for updation and deletion
+        private string fileName = "users.csv";
+        private string tempFileName = "temp_users.csv";   // for updation and deletion
         public bool Create(User user)
         {
             try {

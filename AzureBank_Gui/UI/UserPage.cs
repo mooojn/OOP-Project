@@ -12,7 +12,7 @@ using AzureBankDLL.BL;
 using AzureBankDLL.DL;
 
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class UserPage : Form
     {
@@ -32,7 +32,7 @@ namespace AzureBank
         }
         private void guna2Button6_Click_1(object sender, EventArgs e)
         {
-            UserDL.UpdateInfo(user);
+            //UserDL.UpdateInfo(user);
             UtilDL.LogOut(this);
         }
 
@@ -73,9 +73,9 @@ namespace AzureBank
             //{
 
                 
-            UserDL.users.Remove(user);
+            //UserDL.users.Remove(user);
             // remove from the dataBase 
-            UserDL.DeleteUser(user.getName());
+            //UserDL.DeleteUser(user.getName());
             UtilDL.LogOut(this);
             //}
 

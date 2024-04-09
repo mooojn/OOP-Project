@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.DL;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class AuthPromptForm : Form
     {
@@ -53,7 +53,7 @@ namespace AzureBank
                 return;
             }
             UserPage.user.setPassword(passBox.Text);
-            UserDL.UpdateInfo(UserPage.user);
+            //UserDL.UpdateInfo(UserPage.user);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

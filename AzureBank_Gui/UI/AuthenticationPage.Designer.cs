@@ -1,4 +1,4 @@
-﻿namespace AzureBank
+﻿namespace AzureBankGui
 {
     partial class AuthenticationPage
     {
@@ -135,7 +135,7 @@
             this.passBoxBtn.FlatAppearance.BorderSize = 0;
             this.passBoxBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.passBoxBtn.ForeColor = System.Drawing.Color.Black;
-            this.passBoxBtn.Image = global::AzureBank.Properties.Resources.view;
+            //this.passBoxBtn.Image = global::AzureBankGui.Properties.Resources.view;
             this.passBoxBtn.Location = new System.Drawing.Point(897, 433);
             this.passBoxBtn.Name = "passBoxBtn";
             this.passBoxBtn.Size = new System.Drawing.Size(77, 52);

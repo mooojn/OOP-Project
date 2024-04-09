@@ -12,7 +12,7 @@ namespace AzureBankDLL.DL.FH
 {
     public class TransactionFH : ITransaction
     {
-        public static string fileName = "transactions.txt";
+        public static string fileName = "transactions.csv";
         public bool Save(string name, History history)
         {
             try

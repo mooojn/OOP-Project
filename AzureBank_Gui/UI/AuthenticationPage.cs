@@ -13,8 +13,10 @@ using AzureBankDLL.BL;
 using AzureBankDLL.DL;
 using Guna.UI2.AnimatorNS;
 using System.Runtime.Remoting.Messaging;
+using AzureBankDLL.DLInterfaces;
+using AzureBankGui.Utils;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class AuthenticationPage : Form
     {
@@ -28,33 +30,36 @@ namespace AzureBank
             User user = InitializeUser();
             if (user == null)
                 return;
-            else if (UserDL.SignUp(user))
-                MessageUi.ShowMessage("Success", "Your account has successfully been registered with us", MessageDialogIcon.Information);
+            else if (ObjectHandler.GetUserDL().UserNameExists(user.getName())) {
+                MessageUi.ShowMessage("User Exists", "User with this username Already exists please use a different one");
+                nameBox.Focus();
+                return;
+            }
+            ObjectHandler.GetUserDL().Create(user);
+            MessageUi.ShowMessage("Success", "Your account has successfully been registered with us", MessageDialogIcon.Information);
         }
         private void SignIn(object sender, EventArgs e)
         {
             User usr = InitializeUser();
             if (usr == null)
                 return;
-            int userId = UserDL.CredentialsValid(usr);
-            if (userId == -2)    // -2 means user does not exist
-                return;              
-            else if (userId == -1)   // -1 means invalid password
+            if (!ObjectHandler.GetUserDL().UserNameExists(usr.getName())) {     // user not found
+                MessageUi.ShowMessage("Invalid User", "User does not Exist", MessageDialogIcon.Error);
+                return;
+            }
+            int userId = ObjectHandler.GetUserDL().FindUser(usr);
+            if (userId == 0)   // 0 means invalid password
             {
                 MessageUi.ShowMessage("Authentication Error", "Incorrect Password", MessageDialogIcon.Error);
                 return;
             }
-            //User user = UserDL.GetUserFromId(userId);
-            Program.currentUserId = userId;
-            
-            User user = UserDL.users[userId];
-            
-            if (userId == 0)      // userId '0' represents admin 
+            usr = ObjectHandler.GetUserDL().Read(usr.getName());
+            if (userId == 1)      // userId '2' represents admin 
             {
-                LoadPage(new AdminPage(user));
+                LoadPage(new AdminPage(usr));
                 return;
             }
-            LoadPage(new UserPage(user));
+            LoadPage(new UserPage(usr));
         }
         private User InitializeUser()
         {
@@ -63,19 +68,26 @@ namespace AzureBank
                 MessageUi.NullBoxError();
                 return null;
             }
+            else if (!Validation.IsValid("Username", nameBox.Text)) {
+                return null;
+            }
+            else if (!Validation.IsValid("Password", passBox.Text, false))
+            {
+                return null;
+            }
             return new User(nameBox.Text, passBox.Text);
         }
         private void passBox_StateChange(object sender, EventArgs e)
         {
             if (passBox.PasswordChar == '●')
             {
-                passBoxBtn.Image = AzureBank.Properties.Resources.hide;
+                passBoxBtn.Image = AzureBankGui.Properties.Resources.hide;
                 passBox.UseSystemPasswordChar = false;
                 passBox.PasswordChar = '\0';
             }
             else
             {
-                passBoxBtn.Image = AzureBank.Properties.Resources.view;
+                passBoxBtn.Image = AzureBankGui.Properties.Resources.view;
                 passBox.UseSystemPasswordChar = true;
                 passBox.PasswordChar = '●';
             }

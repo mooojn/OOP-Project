@@ -100,7 +100,7 @@ namespace AzureBankDLL.DL.DB
                 return usr.getName() == "admin" ? 1 : 2;
             }
             else
-                return 0;
+                return 0;     // zero means invalid password
         }
         public bool UserNameExists(string name)
         {
@@ -112,7 +112,7 @@ namespace AzureBankDLL.DL.DB
             // checking if user exists
             if (reader.Read())
             {
-                flag = true;
+                flag = true;   // user found
             }
             Program.connection.Close();
             return flag;

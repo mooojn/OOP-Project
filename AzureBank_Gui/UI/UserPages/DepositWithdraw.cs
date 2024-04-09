@@ -10,7 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class DepositWithdraw : Form
     {
@@ -31,7 +31,7 @@ namespace AzureBank
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
-                UserDL.UpdateInfo(UserPage.user);
+                //UserDL.UpdateInfo(UserPage.user);
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Deposit");
@@ -48,7 +48,7 @@ namespace AzureBank
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
-                UserDL.UpdateInfo(UserPage.user);
+                //UserDL.UpdateInfo(UserPage.user);
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Withdraw");

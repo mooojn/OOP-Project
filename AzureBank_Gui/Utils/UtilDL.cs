@@ -10,7 +10,7 @@ using Guna.UI2.WinForms;
 using Guna.UI2.AnimatorNS;
 
 
-namespace AzureBank
+namespace AzureBankGui
 {
     internal class UtilDL
     {

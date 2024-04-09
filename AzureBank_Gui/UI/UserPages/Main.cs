@@ -11,7 +11,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace AzureBank
+namespace AzureBankGui
 {
     public partial class Main : Form
     {
@@ -67,8 +67,8 @@ namespace AzureBank
             if (result == DialogResult.OK)
             {
                 //MessageBox.Show("Account deleted successfully.");
-                UserDL.users.Remove(UserPage.user);            
-                UserDL.DeleteUser(UserPage.user.getName());  // remove from the dataBase 
+                //UserDL.users.Remove(UserPage.user);            
+                //UserDL.DeleteUser(UserPage.user.getName());  // remove from the dataBase 
                 UtilDL.LogOut(userPage);
             }
         }
