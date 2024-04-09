@@ -15,5 +15,21 @@ namespace AzureBankDLL.BL
             this.name = name;
             this.worth = worth;
         }
+        public string getName() 
+        {
+            return name;
+        }
+        public int getWorth()
+        {
+            return worth;
+        }
+        public void setName(string name) 
+        {
+            this.name = name;
+        }
+        public void setWorth(int worth)
+        {
+            this.worth = worth;
+        }
     }
 }

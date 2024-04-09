@@ -81,10 +81,6 @@ namespace AzureBankDLL.BL
                 return user.DepositCash(transferAmount);
             return res;
         }
-        public void ShowCash()
-        {
-            Console.Write($"Your total cash holdings holding: ${cash}");
-        }
         public int getCash()
         {
             return cash;
@@ -97,14 +93,6 @@ namespace AzureBankDLL.BL
         {
             return password;
         }
-        public void setPassword(string pass)
-        {
-            password = pass;
-        }
-        public void setHistory(List<History> history)
-        {
-            this.history = history;
-        }
         public List<History> getHistory()
         {
             return history;
@@ -113,9 +101,21 @@ namespace AzureBankDLL.BL
         {
             return transactionStatus;
         }
+        public void setName(string name)
+        {
+            this.name = name;
+        }
+        public void setPassword(string pass)
+        {
+            this.password = pass;
+        }
+        public void setHistory(List<History> history)
+        {
+            this.history = history;
+        }
         public void setTransactionStatus(bool status)
         {
-            transactionStatus = status;
+            this.transactionStatus = status;
         }
         public string toString()
         {
