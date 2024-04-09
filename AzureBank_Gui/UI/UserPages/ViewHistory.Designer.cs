@@ -63,13 +63,13 @@
             this.transactionHistory.EditMode = System.Windows.Forms.DataGridViewEditMode.EditProgrammatically;
             this.transactionHistory.EnableHeadersVisualStyles = true;
             this.transactionHistory.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(187)))), ((int)(((byte)(238)))), ((int)(((byte)(208)))));
-            this.transactionHistory.Location = new System.Drawing.Point(75, 81);
+            this.transactionHistory.Location = new System.Drawing.Point(58, 63);
             this.transactionHistory.Name = "transactionHistory";
             this.transactionHistory.RowHeadersVisible = false;
             this.transactionHistory.RowHeadersWidth = 82;
             this.transactionHistory.RowTemplate.Height = 33;
-            this.transactionHistory.Size = new System.Drawing.Size(654, 280);
-            this.transactionHistory.TabIndex = 0;
+            this.transactionHistory.Size = new System.Drawing.Size(1041, 671);
+            this.transactionHistory.TabIndex = 2;
             this.transactionHistory.Theme = Guna.UI2.WinForms.Enums.DataGridViewPresetThemes.Emerald;
             this.transactionHistory.ThemeStyle.AlternatingRowsStyle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(192)))), ((int)(((byte)(239)))), ((int)(((byte)(212)))));
             this.transactionHistory.ThemeStyle.AlternatingRowsStyle.Font = null;
@@ -92,13 +92,12 @@
             this.transactionHistory.ThemeStyle.RowsStyle.Height = 33;
             this.transactionHistory.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.transactionHistory.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
-            this.transactionHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.transactionHistory_CellContentClick);
             // 
             // ViewHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1156, 796);
             this.Controls.Add(this.transactionHistory);
             this.Name = "ViewHistory";
             this.Text = "ViewHIstory";

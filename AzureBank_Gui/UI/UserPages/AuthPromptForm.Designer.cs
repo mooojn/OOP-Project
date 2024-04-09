@@ -105,8 +105,8 @@
         }
 
         #endregion
-        private Guna.UI2.WinForms.Guna2TextBox passBox;
         public System.Windows.Forms.Label label2;
         public Guna.UI2.WinForms.Guna2Button guna2Button1;
+        public Guna.UI2.WinForms.Guna2TextBox passBox;
     }
 }

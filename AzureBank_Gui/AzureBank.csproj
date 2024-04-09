@@ -64,17 +64,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ObjectHandler.cs" />
-    <Compile Include="test\AuthPromptForm.cs">
+    <Compile Include="UI\UserPages\AuthPromptForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="test\AuthPromptForm.Designer.cs">
+    <Compile Include="UI\UserPages\AuthPromptForm.Designer.cs">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="test\ChangePass.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="test\ChangePass.Designer.cs">
-      <DependentUpon>ChangePass.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserPages\DepositWithdraw.cs">
       <SubType>Form</SubType>
@@ -82,30 +76,11 @@
     <Compile Include="UI\UserPages\DepositWithdraw.Designer.cs">
       <DependentUpon>DepositWithdraw.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\UserPages\EditInformation.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\UserPages\EditInformation.Designer.cs">
-      <DependentUpon>EditInformation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserPages\HistoryACC.cs" />
     <Compile Include="UI\UserPages\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\UserPages\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserPages\Portfolio.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\UserPages\Portfolio.Designer.cs">
-      <DependentUpon>Portfolio.cs</DependentUpon>
-    </Compile>
-    <Compile Include="UI\UserPages\Transact.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\UserPages\Transact.Designer.cs">
-      <DependentUpon>Transact.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserPages\Transfer.cs">
       <SubType>Form</SubType>
@@ -153,11 +128,8 @@
       <DependentUpon>UserPage.cs</DependentUpon>
     </Compile>
     <Compile Include="Utils\Validation.cs" />
-    <EmbeddedResource Include="test\AuthPromptForm.resx">
+    <EmbeddedResource Include="UI\UserPages\AuthPromptForm.resx">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="test\ChangePass.resx">
-      <DependentUpon>ChangePass.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\AdminPage.resx">
       <DependentUpon>AdminPage.cs</DependentUpon>
@@ -179,17 +151,8 @@
     <EmbeddedResource Include="UI\UserPages\DepositWithdraw.resx">
       <DependentUpon>DepositWithdraw.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserPages\EditInformation.resx">
-      <DependentUpon>EditInformation.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserPages\Portfolio.resx">
-      <DependentUpon>Portfolio.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\UserPages\Transact.resx">
-      <DependentUpon>Transact.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\Transfer.resx">
       <DependentUpon>Transfer.cs</DependentUpon>
@@ -216,6 +179,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\view.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="test\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

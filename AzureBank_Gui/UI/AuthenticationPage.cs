@@ -81,13 +81,13 @@ namespace AzureBankGui
         {
             if (passBox.PasswordChar == '●')
             {
-                passBoxBtn.Image = AzureBankGui.Properties.Resources.hide;
+                passBoxBtn.Image = AzureBank.Properties.Resources.hide1;
                 passBox.UseSystemPasswordChar = false;
                 passBox.PasswordChar = '\0';
             }
             else
             {
-                passBoxBtn.Image = AzureBankGui.Properties.Resources.view;
+                passBoxBtn.Image = AzureBank.Properties.Resources.view1;
                 passBox.UseSystemPasswordChar = true;
                 passBox.PasswordChar = '●';
             }

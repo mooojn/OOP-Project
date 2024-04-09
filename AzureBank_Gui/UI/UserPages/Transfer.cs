@@ -5,6 +5,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
@@ -18,8 +19,16 @@ namespace AzureBankGui
         public Transfer()
         {
             InitializeComponent();
+            LoadComboBox(transferNames);
         }
-
+        public void LoadComboBox(Guna2ComboBox box) 
+        { 
+            List<string> names = ObjectHandler.GetUserDL().ReadAllNames(UserPage.user.getName());
+            foreach (string name in names)
+            {
+                box.Items.Add(name);
+            }
+        }
         private void Transfer_Load(object sender, EventArgs e)
         {
 
@@ -45,7 +54,7 @@ namespace AzureBankGui
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
-            addAmount(200);
+            addAmount(UserPage.user.getCash());
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)
@@ -58,19 +67,16 @@ namespace AzureBankGui
             int cash = Convert.ToInt32(amountBox.Text);
 
             //User user = UserDL.GetUserFromName(transferName.Text);
-            //if (user == null)
-            //{
-            //    MessageUi.ShowMessage("Invalid User", "User not found in the database");
-            //    return;
-            //}
-
-            //int flag = UserPage.user.TransferCash(user, cash);
-            int flag = 1;        ////remove
+            User user = ObjectHandler.GetUserDL().Read(transferNames.Text);
+            int flag = UserPage.user.TransferCash(user, cash);
             if (flag == 0)
             {
-                MessageUi.ShowMessage("Success", $"Cash has been Transfered to {transferName.Text}", MessageDialogIcon.Information);
-                //UserDL.UpdateInfo(UserPage.user);  // Update the user info who is sending the money
-                //UserDL.UpdateInfo(user);          // Update the user info who is receiving the money
+                MessageUi.ShowMessage("Success", $"Cash has been Transfered to {transferNames.Text}", MessageDialogIcon.Information);
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
+
+                ObjectHandler.GetUserDL().Update(user);
+                ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Deposit", cash));
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Transfer");

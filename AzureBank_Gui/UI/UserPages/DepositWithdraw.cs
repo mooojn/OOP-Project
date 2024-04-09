@@ -1,4 +1,5 @@
-﻿using AzureBankDLL.DL;
+﻿using AzureBankDLL.BL;
+using AzureBankDLL.DL;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -31,7 +32,8 @@ namespace AzureBankGui
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
-                //UserDL.UpdateInfo(UserPage.user);
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Deposit", cash));
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Deposit");
@@ -48,7 +50,8 @@ namespace AzureBankGui
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
-                //UserDL.UpdateInfo(UserPage.user);
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
             }
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Withdraw");
@@ -85,7 +88,6 @@ namespace AzureBankGui
 
         private void DepositWithdraw_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //UtilDL.openChildForm(new Main(new Form(), Main.panel), Main.panel);
             UtilDL.transactionClose();
         }
 

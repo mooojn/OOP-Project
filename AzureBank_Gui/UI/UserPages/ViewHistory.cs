@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.DL;
+using System.Xml.Linq;
 
 namespace AzureBankGui
 {
@@ -17,7 +18,7 @@ namespace AzureBankGui
         public ViewHistory()
         {
             InitializeComponent();
-            List<History> history = LoadHistory(UserPage.user.getName());
+            List<History> history = ObjectHandler.GetTransactionDL().ReadAll(UserPage.user.getName());
             UserPage.user.setHistory(history);
         }
 
@@ -41,12 +42,6 @@ namespace AzureBankGui
         {
 
         }
-        private List<History> LoadHistory(string name)
-        {
-            //return HistoryDL.LoadTransactionHistory(name);
-            return null;      /// removeevev
-        }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             //DataTable dt = new DataTable();

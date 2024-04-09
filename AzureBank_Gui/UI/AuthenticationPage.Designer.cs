@@ -31,6 +31,8 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthenticationPage));
             this.mainPanel = new Guna.UI2.WinForms.Guna2Panel();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,8 +43,6 @@
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.label5 = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -65,6 +65,29 @@
             this.mainPanel.Size = new System.Drawing.Size(1127, 880);
             this.mainPanel.TabIndex = 15;
             this.mainPanel.Paint += new System.Windows.Forms.PaintEventHandler(this.guna2Panel1_Paint);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.label6.Font = new System.Drawing.Font("OCR A Extended", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(756, 508);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(114, 23);
+            this.label6.TabIndex = 26;
+            this.label6.Text = "Register";
+            this.label6.Click += new System.EventHandler(this.label6_Click);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("Consolas", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label5.Location = new System.Drawing.Point(441, 507);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(274, 24);
+            this.label5.TabIndex = 25;
+            this.label5.Text = "Don\'t have an account?";
             // 
             // label4
             // 
@@ -135,7 +158,7 @@
             this.passBoxBtn.FlatAppearance.BorderSize = 0;
             this.passBoxBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.passBoxBtn.ForeColor = System.Drawing.Color.Black;
-            //this.passBoxBtn.Image = global::AzureBankGui.Properties.Resources.view;
+            this.passBoxBtn.Image = global::AzureBank.Properties.Resources.view1;
             this.passBoxBtn.Location = new System.Drawing.Point(897, 433);
             this.passBoxBtn.Name = "passBoxBtn";
             this.passBoxBtn.Size = new System.Drawing.Size(77, 52);
@@ -207,29 +230,6 @@
             this.guna2Button1.TabIndex = 2;
             this.guna2Button1.Text = "SignIn";
             this.guna2Button1.Click += new System.EventHandler(this.SignIn);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Consolas", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(441, 507);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(274, 24);
-            this.label5.TabIndex = 25;
-            this.label5.Text = "Don\'t have an account?";
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.label6.Font = new System.Drawing.Font("OCR A Extended", 7.875F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.ForeColor = System.Drawing.Color.Red;
-            this.label6.Location = new System.Drawing.Point(756, 508);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(114, 23);
-            this.label6.TabIndex = 26;
-            this.label6.Text = "Register";
-            this.label6.Click += new System.EventHandler(this.label6_Click);
             // 
             // AuthenticationPage
             // 

@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.DL;
+using AzureBankGui.Utils;
 
 namespace AzureBankGui
 {
@@ -47,13 +48,10 @@ namespace AzureBankGui
         }
         public void changePass(object sender, EventArgs e)
         {
-            if (String.IsNullOrEmpty(passBox.Text))
-            {
-                MessageBox.Show("Password cannot be e5mpty.");
+            if (!Validation.IsValid("Password", passBox.Text, false))
                 return;
-            }
             UserPage.user.setPassword(passBox.Text);
-            //UserDL.UpdateInfo(UserPage.user);
+            ObjectHandler.GetUserDL().Update(UserPage.user);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }

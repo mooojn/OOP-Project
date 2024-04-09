@@ -220,5 +220,32 @@ namespace AzureBankDLL.DL.FH
                 return false; // Return false to indicate an error
             }
         }
+        public List<string> ReadAllNames(string nameToExclude)
+        {
+            List<string> userNames = new List<string>();
+
+            // Check if the file exists
+            if (File.Exists(fileName))
+            {
+                // Read all lines from the file
+                string[] lines = File.ReadAllLines(fileName);
+
+                // Iterate through each line
+                foreach (string line in lines)
+                {
+                    // Skip the line if it contains the name to exclude
+                    if (line.Trim() != "admin" && line.Trim() != nameToExclude)
+                    {
+                        userNames.Add(line.Trim());
+                    }
+                }
+            }
+            else
+            {
+                Console.WriteLine("File not found: " + fileName);
+            }
+
+            return userNames;
+        }
     }
 }

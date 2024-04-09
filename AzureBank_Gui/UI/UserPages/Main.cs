@@ -21,7 +21,7 @@ namespace AzureBankGui
         public Main(Form f, Guna2Panel mainPanel)
         {
             InitializeComponent();
-            transactionHistory.DataSource =  HistoryACC.Load();
+            
             cashAmount.Text = UserPage.user.getCash().ToString();
             
             panel = mainPanel;
@@ -47,7 +47,6 @@ namespace AzureBankGui
         {
             Form f = new DepositWithdraw();
             f.Show();
-            //this.Hide();
         }
 
         private void guna2ImageButton4_Click(object sender, EventArgs e)
@@ -67,8 +66,7 @@ namespace AzureBankGui
             if (result == DialogResult.OK)
             {
                 //MessageBox.Show("Account deleted successfully.");
-                //UserDL.users.Remove(UserPage.user);            
-                //UserDL.DeleteUser(UserPage.user.getName());  // remove from the dataBase 
+                ObjectHandler.GetUserDL().Delete(UserPage.user.getName());  // remove from the dataBase 
                 UtilDL.LogOut(userPage);
             }
         }
@@ -87,11 +85,11 @@ namespace AzureBankGui
             DialogResult result = promptForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                MessageBox.Show("Password changed successfully.");
+                MessageUi.ShowMessage("Success", "Password changed successfully", MessageDialogIcon.Information);
             }
             else
             {
-                MessageBox.Show("fail.");
+                MessageUi.ShowMessage("Failed", "Password change was not successful");
                 // Authentication failed or canceled, handle accordingly
             }
 

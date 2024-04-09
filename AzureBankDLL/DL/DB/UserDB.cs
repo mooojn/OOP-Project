@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Web.Configuration;
 using System.Xml.Linq;
 using AzureBankDLL.BL;
+using AzureBankDLL.DL.FH;
 using AzureBankDLL.DLInterfaces;
 using AzureBankDLL.Util;
 
@@ -116,6 +117,26 @@ namespace AzureBankDLL.DL.DB
             }
             Program.connection.Close();
             return flag;
+        }
+        public List<string> ReadAllNames(string nameToExclude) 
+        {
+            Program.connection.Open();
+            
+            List<string> userNames = new List<string>();
+
+            string query = $"SELECT name FROM Users WHERE name != 'admin' AND name != '{nameToExclude}'";
+            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlDataReader reader = cmd.ExecuteReader();
+
+            while (reader.Read())
+            {
+                string name = reader["name"].ToString();
+                
+                userNames.Add(name);
+            }
+            Program.connection.Close();
+
+            return userNames;
         }
         //// xtra
         //public bool IsAdmin(User user)

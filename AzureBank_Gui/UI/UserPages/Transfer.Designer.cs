@@ -36,8 +36,8 @@
             this.amountBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.transferName = new Guna.UI2.WinForms.Guna2TextBox();
             this.transferBtn = new Guna.UI2.WinForms.Guna2Button();
+            this.transferNames = new Guna.UI2.WinForms.Guna2ComboBox();
             this.SuspendLayout();
             // 
             // guna2Button3
@@ -69,7 +69,7 @@
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(196, 72);
             this.guna2Button4.TabIndex = 42;
-            this.guna2Button4.Text = "200$";
+            this.guna2Button4.Text = "Max";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button2
@@ -164,35 +164,6 @@
             this.label1.Text = "Transfer To";
             this.label1.UseCompatibleTextRendering = true;
             // 
-            // transferName
-            // 
-            this.transferName.Animated = true;
-            this.transferName.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
-            this.transferName.AutoRoundedCorners = true;
-            this.transferName.BorderRadius = 30;
-            this.transferName.BorderThickness = 0;
-            this.transferName.Cursor = System.Windows.Forms.Cursors.IBeam;
-            this.transferName.CustomizableEdges.BottomLeft = false;
-            this.transferName.CustomizableEdges.BottomRight = false;
-            this.transferName.CustomizableEdges.TopLeft = false;
-            this.transferName.CustomizableEdges.TopRight = false;
-            this.transferName.DefaultText = "";
-            this.transferName.DisabledState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(208)))), ((int)(((byte)(208)))), ((int)(((byte)(208)))));
-            this.transferName.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(226)))), ((int)(((byte)(226)))), ((int)(((byte)(226)))));
-            this.transferName.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.transferName.DisabledState.PlaceholderForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(138)))), ((int)(((byte)(138)))), ((int)(((byte)(138)))));
-            this.transferName.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.transferName.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.transferName.HoverState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
-            this.transferName.Location = new System.Drawing.Point(258, 86);
-            this.transferName.Margin = new System.Windows.Forms.Padding(6);
-            this.transferName.Name = "transferName";
-            this.transferName.PasswordChar = '\0';
-            this.transferName.PlaceholderText = "";
-            this.transferName.SelectedText = "";
-            this.transferName.Size = new System.Drawing.Size(457, 63);
-            this.transferName.TabIndex = 45;
-            // 
             // transferBtn
             // 
             this.transferBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
@@ -209,14 +180,29 @@
             this.transferBtn.Text = "Transfer";
             this.transferBtn.Click += new System.EventHandler(this.transferBtn_Click);
             // 
+            // transferNames
+            // 
+            this.transferNames.BackColor = System.Drawing.Color.Transparent;
+            this.transferNames.DrawMode = System.Windows.Forms.DrawMode.OwnerDrawFixed;
+            this.transferNames.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.transferNames.FocusedColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.transferNames.FocusedState.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(94)))), ((int)(((byte)(148)))), ((int)(((byte)(255)))));
+            this.transferNames.Font = new System.Drawing.Font("Segoe UI", 10F);
+            this.transferNames.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(68)))), ((int)(((byte)(88)))), ((int)(((byte)(112)))));
+            this.transferNames.ItemHeight = 30;
+            this.transferNames.Location = new System.Drawing.Point(258, 91);
+            this.transferNames.Name = "transferNames";
+            this.transferNames.Size = new System.Drawing.Size(457, 36);
+            this.transferNames.TabIndex = 48;
+            // 
             // Transfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 853);
+            this.Controls.Add(this.transferNames);
             this.Controls.Add(this.transferBtn);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.transferName);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button4);
             this.Controls.Add(this.guna2Button2);
@@ -243,7 +229,7 @@
         private Guna.UI2.WinForms.Guna2TextBox amountBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2TextBox transferName;
         private Guna.UI2.WinForms.Guna2Button transferBtn;
+        private Guna.UI2.WinForms.Guna2ComboBox transferNames;
     }
 }
