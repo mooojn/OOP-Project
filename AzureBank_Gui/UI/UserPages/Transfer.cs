@@ -93,5 +93,10 @@ namespace AzureBankGui
             //UtilDL.openChildForm(new Main(new Form(), Main.panel), Main.panel);
             UtilDL.transactionClose();
         }
+
+        private void transferNames_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

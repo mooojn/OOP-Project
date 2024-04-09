@@ -194,6 +194,7 @@
             this.transferNames.Name = "transferNames";
             this.transferNames.Size = new System.Drawing.Size(457, 36);
             this.transferNames.TabIndex = 48;
+            this.transferNames.SelectedIndexChanged += new System.EventHandler(this.transferNames_SelectedIndexChanged);
             // 
             // Transfer
             // 

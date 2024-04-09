@@ -233,10 +233,16 @@ namespace AzureBankDLL.DL.FH
                 // Iterate through each line
                 foreach (string line in lines)
                 {
-                    // Skip the line if it contains the name to exclude
-                    if (line.Trim() != "admin" && line.Trim() != nameToExclude)
+                    // Split the line by comma (assuming CSV format) and get the name from the 0th index
+                    string[] parts = line.Split(',');
+                    string name = parts[0].Trim();
+
+                    // Skip the name if it's 'admin' or matches the name to exclude
+                    if (name != "admin" && name != nameToExclude)
                     {
-                        userNames.Add(line.Trim());
+                        //Console.WriteLine(name);
+                        //Console.ReadKey();
+                        userNames.Add(name);
                     }
                 }
             }
