@@ -103,7 +103,7 @@
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(333, 77);
             this.guna2Button5.TabIndex = 4;
-            this.guna2Button5.Text = "Change Password";
+            this.guna2Button5.Text = "View Assets";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // guna2Button4
@@ -141,7 +141,7 @@
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(333, 77);
             this.guna2Button3.TabIndex = 2;
-            this.guna2Button3.Text = "Delete User";
+            this.guna2Button3.Text = "Add Asset";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button2
@@ -160,7 +160,7 @@
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(333, 77);
             this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "Add User";
+            this.guna2Button2.Text = "Users";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
@@ -179,21 +179,21 @@
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(333, 77);
             this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "Bank DashBoard";
+            this.guna2Button1.Text = "Dashboard";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // mainPanel
             // 
             this.mainPanel.Location = new System.Drawing.Point(380, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(950, 1129);
+            this.mainPanel.Size = new System.Drawing.Size(1059, 1129);
             this.mainPanel.TabIndex = 1;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1329, 1129);
+            this.ClientSize = new System.Drawing.Size(1439, 1129);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "AdminPage";

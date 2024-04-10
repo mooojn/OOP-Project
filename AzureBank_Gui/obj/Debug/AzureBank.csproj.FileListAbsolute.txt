@@ -50,3 +50,6 @@ D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.Transfer.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.ViewHistory.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.DeleteUser.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.ViewUsers.resources
+D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.AdminDashboard.resources
+D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.ViewAssets.resources
+D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.AddAsset.resources

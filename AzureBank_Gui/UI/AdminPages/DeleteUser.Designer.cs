@@ -97,6 +97,7 @@
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.nameBox);
             this.Name = "DeleteUser";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteUser";
             this.ResumeLayout(false);
             this.PerformLayout();

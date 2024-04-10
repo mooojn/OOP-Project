@@ -26,13 +26,8 @@ namespace AzureBankGui
 
 
             UtilDL.activeButtonStateChange(guna2Button1);
+            UtilDL.openChildForm(new AdminDashboard(), mainPanel);
         }
-
-        private void iconToolStripButton1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2Panel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -40,6 +35,7 @@ namespace AzureBankGui
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button1);
+            UtilDL.openChildForm(new AdminDashboard(), mainPanel);
         }
 
         private void guna2Button2_Click(object sender, EventArgs e)
@@ -51,7 +47,7 @@ namespace AzureBankGui
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button3);
-            UtilDL.openChildForm(new DeleteUser(), mainPanel);
+            UtilDL.openChildForm(new AddAsset(), mainPanel);
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
@@ -63,8 +59,7 @@ namespace AzureBankGui
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button5);
-            Common.ChangePassword(admin);    
-
+            UtilDL.openChildForm(new ViewAssets(), mainPanel);
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)

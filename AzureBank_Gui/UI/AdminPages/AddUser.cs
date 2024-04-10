@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.BL;
 using Guna.UI2.WinForms;
+using AzureBank;
 
 namespace AzureBankGui
 {
@@ -67,6 +68,12 @@ namespace AzureBankGui
         private void label5_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            Form f = new DeleteUser();
+            f.Show();
         }
     }
 }
