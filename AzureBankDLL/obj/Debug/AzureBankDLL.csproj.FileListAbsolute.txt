@@ -6,3 +6,5 @@ D:\c# files\OOP-Project\AzureBankDLL\bin\Debug\Guna.UI2.dll
 D:\c# files\OOP-Project\AzureBankDLL\obj\Debug\AzureBankDLL.csproj.CopyComplete
 D:\c# files\OOP-Project\AzureBankDLL\obj\Debug\AzureBankDLL.dll
 D:\c# files\OOP-Project\AzureBankDLL\obj\Debug\AzureBankDLL.pdb
+D:\c# files\OOP-Project\AzureBankDLL\bin\Debug\PassHashingWithSaltsDLL.dll
+D:\c# files\OOP-Project\AzureBankDLL\bin\Debug\PassHashingWithSaltsDLL.pdb

@@ -35,6 +35,15 @@ namespace AzureBank.Utils
             }
 
         }
+        public static void LoadComboBox(Guna2ComboBox box, User user)
+        {
+            box.Items.Clear();
+            List<string> names = ObjectHandler.GetUserDL().ReadAllNames(user.getName());
+            foreach (string name in names)
+            {
+                box.Items.Add(name);
+            }
+        }
 
     }
 }

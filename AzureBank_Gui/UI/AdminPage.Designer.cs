@@ -122,7 +122,7 @@
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(333, 77);
             this.guna2Button4.TabIndex = 3;
-            this.guna2Button4.Text = "Block Accounts";
+            this.guna2Button4.Text = "View Users";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
             // guna2Button3
@@ -141,7 +141,7 @@
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(333, 77);
             this.guna2Button3.TabIndex = 2;
-            this.guna2Button3.Text = "Assets";
+            this.guna2Button3.Text = "Delete User";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button2
@@ -184,17 +184,16 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Dock = System.Windows.Forms.DockStyle.Right;
-            this.mainPanel.Location = new System.Drawing.Point(374, 0);
+            this.mainPanel.Location = new System.Drawing.Point(380, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(800, 1129);
+            this.mainPanel.Size = new System.Drawing.Size(950, 1129);
             this.mainPanel.TabIndex = 1;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1174, 1129);
+            this.ClientSize = new System.Drawing.Size(1329, 1129);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "AdminPage";
@@ -209,7 +208,6 @@
         #endregion
 
         private Guna.UI2.WinForms.Guna2Panel guna2Panel1;
-        private Guna.UI2.WinForms.Guna2Panel mainPanel;
         private Guna.UI2.WinForms.Guna2Button guna2Button1;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
@@ -217,5 +215,6 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button2;
         private System.Windows.Forms.Label label1;
         private Guna.UI2.WinForms.Guna2Button guna2Button6;
+        public Guna.UI2.WinForms.Guna2Panel mainPanel;
     }
 }

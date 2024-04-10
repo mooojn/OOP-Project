@@ -70,11 +70,17 @@
     <Compile Include="UI\AdminPages\AddUser.Designer.cs">
       <DependentUpon>AddUser.cs</DependentUpon>
     </Compile>
-    <Compile Include="UI\AdminPages\AdminDashboard.cs">
+    <Compile Include="UI\AdminPages\DeleteUser.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UI\AdminPages\AdminDashboard.Designer.cs">
-      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    <Compile Include="UI\AdminPages\DeleteUser.Designer.cs">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AdminPages\ViewUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AdminPages\ViewUsers.Designer.cs">
+      <DependentUpon>ViewUsers.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserPages\AuthPromptForm.cs">
       <SubType>Form</SubType>
@@ -127,12 +133,6 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UI\AdminPages\UserManager.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="UI\AdminPages\UserManager.Designer.cs">
-      <DependentUpon>UserManager.cs</DependentUpon>
-    </Compile>
     <Compile Include="Utils\MessageUi.cs" />
     <Compile Include="UI\UserPage.cs">
       <SubType>Form</SubType>
@@ -144,8 +144,11 @@
     <EmbeddedResource Include="UI\AdminPages\AddUser.resx">
       <DependentUpon>AddUser.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="UI\AdminPages\AdminDashboard.resx">
-      <DependentUpon>AdminDashboard.cs</DependentUpon>
+    <EmbeddedResource Include="UI\AdminPages\DeleteUser.resx">
+      <DependentUpon>DeleteUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AdminPages\ViewUsers.resx">
+      <DependentUpon>ViewUsers.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\AuthPromptForm.resx">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
@@ -160,9 +163,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
-    </EmbeddedResource>
-    <EmbeddedResource Include="UI\AdminPages\UserManager.resx">
-      <DependentUpon>UserManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPage.resx">
       <DependentUpon>UserPage.cs</DependentUpon>

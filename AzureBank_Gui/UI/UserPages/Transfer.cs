@@ -11,6 +11,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AzureBank.Utils;
 
 namespace AzureBankGui
 {
@@ -19,15 +20,7 @@ namespace AzureBankGui
         public Transfer()
         {
             InitializeComponent();
-            LoadComboBox(transferNames);
-        }
-        public void LoadComboBox(Guna2ComboBox box) 
-        { 
-            List<string> names = ObjectHandler.GetUserDL().ReadAllNames(UserPage.user.getName());
-            foreach (string name in names)
-            {
-                box.Items.Add(name);
-            }
+            Common.LoadComboBox(transferNames, UserPage.user);
         }
         private void Transfer_Load(object sender, EventArgs e)
         {

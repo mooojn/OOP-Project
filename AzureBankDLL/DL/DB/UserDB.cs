@@ -10,6 +10,7 @@ using AzureBankDLL.BL;
 using AzureBankDLL.DL.FH;
 using AzureBankDLL.DLInterfaces;
 using AzureBankDLL.Util;
+using PassHashingWithSaltsDLL;
 
 namespace AzureBankDLL.DL.DB
 {
@@ -19,6 +20,8 @@ namespace AzureBankDLL.DL.DB
         {
             // insert vals into db
             Program.connection.Open();
+            //string salt = Hashing.GenerateSalt();
+            //string hashedPass = Hashing.ComputeSha256Hash(user.getPassword(), salt);
             string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";
             SqlCommand cmd = new SqlCommand(query, Program.connection);
             cmd.ExecuteNonQuery();
@@ -138,24 +141,5 @@ namespace AzureBankDLL.DL.DB
 
             return userNames;
         }
-        //// xtra
-        //public bool IsAdmin(User user)
-        //{
-        //    if (user.getName() != "admin")
-        //    {
-        //        return false;
-        //    }
-        //    bool flag = false;
-        //    Program.connection.Open();
-        //    string query = $"SELECT * FROM Users WHERE name = 'admin' AND password = '{user.getPassword()}'";
-        //    SqlCommand cmd = new SqlCommand(query, Program.connection);
-        //    SqlDataReader reader = cmd.ExecuteReader();
-        //    if (reader.Read())
-        //    {
-        //        flag = true;
-        //    }
-        //    Program.connection.Close();
-        //    return flag;
-        //}
     }
 }

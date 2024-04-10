@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using AzureBankDLL.DLInterfaces;
 using System.IO;
+using PassHashingWithSaltsDLL;
 
 namespace AzureBankDLL.DL.FH
 {

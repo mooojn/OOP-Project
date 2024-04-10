@@ -10,14 +10,15 @@ using AzureBankDLL.DL.DB;
 using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
 
+
 namespace AzureBankConsole
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserFH();
-            ITransaction transactionDL = new TransactionFH();
+            IUser userDL = new UserDB();
+            ITransaction transactionDL = new TransactionDB();
 
         logout:
             User user;
@@ -171,7 +172,7 @@ namespace AzureBankConsole
                         }
                         MainUi.Header();
                         amount = UserUi.GetAmount("Transfer");
-                        name = UserUi.GetName("Enter the name of the reciever");
+                        name = UserUi.GetName("Enter the name of the reciever: ");
                         User usr = userDL.Read(name);
                         if (usr == null) {
                             UtilUi.Error("User does not exist");

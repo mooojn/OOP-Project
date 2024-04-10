@@ -40,13 +40,13 @@ D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.csproj.CopyComplete
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.exe
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.pdb
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.AddUser.resources
-D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.UI.AdminPages.AdminDashboard.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.AuthPromptForm.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.AdminPage.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.AuthenticationPage.resources
-D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.UserManager.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.UserPage.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.DepositWithdraw.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.Main.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.Transfer.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBankGui.ViewHistory.resources
+D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.DeleteUser.resources
+D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.ViewUsers.resources

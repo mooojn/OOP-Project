@@ -56,5 +56,10 @@ namespace AzureBankGui
             //}
             //transactionHistory.DataSource = dt;
         }
+
+        private void transactionHistory_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

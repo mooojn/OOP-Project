@@ -92,6 +92,7 @@
             this.transactionHistory.ThemeStyle.RowsStyle.Height = 33;
             this.transactionHistory.ThemeStyle.RowsStyle.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(115)))), ((int)(((byte)(221)))), ((int)(((byte)(160)))));
             this.transactionHistory.ThemeStyle.RowsStyle.SelectionForeColor = System.Drawing.Color.Black;
+            this.transactionHistory.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.transactionHistory_CellContentClick_1);
             // 
             // ViewHistory
             // 

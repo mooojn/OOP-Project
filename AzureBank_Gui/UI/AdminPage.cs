@@ -10,6 +10,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.BL;
 using AzureBank.Utils;
+using AzureBank;
 
 
 namespace AzureBankGui
@@ -50,12 +51,13 @@ namespace AzureBankGui
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button3);
-
+            UtilDL.openChildForm(new DeleteUser(), mainPanel);
         }
 
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button4);
+            UtilDL.openChildForm(new ViewUsers(), mainPanel);
         }
 
         private void guna2Button5_Click(object sender, EventArgs e)

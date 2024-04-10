@@ -1,4 +1,5 @@
 ﻿using AzureBankDLL.DL;
+using PassHashingWithSaltsDLL;
 using System;
 using System.Collections.Generic;
 using System.Data.Design;
@@ -107,7 +108,7 @@ namespace AzureBankDLL.BL
         }
         public void setPassword(string pass)
         {
-            this.password = pass;
+            this.password = pass;   
         }
         public void setHistory(List<History> history)
         {
