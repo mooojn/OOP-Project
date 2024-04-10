@@ -106,6 +106,7 @@
     <Compile Include="UI\UserPages\ViewHistory.Designer.cs">
       <DependentUpon>ViewHistory.cs</DependentUpon>
     </Compile>
+    <Compile Include="Utils\Common.cs" />
     <Compile Include="Utils\UtilDL.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>

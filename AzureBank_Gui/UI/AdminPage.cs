@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.BL;
+using AzureBank.Utils;
 
 
 namespace AzureBankGui
@@ -60,6 +61,8 @@ namespace AzureBankGui
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button5);
+            Common.ChangePassword(admin);    
+
         }
 
         private void guna2Button6_Click(object sender, EventArgs e)

@@ -1,4 +1,5 @@
-﻿using AzureBankDLL.BL;
+﻿using AzureBank.Utils;
+using AzureBankDLL.BL;
 using AzureBankDLL.DL;
 using Guna.UI2.AnimatorNS;
 using Guna.UI2.WinForms;
@@ -75,7 +76,7 @@ namespace AzureBankGui
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            AuthPromptForm promptForm = new AuthPromptForm();
+            AuthPromptForm promptForm = new AuthPromptForm(UserPage.user);
             DialogResult result = promptForm.ShowDialog();
             if (result == DialogResult.OK)
             {
@@ -87,27 +88,7 @@ namespace AzureBankGui
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            AuthPromptForm promptForm = new AuthPromptForm();
-
-            promptForm.label2.Text = "Set new Password";
-
-            guna2Button1.Text = "Change";
-            promptForm.guna2Button1.Click -= promptForm.validatePass;
-            promptForm.guna2Button1.Click += promptForm.changePass;
-            
-
-            DialogResult result = promptForm.ShowDialog();
-            if (result == DialogResult.OK)
-            {
-                MessageUi.ShowMessage("Success", "Password changed successfully", MessageDialogIcon.Information);
-            }
-            else
-            {
-                MessageUi.ShowMessage("Failed", "Password change was not successful");
-                // Authentication failed or canceled, handle accordingly
-            }
-
-            
+            Common.ChangePassword(UserPage.user);
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)

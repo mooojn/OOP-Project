@@ -103,7 +103,7 @@
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(333, 77);
             this.guna2Button5.TabIndex = 4;
-            this.guna2Button5.Text = "...";
+            this.guna2Button5.Text = "Change Password";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
             // guna2Button4

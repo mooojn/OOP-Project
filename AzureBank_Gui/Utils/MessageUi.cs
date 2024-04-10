@@ -33,7 +33,6 @@ namespace AzureBankGui
         public static void ShowMessage(string title, string msg, MessageDialogIcon icon = MessageDialogIcon.Error)
         {
             Guna2MessageDialog guna2MessageDialog = new Guna2MessageDialog();
-            
             // styles
             guna2MessageDialog.Caption = title;
             guna2MessageDialog.Text = msg;

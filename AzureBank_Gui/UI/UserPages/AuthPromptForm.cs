@@ -8,15 +8,18 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.DL;
+using AzureBankDLL.BL;
 using AzureBankGui.Utils;
 
 namespace AzureBankGui
 {
     public partial class AuthPromptForm : Form
     {
-        public AuthPromptForm()
+        public User user = null;
+        public AuthPromptForm(User user)
         {
             InitializeComponent();
+            this.user = user;
         }
 
         private void btnLogin_Click(object sender, EventArgs e)
@@ -50,8 +53,8 @@ namespace AzureBankGui
         {
             if (!Validation.IsValid("Password", passBox.Text, false))
                 return;
-            UserPage.user.setPassword(passBox.Text);
-            ObjectHandler.GetUserDL().Update(UserPage.user);
+            user.setPassword(passBox.Text);
+            ObjectHandler.GetUserDL().Update(user);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
