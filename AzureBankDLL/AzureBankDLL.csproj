@@ -51,13 +51,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BL\Asset.cs" />
-    <Compile Include="BL\Bank.cs" />
     <Compile Include="BL\History.cs" />
     <Compile Include="BL\User.cs" />
+    <Compile Include="DLInterfaces\IAsset.cs" />
     <Compile Include="DLInterfaces\ITransaction.cs" />
     <Compile Include="DLInterfaces\IUser.cs" />
+    <Compile Include="DL\DB\AssetDB.cs" />
     <Compile Include="DL\DB\TransactionDB.cs" />
     <Compile Include="DL\DB\UserDB.cs" />
+    <Compile Include="DL\FH\AssetFH.cs" />
     <Compile Include="DL\FH\TransactionFH.cs" />
     <Compile Include="DL\FH\UserFH.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

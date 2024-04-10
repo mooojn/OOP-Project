@@ -19,9 +19,9 @@ namespace AzureBankConsole
             // menu
             Console.WriteLine("1. Sign-in");
             Console.WriteLine("2. Sign-up as a User");
-
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("3. Exit");
-
+            Console.ResetColor();
             // input
             return UtilUi.GetChoice();
         }
@@ -37,9 +37,10 @@ namespace AzureBankConsole
             Console.WriteLine("6. Block/Unblock Transactions");
             Console.WriteLine("7. Change Password");
             Console.WriteLine("8. Delete Account");
-
+            
+            Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine("9. Logout");
-
+            Console.ResetColor();
             // getting input
             return UtilUi.GetChoice();
         }
@@ -47,12 +48,18 @@ namespace AzureBankConsole
         {
             Header();
             // menu
-            Console.WriteLine("1. Add New User");
-            Console.WriteLine("2. View Users");
-            Console.WriteLine("3. Delete User");
-            Console.WriteLine("4. Change Admin Password");
+            Console.WriteLine("1. Check Banks Liquidity");
+            Console.WriteLine("2. Add User");
+            Console.WriteLine("3. Add An Asset");
+            Console.WriteLine("4. View Users");
+            Console.WriteLine("5. View Assets");
+            Console.WriteLine("6. Delete User");
+            Console.WriteLine("7. Change Admin Password");
 
-            Console.WriteLine("5. Logout");
+
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("8. Logout");
+            Console.ResetColor();
 
             // getting input
             return UtilUi.GetChoice();

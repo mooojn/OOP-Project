@@ -7,7 +7,6 @@ using AzureBankDLL.DLInterfaces;
 using AzureBankDLL.DL;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL.DB;
-using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
 
 
@@ -19,6 +18,7 @@ namespace AzureBankConsole
         {
             IUser userDL = new UserDB();
             ITransaction transactionDL = new TransactionDB();
+            IAsset assetDL = new AssetDB();
 
         logout:
             User user;
@@ -68,9 +68,25 @@ namespace AzureBankConsole
             }
         adminLogin:
             List<User> users;
+            List<Asset> assets;
             while (true) {
                 choice = MainUi.AdminMenu();
                 switch (choice) {
+                    case Choice.CHECK_BANKS_LIQUIDITY:
+                        MainUi.Header();
+                       
+                        int liquidity = 0;
+                        assets = assetDL.ReadAll();
+                        users = userDL.ReadAll();
+                        
+                        assets.ForEach(a => liquidity += a.getWorth());
+                        users.ForEach(u => liquidity += u.getCash());
+                        
+                        Console.WriteLine($"Total available Liquidity: ${liquidity}");
+                        UtilUi.PressAnyKey();
+                        
+                        break;
+
                     case Choice.ADD_USER:
                         int num = -1;
                         while (num != 0) {
@@ -79,9 +95,28 @@ namespace AzureBankConsole
                         }
                         break;
                     
+                    case Choice.ADD_ASSET:
+                        MainUi.Header();
+                        Asset asset = AdminUi.GetAssetInput();
+                        assetDL.Create(asset);
+                        UtilUi.Success("Asset Added Successfully");
+                        break;
+
                     case Choice.VIEW_USERS:
                         users = userDL.ReadAll();
                         Common.ShowAllUsers(userDL, users);
+                        UtilUi.PressAnyKey();
+                        break;
+
+                    case Choice.VIEW_ASSETS:
+                        MainUi.Header();
+                        assets = assetDL.ReadAll();
+                        AdminUi.assetInfoHeader();
+                        int i = 0;
+                        foreach (Asset a in assets) {
+                            Console.WriteLine($"{i}, {a.toString()}");
+                            ++i;
+                        }
                         UtilUi.PressAnyKey();
                         break;
                     
@@ -105,6 +140,7 @@ namespace AzureBankConsole
                     case Choice.CHANGE_ADMIN_Password:
                         Common.ChangePassword(userDL, user);
                         break;
+
                     case Choice.ADMIN_LOGOUT:
                         goto logout;
 

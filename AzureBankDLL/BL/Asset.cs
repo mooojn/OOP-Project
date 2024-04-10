@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AzureBankDLL.BL
 {
-    internal class Asset
+    public class Asset
     {
         private string name;
         private int worth;
@@ -30,6 +30,11 @@ namespace AzureBankDLL.BL
         public void setWorth(int worth)
         {
             this.worth = worth;
+        }
+        public string toString() 
+        {
+            return $"{name}, {worth}";
+        
         }
     }
 }
