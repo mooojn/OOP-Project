@@ -78,5 +78,18 @@ namespace AzureBankConsole.Util
             }
             return false;
         }
+        public static bool IsValidNumber(ref int num) 
+        {
+            try
+            {
+                num = int.Parse(Console.ReadLine());
+                return true;
+            }
+            catch (Exception)
+            {
+                UtilUi.Error("Incorrect format...", false);
+                return false;
+            }
+        }
     }
 }

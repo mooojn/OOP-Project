@@ -7,6 +7,7 @@ using AzureBankDLL.DLInterfaces;
 using AzureBankDLL.DL;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL.DB;
+using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
 
 
@@ -16,15 +17,16 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserDB();
-            ITransaction transactionDL = new TransactionDB();
-            IAsset assetDL = new AssetDB();
+            IUser userDL = new UserFH();
+            ITransaction transactionDL = new TransactionFH();
+            IAsset assetDL = new AssetFH();
 
         logout:
             User user;
             string name;
             string password;
             string choice;
+            bool flag;
             while (true) {
                 choice = MainUi.Menu();
                 switch (choice) {
@@ -56,7 +58,9 @@ namespace AzureBankConsole
                             break;
                         }
                     case Choice.USER_SIGN_UP:
-                        Common.SignUp(userDL);
+                        flag = Common.SignUp(userDL);
+                        if (flag)
+                            UtilUi.Success("User Created Successfully");
                         break;
                     case Choice.EXIT:
                         Environment.Exit(0);
@@ -88,9 +92,11 @@ namespace AzureBankConsole
                         break;
 
                     case Choice.ADD_USER:
-                        int num = -1;
-                        while (num != 0) {
-                            Common.SignUp(userDL);
+                        char num = '5';
+                        while (num != '0') {
+                            flag = Common.SignUp(userDL);
+                            if (flag)
+                                UtilUi.Success("User Created Successfully", false);
                             num = AdminUi.GetAnotherInput();
                         }
                         break;
@@ -125,6 +131,7 @@ namespace AzureBankConsole
                         Common.ShowAllUsers(userDL, users);
                         
                         int index = AdminUi.GetIndex();
+                        //Console.WriteLine(index);
                         if (index < 0 || index >= users.Count) {
                             UtilUi.Process();
                             UtilUi.Error("Invalid Index");
@@ -242,7 +249,7 @@ namespace AzureBankConsole
                         break;
 
                     case Choice.BLOCK_TRANSACTIONS:
-                        bool flag = user.getTransactionStatus();
+                        flag = user.getTransactionStatus();
                         string res = flag ? "Blocked" : "Unblocked";
                         user.setTransactionStatus(!flag);
                         userDL.Update(user);
@@ -252,7 +259,18 @@ namespace AzureBankConsole
                         Common.ChangePassword(userDL, user);
                         break;
                     case Choice.DELETE_ACCOUNT:
-                        userDL.Delete(user.getName());
+                        MainUi.Header();
+                        Console.WriteLine($"Your funds '${user.getCash()}' would be lost");
+                        UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
+                        Console.Write($"(press 1) or press any key to ");
+                        UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
+                        Console.Write($"your account permanently: ");
+
+                        char keyPressed = Console.ReadKey().KeyChar;
+                        if (keyPressed == '1')
+                            break;
+                        else
+                            userDL.Delete(user.getName());
                         goto logout;   // after deleting account, user is logged out
 
                     case Choice.USER_LOGOUT:

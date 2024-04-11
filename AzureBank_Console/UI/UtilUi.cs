@@ -26,12 +26,13 @@ namespace AzureBankConsole
             if (flag)
                 PressAnyKey();
         }
-        public static void Success(string msg)
+        public static void Success(string msg, bool flag = true)
         {
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(msg);
             Console.ResetColor();
-            PressAnyKey();
+            if (flag)
+                PressAnyKey();
         }
         public static void InvalidChoice()
         {
@@ -93,6 +94,12 @@ namespace AzureBankConsole
                 return pass;
             else
                 return GetMaskedInput(msg);     // not valid so try again
+        }
+        public static void ShowWord(string word, ConsoleColor color)
+        {
+            Console.ForegroundColor = color;
+            Console.Write(word); // Print the word in the specified color
+            Console.ResetColor();
         }
     }
 }

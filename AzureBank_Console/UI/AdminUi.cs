@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using AzureBankConsole.Util;
 using AzureBankDLL.BL;
 
 namespace AzureBankConsole
@@ -13,26 +14,39 @@ namespace AzureBankConsole
         {
             Console.Write("Enter the name of the asset: ");
             string name = Console.ReadLine();
-
+        
+        Again: 
+            int price = 0;
             Console.Write("Enter the price of the asset: $");
-            int price = int.Parse(Console.ReadLine());
-
-            return new Asset(name, price);
+            
+            if (Validation.IsValidNumber(ref price))
+                if (Validation.ValidDepositAmount(price))
+                    return new Asset(name, price);
+                else
+                    goto Again;
+            else
+                goto Again;
         }
         public static int GetIndex()
         {
+            int num = 0;
+        Again: 
             Console.ForegroundColor = ConsoleColor.DarkRed;
             Console.Write("Enter the index of User to delete: ");
             Console.ResetColor();
-            return int.Parse(Console.ReadLine());
+            if (Validation.IsValidNumber(ref num))
+                return num;
+            else
+                goto Again;
         }
-        public static int GetAnotherInput()
+        public static char GetAnotherInput()
         {
-            int num = -1;
-            while (num != 0 && num != 1)
+            char num = '5';
+            while (num != '0' && num != '1')
             {
                 Console.Write("Do you want to add(1) another user or continue(0): ");
-                num = int.Parse(Console.ReadLine());
+                num = Console.ReadKey().KeyChar;
+                Console.WriteLine();
             }
             return num;
         }

@@ -29,8 +29,14 @@ namespace AzureBankConsole
         }
         public static int GetAmount(string type)
         {
+            int num = 0;
+        Again:
             Console.Write($"Enter the amount you want to {type}: $");
-            return int.Parse(Console.ReadLine());
+
+            if (Validation.IsValidNumber(ref num)) 
+                return num;
+            else 
+                goto Again;
         }
         public static void TransactionHeader()
         {

@@ -35,7 +35,7 @@ namespace AzureBankConsole.Util
             UtilUi.Success("Password Changed Successfully");
         }
 
-        public static void SignUp(IUser userDL)
+        public static bool SignUp(IUser userDL)
         {
             MainUi.Header();
             string name = UserUi.GetName();
@@ -44,12 +44,12 @@ namespace AzureBankConsole.Util
             {
                 UtilUi.Process();
                 UtilUi.Error("User already exists.");
-                return;
+                return false;
             }
             string password = UtilUi.GetMaskedInput();   // as user unique so getting password
             UtilUi.Process();
             userDL.Create(new User(name, password));
-            UtilUi.Success("User Created Successfully");
+            return true;
         }
     }
 }
