@@ -12,7 +12,7 @@ namespace AzureBankDLL.DL.FH
 {
     public class AssetFH : IAsset
     {
-        public string fileName = "assets.csv";
+        public static string fileName = "assets.csv";
         public bool Create(Asset asset)
         {
             try

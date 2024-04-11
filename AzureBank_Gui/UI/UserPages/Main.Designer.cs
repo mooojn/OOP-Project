@@ -90,7 +90,7 @@
             this.guna2GradientPanel2.Controls.Add(this.guna2ImageButton4);
             this.guna2GradientPanel2.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(135)))), ((int)(((byte)(88)))), ((int)(((byte)(255)))));
             this.guna2GradientPanel2.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(50)))), ((int)(((byte)(150)))), ((int)(((byte)(240)))));
-            this.guna2GradientPanel2.Location = new System.Drawing.Point(523, 117);
+            this.guna2GradientPanel2.Location = new System.Drawing.Point(680, 117);
             this.guna2GradientPanel2.Name = "guna2GradientPanel2";
             this.guna2GradientPanel2.Size = new System.Drawing.Size(461, 266);
             this.guna2GradientPanel2.TabIndex = 8;

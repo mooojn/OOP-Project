@@ -25,14 +25,17 @@ namespace AzureBankGui
         {
             if (!Validation.IsValid("Username", nameBox.Text)) 
             {
+                nameBox.Focus();
                 return;
             }
             if (!Validation.IsValid("Password", passBox.Text, false))
             {
+                passBox.Focus();
                 return;
             }
             if (ObjectHandler.GetUserDL().UserNameExists(nameBox.Text))
             {
+                nameBox.Focus();
                 MessageUi.ShowMessage("User exists", "User with this name already exists try a different one");
                 return;
             }

@@ -38,6 +38,9 @@ namespace AzureBankGui
             }
             ObjectHandler.GetUserDL().Create(user);
             MessageUi.ShowMessage("Success", "Your account has successfully been registered with us", MessageDialogIcon.Information);
+            
+            // as account is created, now user would want to sign in
+            label6_Click(sender, e);
         }
         private void SignIn(object sender, EventArgs e)
         {
@@ -46,12 +49,14 @@ namespace AzureBankGui
                 return;
             if (!ObjectHandler.GetUserDL().UserNameExists(usr.getName())) {     // user not found
                 MessageUi.ShowMessage("Invalid User", "User does not Exist", MessageDialogIcon.Error);
+                label6_Click(sender, e);     // as acc does not exist, user would want to register
                 return;
             }
             int userId = ObjectHandler.GetUserDL().FindUser(usr);
             if (userId == 0)   // 0 means invalid password
             {
                 MessageUi.ShowMessage("Authentication Error", "Incorrect Password", MessageDialogIcon.Error);
+                passBox.Focus();
                 return;
             }
             usr = ObjectHandler.GetUserDL().Read(usr.getName());
@@ -70,10 +75,12 @@ namespace AzureBankGui
                 return null;
             }
             else if (!Validation.IsValid("Username", nameBox.Text)) {
+                nameBox.Focus();
                 return null;
             }
             else if (!Validation.IsValid("Password", passBox.Text, false))
             {
+                passBox.Focus();
                 return null;
             }
             return new User(nameBox.Text, passBox.Text);

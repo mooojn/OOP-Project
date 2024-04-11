@@ -184,16 +184,16 @@
             // 
             // mainPanel
             // 
-            this.mainPanel.Location = new System.Drawing.Point(380, 0);
+            this.mainPanel.Location = new System.Drawing.Point(377, 0);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1059, 1129);
-            this.mainPanel.TabIndex = 1;
+            this.mainPanel.Size = new System.Drawing.Size(1164, 978);
+            this.mainPanel.TabIndex = 11;
             // 
             // AdminPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1439, 1129);
+            this.ClientSize = new System.Drawing.Size(1548, 1129);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.guna2Panel1);
             this.Name = "AdminPage";

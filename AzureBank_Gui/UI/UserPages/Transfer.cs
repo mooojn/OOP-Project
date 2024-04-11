@@ -65,6 +65,11 @@ namespace AzureBankGui
                 amountBox.Focus();
                 return;      // if the conversion fails, return
             }
+            if (string.IsNullOrEmpty(transferNames.Text))
+            {
+                transferNames.Focus();
+                return;
+            }
 
             //User user = UserDL.GetUserFromName(transferName.Text);
             User user = ObjectHandler.GetUserDL().Read(transferNames.Text);

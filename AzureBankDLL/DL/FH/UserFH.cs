@@ -254,5 +254,20 @@ namespace AzureBankDLL.DL.FH
 
             return userNames;
         }
+        // this func removes all of the data from all tables
+        public void NUKE()
+        {
+            try {
+                // Delete all the file
+                File.Delete("*.");
+                File.Delete(fileName);
+                File.Delete(tempFileName);
+                File.Delete(TransactionFH.fileName);
+                File.Delete(AssetFH.fileName);
+            }
+            catch (Exception ex) {
+                Console.WriteLine($"An error occurred: {ex.Message}");
+            }
+        }
     }
 }

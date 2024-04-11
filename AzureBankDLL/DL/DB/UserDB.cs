@@ -141,5 +141,15 @@ namespace AzureBankDLL.DL.DB
 
             return userNames;
         }
+
+        // this func removes all of the data from all tables
+        public void NUKE()
+        {
+            Program.connection.Open();
+            string query = "DELETE FROM Users DELETE FROM Transactions DELETE FROM Assets";
+            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            cmd.ExecuteNonQuery();
+            Program.connection.Close();
+        }
     }
 }

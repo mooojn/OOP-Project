@@ -23,6 +23,10 @@ namespace AzureBank
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(nameBox.Text)) {
+                MessageUi.ShowMessage("Empty Name", "Please select a user to remove", MessageDialogIcon.Warning);
+                return;
+            }
             ObjectHandler.GetUserDL().Delete(nameBox.Text);
             MessageUi.ShowMessage("Success", "User deleted Successfully", MessageDialogIcon.Information);
             Common.LoadComboBox(nameBox, AdminPage.admin);

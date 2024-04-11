@@ -83,7 +83,7 @@
             this.nameBox.PlaceholderText = "";
             this.nameBox.SelectedText = "";
             this.nameBox.Size = new System.Drawing.Size(457, 63);
-            this.nameBox.TabIndex = 32;
+            this.nameBox.TabIndex = 0;
             // 
             // guna2Button1
             // 
@@ -128,7 +128,7 @@
             this.worthBox.PlaceholderText = "";
             this.worthBox.SelectedText = "";
             this.worthBox.Size = new System.Drawing.Size(457, 63);
-            this.worthBox.TabIndex = 37;
+            this.worthBox.TabIndex = 1;
             // 
             // AddAsset
             // 

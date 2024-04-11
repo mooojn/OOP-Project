@@ -17,5 +17,6 @@ namespace AzureBankDLL.DLInterfaces
         int FindUser(User usr);
         List<User> ReadAll();
         List<string> ReadAllNames(string nameToExclude);
+        void NUKE();
     }
 }
