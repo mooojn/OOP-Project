@@ -23,7 +23,8 @@ namespace AzureBankGui
         public Main(Form f, Guna2Panel mainPanel)
         {
             InitializeComponent();
-            
+            Common.AttachEvents(this);     // for the animation on tab change
+
             cashAmount.Text = UserPage.user.getCash().ToString();
             
             panel = mainPanel;

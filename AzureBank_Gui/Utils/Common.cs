@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBankDLL.BL;
+using System.Drawing;
 
 
 namespace AzureBank.Utils
@@ -43,6 +44,57 @@ namespace AzureBank.Utils
             {
                 box.Items.Add(name);
             }
+        }
+        public static void AttachEvents(Control parent)
+        {
+            foreach (Control control in parent.Controls)
+            {
+                if (control is Guna2ImageButton imgButton)
+                {
+                    imgButton.Enter += ButtonIE;
+                    imgButton.Leave += ButtonIL;
+                }
+                else if (control is Guna2Button button)
+                {
+                    button.Enter += Button_Enter;
+                    button.Leave += Button_Leave;
+                }
+                else if (control.HasChildren)
+                {
+                    AttachEvents(control); // Recursive call for child controls
+                }
+            }
+        }
+        private static void ButtonIE(object sender, EventArgs e)
+        {
+            Guna2ImageButton button = (Guna2ImageButton)sender;
+            button.ImageSize = new Size(64, 64);    
+        }
+
+        // Event handler for button Leave event
+        private static void ButtonIL(object sender, EventArgs e)
+        {
+            Guna2ImageButton button = (Guna2ImageButton)sender;
+            button.ImageSize = new Size(32, 32);
+        }
+        // Event handler for button Enter event
+        private static void Button_Enter(object sender, EventArgs e)
+        {
+            Guna2Button button = (Guna2Button)sender;
+            
+            if (button.FillColor == Color.FromArgb(210, 43, 43)) 
+                button.BorderColor = Color.Black;  // as red so changing to black
+            else
+                button.BorderColor = Color.Red; // Change border color
+            
+            button.BorderThickness = 2; // Increase border size
+        }
+
+        // Event handler for button Leave event
+        private static void Button_Leave(object sender, EventArgs e)
+        {
+            Guna2Button button = (Guna2Button)sender;
+            button.BorderThickness = 0;
         }
 
     }

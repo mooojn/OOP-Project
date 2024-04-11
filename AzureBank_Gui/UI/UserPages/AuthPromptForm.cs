@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using AzureBankDLL.DL;
 using AzureBankDLL.BL;
 using AzureBankGui.Utils;
+using AzureBank.Utils;
 
 namespace AzureBankGui
 {
@@ -19,6 +20,7 @@ namespace AzureBankGui
         public AuthPromptForm(User user)
         {
             InitializeComponent();
+            Common.AttachEvents(this);
             this.user = user;
         }
 

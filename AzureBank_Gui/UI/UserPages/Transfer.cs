@@ -12,6 +12,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using AzureBank.Utils;
+using AzureBankGui.Utils;
 
 namespace AzureBankGui
 {
@@ -21,6 +22,7 @@ namespace AzureBankGui
         {
             InitializeComponent();
             Common.LoadComboBox(transferNames, UserPage.user);
+            Common.AttachEvents(this);     // for the animation on tab change
         }
         private void Transfer_Load(object sender, EventArgs e)
         {
@@ -57,7 +59,12 @@ namespace AzureBankGui
 
         private void transferBtn_Click(object sender, EventArgs e)
         {
-            int cash = Convert.ToInt32(amountBox.Text);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
 
             //User user = UserDL.GetUserFromName(transferName.Text);
             User user = ObjectHandler.GetUserDL().Read(transferNames.Text);

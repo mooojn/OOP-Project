@@ -1,5 +1,6 @@
 ﻿using AzureBankDLL.BL;
 using AzureBankDLL.DL;
+using AzureBankGui.Utils;
 using Guna.UI2.WinForms;
 using System;
 using System.Collections.Generic;
@@ -7,9 +8,11 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.InteropServices.WindowsRuntime;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using AzureBank.Utils;
 
 namespace AzureBankGui
 {
@@ -18,6 +21,7 @@ namespace AzureBankGui
         public DepositWithdraw()
         {
             InitializeComponent();
+            Common.AttachEvents(this);     // for the animation on tab change
         }
         private void addAmount(int amount)
         {
@@ -27,7 +31,13 @@ namespace AzureBankGui
 
         private void DepositFunc(object sender, EventArgs e)
         {
-            int cash = Convert.ToInt32(amountBox.Text);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
+
             int flag = UserPage.user.DepositCash(cash);
             if (flag == 0)
             {
@@ -45,7 +55,14 @@ namespace AzureBankGui
 
         private void WiithdrawFunc(object sender, EventArgs e)
         {
-            int cash = Convert.ToInt32(amountBox.Text);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
+
+
             int flag = UserPage.user.WithdrawCash(cash);
             if (flag == 0)
             {

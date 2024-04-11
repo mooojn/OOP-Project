@@ -15,6 +15,7 @@ using Guna.UI2.AnimatorNS;
 using System.Runtime.Remoting.Messaging;
 using AzureBankDLL.DLInterfaces;
 using AzureBankGui.Utils;
+using AzureBank.Utils;
 
 namespace AzureBankGui
 {
@@ -23,7 +24,7 @@ namespace AzureBankGui
         public AuthenticationPage()
         {
             InitializeComponent();
-
+            Common.AttachEvents(this);     // for the animation on tab change
         }
         private void SignUp(object sender, EventArgs e)
         {

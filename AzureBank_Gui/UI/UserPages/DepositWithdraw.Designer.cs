@@ -52,7 +52,7 @@
             this.withdrawBtn.Location = new System.Drawing.Point(469, 561);
             this.withdrawBtn.Name = "withdrawBtn";
             this.withdrawBtn.Size = new System.Drawing.Size(196, 72);
-            this.withdrawBtn.TabIndex = 4;
+            this.withdrawBtn.TabIndex = 2;
             this.withdrawBtn.Text = "Withdraw";
             this.withdrawBtn.Click += new System.EventHandler(this.WiithdrawFunc);
             // 
@@ -68,7 +68,7 @@
             this.depositBtn.Location = new System.Drawing.Point(208, 561);
             this.depositBtn.Name = "depositBtn";
             this.depositBtn.Size = new System.Drawing.Size(196, 72);
-            this.depositBtn.TabIndex = 3;
+            this.depositBtn.TabIndex = 1;
             this.depositBtn.Text = "Deposit";
             this.depositBtn.Click += new System.EventHandler(this.DepositFunc);
             // 
@@ -110,7 +110,7 @@
             this.amountBox.PlaceholderText = "";
             this.amountBox.SelectedText = "";
             this.amountBox.Size = new System.Drawing.Size(457, 63);
-            this.amountBox.TabIndex = 27;
+            this.amountBox.TabIndex = 0;
             // 
             // guna2HtmlLabel1
             // 
@@ -133,7 +133,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(208, 240);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(196, 72);
-            this.guna2Button1.TabIndex = 30;
+            this.guna2Button1.TabIndex = 3;
             this.guna2Button1.Text = "50$";
             this.guna2Button1.Click += new System.EventHandler(this.fifty);
             // 
@@ -149,7 +149,7 @@
             this.guna2Button2.Location = new System.Drawing.Point(469, 240);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(196, 72);
-            this.guna2Button2.TabIndex = 31;
+            this.guna2Button2.TabIndex = 4;
             this.guna2Button2.Text = "100$";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
@@ -165,7 +165,7 @@
             this.guna2Button3.Location = new System.Drawing.Point(208, 335);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(196, 72);
-            this.guna2Button3.TabIndex = 33;
+            this.guna2Button3.TabIndex = 5;
             this.guna2Button3.Text = "150$";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
@@ -181,7 +181,7 @@
             this.guna2Button4.Location = new System.Drawing.Point(469, 335);
             this.guna2Button4.Name = "guna2Button4";
             this.guna2Button4.Size = new System.Drawing.Size(196, 72);
-            this.guna2Button4.TabIndex = 32;
+            this.guna2Button4.TabIndex = 6;
             this.guna2Button4.Text = "200$";
             this.guna2Button4.Click += new System.EventHandler(this.guna2Button4_Click);
             // 
@@ -197,7 +197,7 @@
             this.guna2Button5.Location = new System.Drawing.Point(344, 430);
             this.guna2Button5.Name = "guna2Button5";
             this.guna2Button5.Size = new System.Drawing.Size(196, 72);
-            this.guna2Button5.TabIndex = 34;
+            this.guna2Button5.TabIndex = 7;
             this.guna2Button5.Text = "500$";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 

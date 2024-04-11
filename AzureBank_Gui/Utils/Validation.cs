@@ -83,5 +83,18 @@ namespace AzureBankGui.Utils
             }
             return false;
         }
+        public static bool ConvertStringToVar(ref int num, string val)
+        {
+            try
+            {
+                num = Convert.ToInt32(val);
+                return true;
+            }
+            catch (Exception)
+            {
+                MessageUi.ShowMessage("Incorrect format", "Provided values isn't correct\nPlease provide correct value");
+                return false;
+            }
+        }
     }
 }

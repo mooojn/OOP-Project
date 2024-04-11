@@ -10,6 +10,7 @@ using System.Windows.Forms;
 using Guna.UI2.WinForms;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL;
+using AzureBank.Utils;
 
 
 namespace AzureBankGui
@@ -20,6 +21,7 @@ namespace AzureBankGui
         public UserPage(User usr)
         {
             InitializeComponent();
+            Common.AttachEvents(this);     // for the animation on tab change
             user = usr;
             UtilDL.activeButtonStateChange(guna2Button1);
             UtilDL.openChildForm(new Main(this, mainPanel), mainPanel);

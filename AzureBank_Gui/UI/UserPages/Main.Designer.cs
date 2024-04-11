@@ -122,7 +122,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 9;
+            this.guna2ImageButton1.TabIndex = 0;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2ImageButton4
@@ -140,7 +140,7 @@
             this.guna2ImageButton4.Name = "guna2ImageButton4";
             this.guna2ImageButton4.PressedState.ImageSize = new System.Drawing.Size(64, 64);
             this.guna2ImageButton4.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton4.TabIndex = 15;
+            this.guna2ImageButton4.TabIndex = 1;
             this.guna2ImageButton4.Click += new System.EventHandler(this.guna2ImageButton4_Click);
             // 
             // guna2Button1
@@ -155,7 +155,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(697, 481);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(199, 87);
-            this.guna2Button1.TabIndex = 10;
+            this.guna2Button1.TabIndex = 4;
             this.guna2Button1.Text = "Delete Account";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
@@ -171,7 +171,7 @@
             this.guna2Button2.Location = new System.Drawing.Point(186, 481);
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(199, 87);
-            this.guna2Button2.TabIndex = 11;
+            this.guna2Button2.TabIndex = 2;
             this.guna2Button2.Text = "Edit Password";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
@@ -187,7 +187,7 @@
             this.guna2GradientPanel3.Location = new System.Drawing.Point(31, 117);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(461, 266);
-            this.guna2GradientPanel3.TabIndex = 17;
+            this.guna2GradientPanel3.TabIndex = 5;
             // 
             // label5
             // 
@@ -240,7 +240,7 @@
             this.guna2Button3.Location = new System.Drawing.Point(437, 481);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(199, 87);
-            this.guna2Button3.TabIndex = 18;
+            this.guna2Button3.TabIndex = 3;
             this.guna2Button3.Text = "Toggle Transactions";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 

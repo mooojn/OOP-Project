@@ -65,7 +65,7 @@
             this.guna2Button6.Location = new System.Drawing.Point(15, 821);
             this.guna2Button6.Name = "guna2Button6";
             this.guna2Button6.Size = new System.Drawing.Size(333, 77);
-            this.guna2Button6.TabIndex = 5;
+            this.guna2Button6.TabIndex = 2;
             this.guna2Button6.Text = "Logout";
             this.guna2Button6.Click += new System.EventHandler(this.guna2Button6_Click_1);
             // 
@@ -96,7 +96,7 @@
             this.label1.Location = new System.Drawing.Point(38, 61);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(276, 63);
-            this.label1.TabIndex = 20;
+            this.label1.TabIndex = 11;
             this.label1.Text = "Welcome";
             // 
             // guna2Button3
@@ -114,7 +114,7 @@
             this.guna2Button3.Location = new System.Drawing.Point(15, 442);
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(333, 77);
-            this.guna2Button3.TabIndex = 2;
+            this.guna2Button3.TabIndex = 1;
             this.guna2Button3.Text = "Transaction History";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
@@ -123,7 +123,7 @@
             this.mainPanel.Location = new System.Drawing.Point(370, 0);
             this.mainPanel.Name = "mainPanel";
             this.mainPanel.Size = new System.Drawing.Size(1164, 978);
-            this.mainPanel.TabIndex = 15;
+            this.mainPanel.TabIndex = 10;
             // 
             // UserPage
             // 
