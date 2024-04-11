@@ -12,6 +12,7 @@ namespace AzureBankConsole.Util
         public const string LOGIN = "1";
         public const string USER_SIGN_UP = "2";
         public const string EXIT = "3";
+        public const string EASTER_EGG = "nuke";
         // user choices
         public const string CHECK_PORTFOLIO = "1";
         public const string DEPOSIT_CASH = "2";

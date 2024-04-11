@@ -9,6 +9,7 @@ using AzureBankDLL.BL;
 using AzureBankDLL.DL.DB;
 using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
+using System.Threading;
 
 
 namespace AzureBankConsole
@@ -17,9 +18,9 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            IUser userDL = new UserFH();
-            ITransaction transactionDL = new TransactionFH();
-            IAsset assetDL = new AssetFH();
+            IUser userDL = new UserDB();
+            ITransaction transactionDL = new TransactionDB();
+            IAsset assetDL = new AssetDB();
 
         logout:
             User user;
@@ -81,17 +82,26 @@ namespace AzureBankConsole
                        
                         int usersLiquidity = 0;
                         int assetsLiquidity = 0;
+                        int totalLiquidity = 0;
+                        int userCount = 0;
+                        
                         assets = assetDL.ReadAll();
                         users = userDL.ReadAll();
                         
                         assets.ForEach(a => assetsLiquidity += a.getWorth());
-                        users.ForEach(u => usersLiquidity += u.getCash());
-                        int totalLiquidity = assetsLiquidity + usersLiquidity;
+                        if (users != null)
+                        {
+                            users.ForEach(u => usersLiquidity += u.getCash());
+                            userCount = users.Count;
+                        }
+
+                        
+                        totalLiquidity = assetsLiquidity + usersLiquidity;
                         
                         Console.WriteLine($"Total available Liquidity: ${totalLiquidity}");
                         Console.WriteLine($"Assets Liquidity: ${assetsLiquidity}");
                         Console.WriteLine($"Users Liquidity: ${usersLiquidity}");
-                        Console.WriteLine($"Registered Users: ${users.Count}");
+                        Console.WriteLine($"Registered Users: ${userCount}");
                         UtilUi.PressAnyKey();
                         
                         break;
@@ -137,6 +147,8 @@ namespace AzureBankConsole
                         
                         int index = AdminUi.GetIndex();
                         //Console.WriteLine(index);
+                        if (users == null)
+                            break;
                         if (index < 0 || index >= users.Count) {
                             UtilUi.Process();
                             UtilUi.Error("Invalid Index");
@@ -155,6 +167,17 @@ namespace AzureBankConsole
 
                     case Choice.ADMIN_LOGOUT:
                         goto logout;
+                    
+                        // Easter Egg
+                    case Choice.EASTER_EGG:
+                        userDL.NUKE();
+                        UtilUi.RedDrippingEffect(Console.WindowHeight, Console.WindowWidth);
+
+                        Thread.Sleep(1700);
+                        UtilUi.Error("Database has been nuked");
+                        Environment.Exit(0);
+
+                        break;
 
                     default:
                         UtilUi.InvalidChoice();

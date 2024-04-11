@@ -259,7 +259,6 @@ namespace AzureBankDLL.DL.FH
         {
             try {
                 // Delete all the file
-                File.Delete("*.");
                 File.Delete(fileName);
                 File.Delete(tempFileName);
                 File.Delete(TransactionFH.fileName);

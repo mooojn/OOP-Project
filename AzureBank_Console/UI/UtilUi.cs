@@ -101,5 +101,31 @@ namespace AzureBankConsole
             Console.Write(word); // Print the word in the specified color
             Console.ResetColor();
         }
+        public static void RedDrippingEffect(int height, int width, int delay = 20)
+        {
+            Console.Clear();
+            Random random = new Random();
+            for (int y = 0; y < height; y++)
+            {
+                Console.Beep();
+                for (int x = 0; x < width; x++)
+                {
+                    // Random chance of a drip at a position, with higher chance lower in the console
+                    if (random.Next(height - y) < 10)
+                    {
+                        Console.SetCursorPosition(x, y);
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.Write("*");
+                    }
+                    else
+                    {
+                        Console.Write(" ");
+                    }
+                }
+                Console.WriteLine();
+                Thread.Sleep(delay);
+            }
+            Console.ResetColor();
+        }
     }
 }

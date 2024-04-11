@@ -17,6 +17,11 @@ namespace AzureBankConsole.Util
             users = userDL.ReadAll();
             int i = 0;
             AdminUi.userInfoHeader();
+            if (users == null)
+            {
+                UtilUi.Error("No Users Found", false);
+                return;
+            }
             foreach (User usr in users) {
                 Console.WriteLine($"{i}, {usr.toString()}");
                 i++;
