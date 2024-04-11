@@ -12,8 +12,8 @@ namespace AzureBankConsole
     {
         public static Asset GetAssetInput()
         {
-            Console.Write("Enter the name of the asset: ");
-            string name = Console.ReadLine();
+            string name = UserUi.GetName("Enter the name of the asset: ", "Asset Name");
+
         
         Again: 
             int price = 0;

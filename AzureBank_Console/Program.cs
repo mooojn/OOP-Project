@@ -79,14 +79,19 @@ namespace AzureBankConsole
                     case Choice.CHECK_BANKS_LIQUIDITY:
                         MainUi.Header();
                        
-                        int liquidity = 0;
+                        int usersLiquidity = 0;
+                        int assetsLiquidity = 0;
                         assets = assetDL.ReadAll();
                         users = userDL.ReadAll();
                         
-                        assets.ForEach(a => liquidity += a.getWorth());
-                        users.ForEach(u => liquidity += u.getCash());
+                        assets.ForEach(a => assetsLiquidity += a.getWorth());
+                        users.ForEach(u => usersLiquidity += u.getCash());
+                        int totalLiquidity = assetsLiquidity + usersLiquidity;
                         
-                        Console.WriteLine($"Total available Liquidity: ${liquidity}");
+                        Console.WriteLine($"Total available Liquidity: ${totalLiquidity}");
+                        Console.WriteLine($"Assets Liquidity: ${assetsLiquidity}");
+                        Console.WriteLine($"Users Liquidity: ${usersLiquidity}");
+                        Console.WriteLine($"Registered Users: ${users.Count}");
                         UtilUi.PressAnyKey();
                         
                         break;

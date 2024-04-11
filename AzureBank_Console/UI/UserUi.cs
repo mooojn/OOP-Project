@@ -11,14 +11,14 @@ namespace AzureBankConsole
 {
     internal class UserUi
     {
-        public static string GetName(string msg = "Enter name: ")
+        public static string GetName(string msg = "Enter name: ", string type = "Username")
         {
             string name;
             do {
                 Console.Write(msg);
                 name = Console.ReadLine();
 
-                if (Validation.IsValid("Username", name))
+                if (Validation.IsValid(type, name))
                     break; // Exit loop if all conditions pass
                 else
                     continue;
