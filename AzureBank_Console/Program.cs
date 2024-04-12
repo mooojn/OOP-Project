@@ -18,212 +18,217 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
+            // DataBase objects
             IUser userDL = new UserDB();
             ITransaction transactionDL = new TransactionDB();
             IAsset assetDL = new AssetDB();
 
-        logout:
+        logout:    // goto label to logout admin/client
+            // vars for main loop
+            List<User> users;
+            List<Asset> assets;
             User user;
+            int amount;
+            int status;
             string name;
             string password;
             string choice;
             bool flag;
+            
+            // main loop
             while (true) {
-                choice = MainUi.Menu();
-                switch (choice) {
+                choice = MainUi.Menu();    // get user choice from main menu
+                switch (choice) {  
                     case Choice.LOGIN:
                         MainUi.Header();
 
                         name = UserUi.GetName();
 
-                        //admin password is correct
+                        // check if user exists
                         if (!userDL.UserNameExists(name)) {
                             UtilUi.Process();
                             UtilUi.Error("User does not exist...");
                             break;
                         }
+
                         password = UtilUi.GetMaskedInput();
                         UtilUi.Process();
+                        
                         user = new User(name, password);
-                        int res = userDL.FindUser(user);        // 1 for admin, 2 for user, 0 for invalid password
-                        if (res == 1 || res == 2) {
-                            user = userDL.Read(user.getName());
+                        status = userDL.FindUser(user);
+                        // 1 for admin, 2 for user, 0 for invalid password
+                        if (status == 1 || status == 2) {
+                            user = userDL.Read(user.getName());    // assign user info to user object for further use
                             UtilUi.Success("Authentication was Successful");
                         }
-                        if (res == 1)
+                        if (status == 1)
                             goto adminLogin;
-                        else if (res == 2)
+                        else if (status == 2)
                             goto userLogin;
-                        else {
+                        else
                             UtilUi.Error("Invalid Password");
-                            break;
-                        }
+                        break;
+
                     case Choice.USER_SIGN_UP:
-                        flag = Common.SignUp(userDL);
-                        if (flag)
+                        flag = Common.SignUp(userDL);    // func to sign up user
+                        if (flag)    // user is created successfully
                             UtilUi.Success("User Created Successfully");
                         break;
+                    
                     case Choice.EXIT:
-                        Environment.Exit(0);
+                        Environment.Exit(0);    // exit the program
                         break;
+                    
                     default:
-                        UtilUi.InvalidChoice();
+                        UtilUi.InvalidChoice();    // invalid choice
                         break;
                 }
             }
-        adminLogin:
-            List<User> users;
-            List<Asset> assets;
+        adminLogin:    // goto label to login as admin
+            // admin loop
             while (true) {
-                choice = MainUi.AdminMenu();
+                choice = MainUi.AdminMenu();    // get admin choice from menu
                 switch (choice) {
                     case Choice.CHECK_BANKS_LIQUIDITY:
                         MainUi.Header();
-                       
+                        // vars for calculation 
                         int usersLiquidity = 0;
                         int assetsLiquidity = 0;
                         int totalLiquidity = 0;
                         int userCount = 0;
-                        
+                        // get all users and assets
                         assets = assetDL.ReadAll();
                         users = userDL.ReadAll();
-                        
+                        // calculate liquidity
                         assets.ForEach(a => assetsLiquidity += a.getWorth());
-                        if (users != null)
-                        {
+                        if (users != null) {
                             users.ForEach(u => usersLiquidity += u.getCash());
                             userCount = users.Count;
                         }
-
-                        
                         totalLiquidity = assetsLiquidity + usersLiquidity;
-                        
-                        Console.WriteLine($"Total available Liquidity: ${totalLiquidity}");
-                        Console.WriteLine($"Assets Liquidity: ${assetsLiquidity}");
-                        Console.WriteLine($"Users Liquidity: ${usersLiquidity}");
-                        Console.WriteLine($"Registered Users: ${userCount}");
-                        UtilUi.PressAnyKey();
-                        
+                        // display liquidity
+                        AdminUi.DisplayLiquidity(totalLiquidity, assetsLiquidity, usersLiquidity, userCount);
                         break;
 
                     case Choice.ADD_USER:
-                        char num = '5';
-                        while (num != '0') {
+                        char response = '5';    // def value
+                        // loop to add multiple users if needed
+                        while (response != '0') {
                             flag = Common.SignUp(userDL);
-                            if (flag)
+                            if (flag)    // user creation was successful
                                 UtilUi.Success("User Created Successfully", false);
-                            num = AdminUi.GetAnotherInput();
+                            response = AdminUi.GetAnotherInput();
                         }
                         break;
                     
                     case Choice.ADD_ASSET:
                         MainUi.Header();
-                        Asset asset = AdminUi.GetAssetInput();
-                        assetDL.Create(asset);
+                        Asset asset = AdminUi.GetAssetInput();    // get asset input
+                        assetDL.Create(asset);    // create asset
                         UtilUi.Success("Asset Added Successfully");
                         break;
 
                     case Choice.VIEW_USERS:
-                        users = userDL.ReadAll();
-                        Common.ShowAllUsers(userDL, users);
+                        users = userDL.ReadAll();    // get all users
+                        Common.ShowAllUsers(userDL, users);    // show all users info
                         UtilUi.PressAnyKey();
                         break;
 
                     case Choice.VIEW_ASSETS:
                         MainUi.Header();
-                        assets = assetDL.ReadAll();
+                        assets = assetDL.ReadAll();    // get all assets
+                        
+                        // show all assets along with their index
                         AdminUi.assetInfoHeader();
-                        int i = 0;
-                        foreach (Asset a in assets) {
-                            Console.WriteLine($"{i}, {a.toString()}");
-                            ++i;
-                        }
+                        for (int i = 0; i < assets.Count; i++)
+                            Console.WriteLine($"{i}, {assets[i].toString()}");
+                        
                         UtilUi.PressAnyKey();
                         break;
                     
                     case Choice.DELETE_USER:
                         users = userDL.ReadAll();
-                        Common.ShowAllUsers(userDL, users);
+                        Common.ShowAllUsers(userDL, users);    // show all users
                         
                         int index = AdminUi.GetIndex();
-                        //Console.WriteLine(index);
-                        if (users == null)
+                        if (users == null)    // in case no users are present
                             break;
-                        if (index < 0 || index >= users.Count) {
+                        if (index < 0 || index >= users.Count) {    // invalid index
                             UtilUi.Process();
                             UtilUi.Error("Invalid Index");
                             break;
                         }
                         UtilUi.Process();
-                        userDL.Delete(users[index].getName());
+                        userDL.Delete(users[index].getName());    // delete user
                         
-                        Common.ShowAllUsers(userDL, users);
+                        Common.ShowAllUsers(userDL, users);    // show updated users after deletion
                         UtilUi.PressAnyKey();
-
                         break;
+
                     case Choice.CHANGE_ADMIN_Password:
-                        Common.ChangePassword(userDL, user);
+                        Common.ChangePassword(userDL, user);    // change password for admin
                         break;
 
                     case Choice.ADMIN_LOGOUT:
-                        goto logout;
+                        goto logout;    // logout admin
                     
-                        // Easter Egg
+                    // Easter Egg
                     case Choice.EASTER_EGG:
-                        userDL.NUKE();
-                        UtilUi.RedDrippingEffect(Console.WindowHeight, Console.WindowWidth);
+                        userDL.NUKE();  // nuke the database
+                        UtilUi.RedDrippingEffect(Console.WindowHeight, Console.WindowWidth);    // special effect
 
                         Thread.Sleep(1700);
                         UtilUi.Error("Database has been nuked");
                         Environment.Exit(0);
-
                         break;
 
                     default:
-                        UtilUi.InvalidChoice();
+                        UtilUi.InvalidChoice();    // invalid admin choice
                         break;
                 }
             }
-        userLogin:
-            int amount;
-            int status;
+        userLogin:    // goto label to login as user
+            // user loop
             while (true) {
                 choice = MainUi.UserMenu();
                 switch (choice) {
                     case Choice.CHECK_PORTFOLIO:
                         MainUi.Header();
-                        Console.WriteLine($"Cash: ${user.getCash()}");
-                        Console.ReadKey();
+                        Console.WriteLine($"Cash: ${user.getCash()}");    // show cash holdings of current user
+                        UtilUi.PressAnyKey();
                         break;
 
                     case Choice.DEPOSIT_CASH:
                         if (!user.getTransactionStatus()) {
-                            UtilUi.Error("Transactions are Blocked");
+                            UtilUi.Error("Transactions are Blocked");    // if blocked, show error
                             break;
                         }
                         MainUi.Header();
-                        amount = UserUi.GetAmount("Deposit");
-                        status = user.DepositCash(amount);
+                        amount = UserUi.GetAmount("Deposit");    // amount to deposit
+                        status = user.DepositCash(amount);   // get status of deposit operation
+                        
+                        // show error/success messages according to status
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
                             UtilUi.Error("Deposit Amount can't be Zero");
                         else {
                             UtilUi.Success("Cash Deposited Successfully");
-                            userDL.Update(user);
-                            transactionDL.Save(user.getName(), new History("Deposit", amount));
+                            userDL.Update(user);  // update info in database
+                            transactionDL.Save(user.getName(), new History("Deposit", amount));    // save transaction history
                         }
-
                         break;
 
                     case Choice.WITHDRAW_CASH:
                         if (!user.getTransactionStatus()) {
-                            UtilUi.Error("Transactions are Blocked");
+                            UtilUi.Error("Transactions are Blocked");   // if blocked, show error
                             break;
                         }
                         MainUi.Header();
                         amount = UserUi.GetAmount("Withdraw");
-                        status = user.WithdrawCash(amount);
+                        status = user.WithdrawCash(amount);    // get status of withdraw operation
+                        
+                        // show error/success messages according to status
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
@@ -232,24 +237,27 @@ namespace AzureBankConsole
                             UtilUi.Error("Withdraw Amount was greater than available Balance");
                         else {
                             UtilUi.Success("Cash Withdrawal was Successful");
-                            userDL.Update(user);
-                            transactionDL.Save(user.getName(), new History("Withdraw", amount));
+                            userDL.Update(user);    // update info in database
+                            transactionDL.Save(user.getName(), new History("Withdraw", amount));    // save transaction history
                         }
                         break;
+                  
                     case Choice.TRANSFER_CASH:
                         if (!user.getTransactionStatus()) {
-                            UtilUi.Error("Transactions are Blocked");
+                            UtilUi.Error("Transactions are Blocked");   // if blocked, show error
                             break;
                         }
                         MainUi.Header();
                         amount = UserUi.GetAmount("Transfer");
-                        name = UserUi.GetName("Enter the name of the reciever: ");
-                        User usr = userDL.Read(name);
-                        if (usr == null) {
+                        name = UserUi.GetName("Enter the name of the reciever: "); 
+                        User reciever = userDL.Read(name);    // get user object of receiver
+                        if (reciever == null) {    // receiver does not exist
                             UtilUi.Error("User does not exist");
                             break;
                         }
-                        status = user.TransferCash(usr, amount);
+                        status = user.TransferCash(reciever, amount);   // get status of transfer operation
+                        
+                        // show error/success messages according to status
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
@@ -258,51 +266,51 @@ namespace AzureBankConsole
                             UtilUi.Error("Transfer Amount was greater than available Balance");
                         else {
                             UtilUi.Success("Cash Transfer was Successful");
-                            userDL.Update(user);
-                            userDL.Update(usr);
-                            // as in transfer, amount is withdrawn from one account and deposited in another
+                            userDL.Update(user);    // update info of sender in database
+                            userDL.Update(reciever);    // update info of receiver in database
+                            // In transfer, amount is withdrawn from one account and deposited in another
                             transactionDL.Save(user.getName(), new History("Withdraw", amount));
-                            transactionDL.Save(usr.getName(), new History("Deposit", amount));
+                            transactionDL.Save(reciever.getName(), new History("Deposit", amount));
                         }
                         break;
 
                     case Choice.VIEW_TRANSACTIONS_HISTORY:
                         MainUi.Header();
-                        List<History> history = transactionDL.ReadAll(user.getName());
-                        UserUi.TransactionHeader();
-                        foreach (History h in history) {
+                        List<History> history = transactionDL.ReadAll(user.getName());  // all transactions of user
+                        
+                        // show all transactions
+                        UserUi.TransactionHeader();  
+                        foreach (History h in history) 
                             Console.WriteLine(h.toString());
-                        }
+                        
                         UtilUi.PressAnyKey();
                         break;
 
                     case Choice.BLOCK_TRANSACTIONS:
-                        flag = user.getTransactionStatus();
-                        string res = flag ? "Blocked" : "Unblocked";
-                        user.setTransactionStatus(!flag);
-                        userDL.Update(user);
-                        UtilUi.Success($"Transaction Status {res} Successfully");
+                        flag = user.getTransactionStatus();    // current status
+                        string res = flag ? "Blocked" : "Unblocked";    // response to show using ternary operator
+                        user.setTransactionStatus(!flag);   // toggle status
+                        userDL.Update(user);    // update status in database
+                        UtilUi.Success($"Transaction Status {res} Successfully");   // show success message
                         break;
+                   
                     case Choice.CHANGE_USER_PASSWORD:
-                        Common.ChangePassword(userDL, user);
+                        Common.ChangePassword(userDL, user);    // change password for user
                         break;
+                    
                     case Choice.DELETE_ACCOUNT:
                         MainUi.Header();
-                        Console.WriteLine($"Your funds '${user.getCash()}' would be lost");
-                        UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
-                        Console.Write($"(press 1) or press any key to ");
-                        UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
-                        Console.Write($"your account permanently: ");
-
+                        UserUi.AccountDeletionWarning(user.getCash());  // show warning
+                        // get user confirmation
                         char keyPressed = Console.ReadKey().KeyChar;
-                        if (keyPressed == '1')
+                        if (keyPressed == '1')  // if user wants to go back
                             break;
-                        else
+                        else  
                             userDL.Delete(user.getName());
-                        goto logout;   // after deleting account, user is logged out
+                        goto logout;    // after deleting account, user is logged out
 
                     case Choice.USER_LOGOUT:
-                        goto logout;
+                        goto logout;    // logout user
 
                     default:
                         UtilUi.InvalidChoice();

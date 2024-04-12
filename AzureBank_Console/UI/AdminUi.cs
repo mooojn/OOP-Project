@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using AzureBankConsole.Util;
@@ -61,6 +62,14 @@ namespace AzureBankConsole
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"id, name, worth");
             Console.ResetColor();
+        }
+        public static void DisplayLiquidity(int totalLiquidity, int assetsLiquidity, int usersLiquidity, int userCount)
+        {
+            Console.WriteLine($"Total available Liquidity: ${totalLiquidity}");
+            Console.WriteLine($"Assets Liquidity: ${assetsLiquidity}");
+            Console.WriteLine($"Users Liquidity: ${usersLiquidity}");
+            Console.WriteLine($"Registered Users: ${userCount}");
+            UtilUi.PressAnyKey();
         }
     }
 }
