@@ -21,12 +21,14 @@ namespace AzureBankConsole
             Console.Write("Enter the price of the asset: $");
             
             if (Validation.IsValidNumber(ref price))
+            {
                 if (Validation.ValidDepositAmount(price))
-                    return new Asset(name, price);
+                    return new Asset(name, price);    // return asset if all conditions pass
                 else
-                    goto Again;
+                    goto Again;    // if amount is invalid then ask again
+            }
             else
-                goto Again;
+                goto Again;    // if asset name is invalid then ask again
         }
         public static int GetIndex()
         {
@@ -47,7 +49,7 @@ namespace AzureBankConsole
             {
                 Console.Write("Do you want to add(1) another user or continue(0): ");
                 num = Console.ReadKey().KeyChar;
-                Console.WriteLine();
+                Console.WriteLine();    // new line
             }
             return num;
         }

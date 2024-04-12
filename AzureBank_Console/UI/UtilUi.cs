@@ -23,7 +23,7 @@ namespace AzureBankConsole
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine(type);
             Console.ResetColor();
-            if (flag)
+            if (flag)    // if flag is true then wait for user input
                 PressAnyKey();
         }
         public static void Success(string msg, bool flag = true)
@@ -31,7 +31,7 @@ namespace AzureBankConsole
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine(msg);
             Console.ResetColor();
-            if (flag)
+            if (flag)    // if flag is true then wait for user input
                 PressAnyKey();
         }
         public static void InvalidChoice()
@@ -67,9 +67,8 @@ namespace AzureBankConsole
             Console.Write(msg);
             string pass = "";
             ConsoleKeyInfo key;
-
-            do
-            {
+            // Get the password as a masked input '*'
+            do {
                 key = Console.ReadKey(true);
 
                 if (key.Key != ConsoleKey.Backspace && key.Key != ConsoleKey.Enter)
@@ -98,9 +97,10 @@ namespace AzureBankConsole
         public static void ShowWord(string word, ConsoleColor color)
         {
             Console.ForegroundColor = color;
-            Console.Write(word); // Print the word in the specified color
+            Console.Write(word);    // print the word in the specified color
             Console.ResetColor();
         }
+        // effect for nuke easter egg
         public static void RedDrippingEffect(int height, int width, int delay = 20)
         {
             Console.Clear();
@@ -110,7 +110,7 @@ namespace AzureBankConsole
                 Console.Beep();
                 for (int x = 0; x < width; x++)
                 {
-                    // Random chance of a drip at a position, with higher chance lower in the console
+                    // random chance of a drip at a position, with higher chance lower in the console
                     if (random.Next(height - y) < 10)
                     {
                         Console.SetCursorPosition(x, y);
@@ -118,9 +118,7 @@ namespace AzureBankConsole
                         Console.Write("*");
                     }
                     else
-                    {
                         Console.Write(" ");
-                    }
                 }
                 Console.WriteLine();
                 Thread.Sleep(delay);

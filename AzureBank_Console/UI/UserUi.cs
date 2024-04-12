@@ -20,7 +20,7 @@ namespace AzureBankConsole
                 name = Console.ReadLine();
 
                 if (Validation.IsValid(type, name))
-                    break; // Exit loop if all conditions pass
+                    break;    // exit loop if all conditions pass
                 else
                     continue;
 
@@ -35,7 +35,7 @@ namespace AzureBankConsole
             Console.Write($"Enter the amount you want to {type}: $");
 
             if (Validation.IsValidNumber(ref num)) 
-                return num;
+                return num;    // return amount if all conditions pass
             else 
                 goto Again;
         }
