@@ -23,12 +23,6 @@ namespace AzureBankGui
             InitializeComponent();
             Common.AttachEvents(this);     // for the animation on tab change
         }
-        private void addAmount(int amount)
-        {
-            amountBox.Text = amount.ToString();
-        }
-
-
         private void DepositFunc(object sender, EventArgs e)
         {
             int cash = 0;
@@ -37,14 +31,15 @@ namespace AzureBankGui
                 amountBox.Focus();
                 return;      // if the conversion fails, return
             }
-
             int flag = UserPage.user.DepositCash(cash);
+            // if the deposit was successful
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
                 ObjectHandler.GetUserDL().Update(UserPage.user);
                 ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Deposit", cash));
             }
+            // conditions for errors
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Deposit");
             else if (flag == -2)
@@ -52,7 +47,6 @@ namespace AzureBankGui
             else
                 MessageUi.UnexpectedError();
         }
-
         private void WiithdrawFunc(object sender, EventArgs e)
         {
             int cash = 0;
@@ -61,15 +55,15 @@ namespace AzureBankGui
                 amountBox.Focus();
                 return;      // if the conversion fails, return
             }
-
-
             int flag = UserPage.user.WithdrawCash(cash);
+            // if the withdrawal was successful
             if (flag == 0)
             {
                 MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
                 ObjectHandler.GetUserDL().Update(UserPage.user);
                 ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
             }
+            // conditions for errors
             else if (flag == -1)
                 MessageUi.NegativeAmountError("Withdraw");
             else if (flag == -2)
@@ -79,6 +73,10 @@ namespace AzureBankGui
             else
                 MessageUi.UnexpectedError();
         }
+        private void addAmount(int amount)
+        {
+            amountBox.Text = amount.ToString();
+        }
         public void fifty(object sender, EventArgs e)
         {
             addAmount(50);
@@ -87,30 +85,22 @@ namespace AzureBankGui
         {
             addAmount(100);
         }
-
         private void guna2Button3_Click(object sender, EventArgs e)
         {
             addAmount(150);
         }
-
         private void guna2Button4_Click(object sender, EventArgs e)
         {
             addAmount(200);
         }
-
         private void guna2Button5_Click(object sender, EventArgs e)
         {
             addAmount(500);
         }
-
         private void DepositWithdraw_FormClosing(object sender, FormClosingEventArgs e)
         {
             UtilDL.transactionClose();
         }
-
-        private void DepositWithdraw_Load(object sender, EventArgs e)
-        {
-
-        }
+        private void DepositWithdraw_Load(object sender, EventArgs e) {}
     }
 }

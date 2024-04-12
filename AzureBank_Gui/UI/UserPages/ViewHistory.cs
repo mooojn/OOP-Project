@@ -25,41 +25,19 @@ namespace AzureBankGui
         private void ViewHIstory_Load(object sender, EventArgs e)
         {
             DataTable dt = new DataTable();
-
+            // add columns to the table
             dt.Columns.Add("Type");
             dt.Columns.Add("Amount");
             dt.Columns.Add("Date");
 
-
+            // add the history of the user to the table
             foreach (History history in UserPage.user.getHistory())
-            {
                 dt.Rows.Add(history.getType(), history.getAmount(), history.getDate());
-            }
+
             transactionHistory.DataSource = dt;
         }
-
-        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            //DataTable dt = new DataTable();
-
-            //dt.Columns.Add("Type");
-            //dt.Columns.Add("Amount");
-            //dt.Columns.Add("Date");
-
-            //foreach (History history in UserPage.user.getHistory())
-            //{
-            //    dt.Rows.Add(history.getType(), history.getAmount(), history.getDate());
-            //}
-            //transactionHistory.DataSource = dt;
-        }
-
-        private void transactionHistory_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
+        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
+        private void guna2Button1_Click(object sender, EventArgs e) {}
+        private void transactionHistory_CellContentClick_1(object sender, DataGridViewCellEventArgs e) {}
     }
 }

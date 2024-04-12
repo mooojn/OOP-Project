@@ -17,7 +17,6 @@ namespace AzureBankGui
 {
     public partial class Main : Form
     {
-
         public static Guna2Panel panel;
         public static Form userPage;
         public Main(Form f, Guna2Panel mainPanel)
@@ -25,30 +24,14 @@ namespace AzureBankGui
             InitializeComponent();
             Common.AttachEvents(this);     // for the animation on tab change
 
-            cashAmount.Text = UserPage.user.getCash().ToString();
-            
+            cashAmount.Text = UserPage.user.getCash().ToString();   // set the cash amount
+            // vars set
             panel = mainPanel;
             userPage = f;
-
+            
             string msg = !UserPage.user.getTransactionStatus() ? "Enable" : "Disable";
             guna2Button3.Text = $"{msg} Transactions";
         }
-
-        private void Main_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2ImageButton2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
             if (!UserPage.user.getTransactionStatus()) 
@@ -70,11 +53,6 @@ namespace AzureBankGui
             Form f = new Transfer();
             f.Show();
         }
-        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             AuthPromptForm promptForm = new AuthPromptForm(UserPage.user);
@@ -86,7 +64,6 @@ namespace AzureBankGui
                 UtilDL.LogOut(userPage);
             }
         }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             Common.ChangePassword(UserPage.user);
@@ -97,9 +74,13 @@ namespace AzureBankGui
             bool flag = !UserPage.user.getTransactionStatus();  // toggling the status
             UserPage.user.setTransactionStatus(flag);
             ObjectHandler.GetUserDL().Update(UserPage.user);
-            
+            // change the text of the button
             string msg = !flag ? "Enable" : "Disable";
             guna2Button3.Text = $"{msg} Transactions";
         }
+        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
+        private void Main_Load(object sender, EventArgs e) {}
+        private void guna2ImageButton2_Click(object sender, EventArgs e) {}
+        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e) {}
     }
 }
