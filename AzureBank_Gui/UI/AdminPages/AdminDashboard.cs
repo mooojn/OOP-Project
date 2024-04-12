@@ -19,14 +19,9 @@ namespace AzureBank
         {
             InitializeComponent();
         }
-
-        private void cashAmount_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AdminDashboard_Load(object sender, EventArgs e)
         {
+            // vars to display
             int totalCash = 0;
             int userFunds= 0;
             int assetFunds = 0;
@@ -44,6 +39,7 @@ namespace AzureBank
 
             totalCash = userFunds + assetFunds;
             
+            //  display the data
             totalLiq.Text = totalCash.ToString();
             userAmount.Text = totalUsers.ToString();
             userLiq.Text = userFunds.ToString();
@@ -67,5 +63,6 @@ namespace AzureBank
                 Application.Exit();
             }
         }
+        private void cashAmount_Click(object sender, EventArgs e) {}
     }
 }

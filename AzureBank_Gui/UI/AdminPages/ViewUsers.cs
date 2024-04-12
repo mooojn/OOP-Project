@@ -23,23 +23,19 @@ namespace AzureBank
         {
             List<User> users= ObjectHandler.GetUserDL().ReadAll();
             DataTable dt = new DataTable();
-
+            
+            // add columns to the table
             dt.Columns.Add("Name");
             dt.Columns.Add("Cash");
             dt.Columns.Add("Transaction Status");
-
+            
+            // add the users to the table
             foreach (User user in users)
-            {
                 dt.Rows.Add(user.getName(), user.getCash(), user.getTransactionStatus());
-            }
+            
             this.usersTable.Width = 450;
             this.usersTable.DataSource = dt;
         }
-        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        
+        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
     }
 }

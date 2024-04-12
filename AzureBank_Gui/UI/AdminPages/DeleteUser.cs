@@ -18,15 +18,17 @@ namespace AzureBank
         public DeleteUser()
         {
             InitializeComponent();
-            Common.LoadComboBox(nameBox, AdminPage.admin);
+            Common.LoadComboBox(nameBox, AdminPage.admin);    // load the users in the combobox
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(nameBox.Text)) {
+            if (string.IsNullOrEmpty(nameBox.Text)) 
+            {
                 MessageUi.ShowMessage("Empty Name", "Please select a user to remove", MessageDialogIcon.Warning);
-                return;
+                return;    // if the name is empty
             }
+            // delete the user from the database
             ObjectHandler.GetUserDL().Delete(nameBox.Text);
             MessageUi.ShowMessage("Success", "User deleted Successfully", MessageDialogIcon.Information);
             Common.LoadComboBox(nameBox, AdminPage.admin);

@@ -20,12 +20,6 @@ namespace AzureBank
         {
             InitializeComponent();
         }
-
-        private void AddAsset_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             string name = nameBox.Text;
@@ -33,15 +27,17 @@ namespace AzureBank
             if (!Validation.IsValid("Asset Name", name))
             {
                 nameBox.Focus();
-                return;
+                return;    // if the name is invalid
             }
             if (!Validation.ConvertStringToVar(ref worth, worthBox.Text))
             {
                 worthBox.Focus();
-                return;
+                return;    // if the worth is invalid
             }
+            // create the asset as all conditions are met
             ObjectHandler.GetAssetDL().Create(new Asset(name, worth));
             MessageUi.ShowMessage("Success", "Asset created successfully", MessageDialogIcon.Information);
         }
+        private void AddAsset_Load(object sender, EventArgs e) {}
     }
 }

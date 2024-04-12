@@ -23,14 +23,14 @@ namespace AzureBank
         {
             List<Asset> assets = ObjectHandler.GetAssetDL().ReadAll();
             DataTable dt = new DataTable();
-
+            
+            // add columns to the table
             dt.Columns.Add("Name");
             dt.Columns.Add("Worth($)");
-
+            
+            // add the assets to the table
             foreach (Asset asset in assets)
-            {
                 dt.Rows.Add(asset.getName(), asset.getWorth());
-            }
             assetsTable.DataSource = dt;
         }
     }

@@ -26,57 +26,33 @@ namespace AzureBankGui
             if (!Validation.IsValid("Username", nameBox.Text)) 
             {
                 nameBox.Focus();
-                return;
+                return;    // if the name is invalid
             }
             if (!Validation.IsValid("Password", passBox.Text, false))
             {
                 passBox.Focus();
-                return;
+                return;    // if the password is invalid
             }
             if (ObjectHandler.GetUserDL().UserNameExists(nameBox.Text))
             {
                 nameBox.Focus();
                 MessageUi.ShowMessage("User exists", "User with this name already exists try a different one");
-                return;
+                return;    // if the username already exists
             }
+            // create the user as all conditions are met
             ObjectHandler.GetUserDL().Create(new User(nameBox.Text, passBox.Text));
             MessageUi.ShowMessage("Success", "User created successfully", MessageDialogIcon.Information);
         }
-
-        private void label3_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label2_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void nameBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void passBox_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void label5_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void guna2Button2_Click(object sender, EventArgs e)
         {
             Form f = new DeleteUser();
             f.Show();
         }
+        private void label3_Click(object sender, EventArgs e) {}
+        private void label2_Click(object sender, EventArgs e) {}
+        private void nameBox_TextChanged(object sender, EventArgs e) {}
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
+        private void passBox_TextChanged(object sender, EventArgs e) {}
+        private void label5_Click(object sender, EventArgs e) {}
     }
 }
