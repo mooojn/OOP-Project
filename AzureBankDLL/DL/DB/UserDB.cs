@@ -9,7 +9,6 @@ using System.Xml.Linq;
 using AzureBankDLL.BL;
 using AzureBankDLL.DL.FH;
 using AzureBankDLL.DLInterfaces;
-using AzureBankDLL.Util;
 using PassHashingWithSaltsDLL;
 
 namespace AzureBankDLL.DL.DB
@@ -18,22 +17,24 @@ namespace AzureBankDLL.DL.DB
     {
         public bool Create(User user)
         {
-            // insert vals into db
-            Program.connection.Open();
-            //string salt = Hashing.GenerateSalt();
-            //string hashedPass = Hashing.ComputeSha256Hash(user.getPassword(), salt);
-            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            DataBase.openConnection();
+         
+            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";    // 0 cash, 1 transactionStatus
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return true;
         }
         public User Read(string userName)
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+         
             string query = $"SELECT * FROM Users WHERE name = '{userName}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
+            
+            // creating user object if found
             User user = null;
             if (reader.Read())
             {
@@ -41,37 +42,45 @@ namespace AzureBankDLL.DL.DB
                 string pass = reader["password"].ToString();
                 int cash = Convert.ToInt32(reader["cash"]);
                 bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
+               
                 user = new User(name, pass, cash, transactionStatus);
             }
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return user;
         }
         public bool Update(User user)
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+            
             string query = $"UPDATE Users SET cash = {user.getCash()}, password = '{user.getPassword()}', transactionStatus = {Convert.ToInt32(user.getTransactionStatus())} WHERE name = '{user.getName()}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return true;
         }
         public bool Delete(string userName)
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+            
             // deleting from both tables
             string query = $"DELETE FROM Users WHERE name = '{userName}'\n" +
-                $"DELETE FROM Transactions WHERE userName = '{userName}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+                           $"DELETE FROM Transactions WHERE userName = '{userName}'";
+            
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return true;
         }
         public List<User> ReadAll()
         {
             List<User> users = null;
+            
             string query = "SELECT * FROM Users";
-            Program.connection.Open();
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            DataBase.openConnection();
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -87,50 +96,50 @@ namespace AzureBankDLL.DL.DB
                 bool transactionStatus = Convert.ToBoolean(reader["transactionStatus"]);
                 users.Add(new User(name, pass, cash, transactionStatus));
             }
-            Program.connection.Close();
+            DataBase.closeConnection();
             return users;
         }
         public int FindUser(User usr)
         {
+            DataBase.openConnection();
+            
             bool flag = false;
-            Program.connection.Open();
             string query = $"SELECT * FROM Users WHERE name = '{usr.getName()}' AND password = '{usr.getPassword()}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
+            // user found
             if (reader.Read())
-            {
                 flag = true;
-            }
-            Program.connection.Close();
-            if (flag) {
+            
+            DataBase.closeConnection();
+            // returning 1 if admin, 2 if user, 0 if invalid password
+            if (flag) 
                 return usr.getName() == "admin" ? 1 : 2;
-            }
             else
                 return 0;     // zero means invalid password
         }
         public bool UserNameExists(string name)
         {
+            DataBase.openConnection();
+            
             bool flag = false;
-            Program.connection.Open();
-            SqlCommand cmd = new SqlCommand($"SELECT * FROM Users WHERE name = '{name}'", Program.connection);
-
+            SqlCommand cmd = new SqlCommand($"SELECT * FROM Users WHERE name = '{name}'", DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
+            
             // checking if user exists
             if (reader.Read())
-            {
                 flag = true;   // user found
-            }
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return flag;
         }
         public List<string> ReadAllNames(string nameToExclude) 
         {
-            Program.connection.Open();
+            DataBase.openConnection();
             
             List<string> userNames = new List<string>();
-
             string query = $"SELECT name FROM Users WHERE name != 'admin' AND name != '{nameToExclude}'";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
 
             while (reader.Read())
@@ -139,19 +148,17 @@ namespace AzureBankDLL.DL.DB
                 
                 userNames.Add(name);
             }
-            Program.connection.Close();
-
+            DataBase.closeConnection();
             return userNames;
         }
-
         // this func removes all of the data from all tables
         public void NUKE()
         {
-            Program.connection.Open();
+            DataBase.openConnection();
             string query = "DELETE FROM Users DELETE FROM Transactions DELETE FROM Assets";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            Program.connection.Close();
+            DataBase.closeConnection();
         }
     }
 }

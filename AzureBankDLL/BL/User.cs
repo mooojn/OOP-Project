@@ -12,25 +12,19 @@ namespace AzureBankDLL.BL
 {
     public class User
     {
-        // objs
+        // attributes
         private string name;
         private string password;
         private int cash;
         private bool transactionStatus;
         private List<History> history;
+        
         // constructor for initializing
         public User(string name, string pass)
         {
             this.name = name;
             this.password = pass;
             this.cash = 0;  // default val
-            this.history = new List<History>();
-        }
-        public User(string name, string pass, int cash)
-        {
-            this.name = name;
-            this.password = pass;
-            this.cash = cash;  // default val
             this.history = new List<History>();
         }
         public User(string name, string pass, int cash, bool status)
@@ -41,13 +35,6 @@ namespace AzureBankDLL.BL
             this.transactionStatus = status;
             this.history = new List<History>();
         }
-        public User(string name, string pass, int cash, List<History> history)
-        {
-            this.name = name;
-            this.password = pass;
-            this.cash = cash;  // default val
-            this.history = history;
-        }
         public int DepositCash(int depositAmount)
         {
             // error encountered so returning   
@@ -55,10 +42,10 @@ namespace AzureBankDLL.BL
                 return -1;
             else if (depositAmount == 0)
                 return -2;
+            
             // adding cash
             cash += depositAmount;
-            
-            return 0;        // success
+            return 0;   // success
         }
         public int WithdrawCash(int withdrawAmount)
         {
@@ -69,22 +56,18 @@ namespace AzureBankDLL.BL
                 return -2;
             else if (withdrawAmount > cash)
                 return -3;
+            
             // withdrawing cash
             cash -= withdrawAmount;
-            
-            return 0;        // success
+            return 0;   // success
         }
         public int TransferCash(User user, int transferAmount)
         {
             // transferring cash
             int res = WithdrawCash(transferAmount);
             if (res == 0)
-                return user.DepositCash(transferAmount);
+                return user.DepositCash(transferAmount);    // if deposit was successful then return deposit status
             return res;
-        }
-        public int getCash()
-        {
-            return cash;
         }
         public string getName()
         {
@@ -93,6 +76,10 @@ namespace AzureBankDLL.BL
         public string getPassword()
         {
             return password;
+        }
+        public int getCash()
+        {
+            return cash;
         }
         public List<History> getHistory()
         {
@@ -109,6 +96,10 @@ namespace AzureBankDLL.BL
         public void setPassword(string pass)
         {
             this.password = pass;   
+        }
+        public void setCash(int cash)
+        {
+            this.cash = cash;
         }
         public void setHistory(List<History> history)
         {

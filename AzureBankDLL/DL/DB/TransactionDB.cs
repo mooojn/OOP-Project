@@ -13,28 +13,26 @@ namespace AzureBankDLL.DL.DB
     {
         public bool Save(string name, History history)
         {
-            Program.connection.Open();
-            string query = "INSERT INTO Transactions VALUES (@name, @type, @amount, @date)";
-            SqlCommand command = new SqlCommand(query, Program.connection);
-
-            command.Parameters.AddWithValue("@name", name);
-            command.Parameters.AddWithValue("@type", history.getType());
-            command.Parameters.AddWithValue("@amount", history.getAmount());
-            command.Parameters.AddWithValue("@date", history.getDate());
-
+            DataBase.openConnection();
+            
+            string query = $"INSERT INTO Transactions VALUES ('{name}', '{history.getType()}', {history.getAmount()}, @historyDate)";
+            SqlCommand command = new SqlCommand(query, DataBase.connection);
+            command.Parameters.AddWithValue("@historyDate", history.getDate());    // add date to the query
             command.ExecuteNonQuery();
 
-            Program.connection.Close();
+            DataBase.closeConnection();
             return true;
         }
         public List<History> ReadAll(string name)
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+            
             List<History> history = new List<History>();
             string query = $"SELECT * FROM Transactions WHERE userName = '{name}'";
-            SqlCommand command = new SqlCommand(query, Program.connection);
+            SqlCommand command = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = command.ExecuteReader();
 
+            // read all transactions from db and add them to the list
             while (reader.Read())
             {
                 string type = reader["type"].ToString();
@@ -43,7 +41,8 @@ namespace AzureBankDLL.DL.DB
 
                 history.Add(new History(type, amount, date));
             }
-            Program.connection.Close();
+            
+            DataBase.closeConnection();
             return history;
         }
     }

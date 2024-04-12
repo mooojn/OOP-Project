@@ -7,32 +7,41 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+
 namespace AzureBankDLL.DL.DB
 {
     public class AssetDB : IAsset
     {
         public bool Create(Asset asset) 
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+            
             string query = $"INSERT INTO Assets values('{asset.getName()}', {asset.getWorth()})";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            Program.connection.Close();
+            
+            DataBase.connection.Close();
             return true;
         }
         public List<Asset> ReadAll() 
         {
-            Program.connection.Open();
+            DataBase.openConnection();
+            
             List<Asset> assets = new List<Asset>();
             string query = "SELECT * FROM Assets";
-            SqlCommand cmd = new SqlCommand(query, Program.connection);
+            SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read()) {
+            
+            // read all assets from db and add them to the list
+            while (reader.Read()) 
+            {
                 string name = reader["name"].ToString();
                 int worth = Convert.ToInt32(reader["worth"]);
+
                 assets.Add(new Asset(name, worth));
             }
-            Program.connection.Close();
+            
+            DataBase.connection.Close();
             return assets;
         }
     }

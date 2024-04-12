@@ -29,12 +29,11 @@ namespace AzureBankDLL.BL
         }
         public void setWorth(int worth)
         {
-            this.worth = worth;
+            this.worth = worth; 
         }
         public string toString() 
         {
             return $"{name}, {worth}";
-        
         }
     }
 }
