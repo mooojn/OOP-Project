@@ -21,16 +21,18 @@ namespace AzureBankGui
         public UserPage(User usr)
         {
             InitializeComponent();
+            
             Common.AttachEvents(this);     // for the animation on tab change
-            user = usr;
+            user = usr;    // set the user who logged in
+            
+            // open the user dashboard
             UtilDL.activeButtonStateChange(guna2Button1);
             UtilDL.openChildForm(new Main(this, mainPanel), mainPanel);
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
             UtilDL.activeButtonStateChange(guna2Button1);
-            //UtilDL.openChildForm(new Portfolio(), mainPanel);
-            UtilDL.openChildForm(new Main(this, mainPanel), mainPanel);
+            UtilDL.openChildForm(new Main(this, mainPanel), mainPanel);    // user dashboard
         }
         private void guna2Button6_Click_1(object sender, EventArgs e)
         {
