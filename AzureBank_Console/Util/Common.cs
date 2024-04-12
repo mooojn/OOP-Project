@@ -9,6 +9,7 @@ using System.Xml.Linq;
 
 namespace AzureBankConsole.Util
 {
+    // this class is used to store common methods b/w client and admin
     internal class Common
     {
         public static void ShowAllUsers(IUser userDL, List<User> users)
@@ -21,14 +22,14 @@ namespace AzureBankConsole.Util
             MainUi.Header();
             
             // show all users
-            AdminUi.userInfoHeader();
+            AdminUi.UserInfoHeader();
             for (int i = 0; i < users.Count; i++)
                 Console.WriteLine($"{i}, {users[i].toString()}");
         }
         public static void ChangePassword(IUser userDL, User user) 
         {
             MainUi.Header();
-            string newPass = UtilUi.GetMaskedInput("Set new password: ");  // get new password
+            string newPass = UtilUi.GetMaskedInput("Set new password: ");   // get new password
             
             // set new pass
             UtilUi.Process();

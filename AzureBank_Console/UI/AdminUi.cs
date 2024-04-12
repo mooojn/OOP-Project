@@ -22,7 +22,7 @@ namespace AzureBankConsole
             
             if (Validation.IsValidNumber(ref price))
             {
-                if (Validation.ValidDepositAmount(price))
+                if (Validation.IsWorthValid(price))
                     return new Asset(name, price);    // return asset if all conditions pass
                 else
                     goto Again;    // if amount is invalid then ask again
@@ -30,7 +30,7 @@ namespace AzureBankConsole
             else
                 goto Again;    // if asset name is invalid then ask again
         }
-        public static int GetIndex()
+        public static int GetDeletionIndex()
         {
             int num = 0;
         Again: 
@@ -53,13 +53,13 @@ namespace AzureBankConsole
             }
             return num;
         }
-        public static void userInfoHeader()
+        public static void UserInfoHeader()
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"index, userName, cashHoldings, transactionStatus");
             Console.ResetColor();
         }
-        public static void assetInfoHeader() 
+        public static void AssetInfoHeader() 
         {
             Console.ForegroundColor = ConsoleColor.Cyan;
             Console.WriteLine($"id, name, worth");

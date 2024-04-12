@@ -74,11 +74,13 @@ namespace AzureBankDLL.DL.DB
             SqlCommand cmd = new SqlCommand(query, Program.connection);
             SqlDataReader reader = cmd.ExecuteReader();
 
-            reader.Read();      // skipping admin
             while (reader.Read())
             {
                 if (users == null)
                     users = new List<User>();
+                if (reader["name"].ToString() == "admin")    // skipping admin
+                    continue;
+                
                 string name = reader["name"].ToString();
                 string pass = reader["password"].ToString();
                 int cash = Convert.ToInt32(reader["cash"]);

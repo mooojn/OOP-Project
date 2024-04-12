@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace AzureBankConsole.Util
 {
+    // this class contains all the choices that user(admin/client) can make in the application
     internal class Choice
     {
         // main choices

@@ -10,17 +10,11 @@ namespace AzureBankConsole.Util
     // this class is used to validate user input
     internal class Validation
     {
-        public static bool ValidDepositAmount(int amount)
+        public static bool IsWorthValid(int amount)
         {
             if (amount == 0 || amount < 0)
                 return false;
             return true;
-        }
-        public static bool ValidWithdrawAmount(int amount, int balance)
-        {
-            if (ValidDepositAmount(amount))
-                return amount < balance;
-            return false;
         }
         public static bool IsValid(string type, string check, bool flag = true)
         {

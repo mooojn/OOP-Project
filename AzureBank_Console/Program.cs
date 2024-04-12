@@ -139,7 +139,7 @@ namespace AzureBankConsole
                         assets = assetDL.ReadAll();    // get all assets
                         
                         // show all assets along with their index
-                        AdminUi.assetInfoHeader();
+                        AdminUi.AssetInfoHeader();
                         for (int i = 0; i < assets.Count; i++)
                             Console.WriteLine($"{i}, {assets[i].toString()}");
                         
@@ -150,7 +150,7 @@ namespace AzureBankConsole
                         users = userDL.ReadAll();
                         Common.ShowAllUsers(userDL, users);    // show all users
                         
-                        int index = AdminUi.GetIndex();
+                        int index = AdminUi.GetDeletionIndex();
                         if (users == null)    // in case no users are present
                             break;
                         if (index < 0 || index >= users.Count) {    // invalid index
