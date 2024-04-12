@@ -24,43 +24,49 @@ namespace AzureBankGui
         public AuthenticationPage()
         {
             InitializeComponent();
-            Common.AttachEvents(this);     // for the animation on tab change
+            Common.AttachEvents(this);    // for the animation on tab change
         }
         private void SignUp(object sender, EventArgs e)
         {
-            User user = InitializeUser();
+            User user = InitializeUser();    // initialize user object from the input fields
             if (user == null)
-                return;
-            else if (ObjectHandler.GetUserDL().UserNameExists(user.getName())) {
+                return;    // if any field is empty, return
+            else if (ObjectHandler.GetUserDL().UserNameExists(user.getName()))
+            {
                 MessageUi.ShowMessage("User Exists", "User with this username Already exists please use a different one");
                 nameBox.Focus();
-                return;
+                return;    // if user already exists, return
             }
+            // all conditions are met, create the user
             ObjectHandler.GetUserDL().Create(user);
             MessageUi.ShowMessage("Success", "Your account has successfully been registered with us", MessageDialogIcon.Information);
-            
             // as account is created, now user would want to sign in
-            label6_Click(sender, e);
+            ToggleMethodType(sender, e);
         }
         private void SignIn(object sender, EventArgs e)
         {
-            User usr = InitializeUser();
+            User usr = InitializeUser();    // initialize user object from the input fields
+            
             if (usr == null)
-                return;
-            if (!ObjectHandler.GetUserDL().UserNameExists(usr.getName())) {     // user not found
+                return;    // if any field is empty, return
+            if (!ObjectHandler.GetUserDL().UserNameExists(usr.getName()))    // user not found
+            {
                 MessageUi.ShowMessage("Invalid User", "User does not Exist", MessageDialogIcon.Error);
-                label6_Click(sender, e);     // as acc does not exist, user would want to register
+                ToggleMethodType(sender, e);    // as account does not exist, user would want to register
                 return;
             }
+            
             int userId = ObjectHandler.GetUserDL().FindUser(usr);
-            if (userId == 0)   // 0 means invalid password
+            
+            if (userId == 0)    // 0 means invalid password
             {
                 MessageUi.ShowMessage("Authentication Error", "Incorrect Password", MessageDialogIcon.Error);
                 passBox.Focus();
                 return;
             }
             usr = ObjectHandler.GetUserDL().Read(usr.getName());
-            if (userId == 1)      // userId '2' represents admin 
+            
+            if (userId == 1)      // userId '1' represents admin login
             {
                 LoadPage(new AdminPage(usr));
                 return;
@@ -72,21 +78,24 @@ namespace AzureBankGui
             if (UtilDL.NullBoxIn(mainPanel))
             {
                 MessageUi.NullBoxError();
-                return null;
+                return null;    // one of the box is empty
             }
-            else if (!Validation.IsValid("Username", nameBox.Text)) {
+            else if (!Validation.IsValid("Username", nameBox.Text)) 
+            {
                 nameBox.Focus();
-                return null;
+                return null;    // invalid username
             }
             else if (!Validation.IsValid("Password", passBox.Text, false))
             {
                 passBox.Focus();
-                return null;
+                return null;    // invalid password
             }
+            // all conditions are met, return the user object
             return new User(nameBox.Text, passBox.Text);
         }
         private void passBox_StateChange(object sender, EventArgs e)
         {
+            // toggle the password visibility icon
             if (passBox.PasswordChar == '●')
             {
                 passBoxBtn.Image = AzureBankGui.Properties.Resources.hide1;
@@ -100,31 +109,9 @@ namespace AzureBankGui
                 passBox.PasswordChar = '●';
             }
         }
-        private void LoadPage(Form form)
-        {
-            this.Hide();
-            form.Size = new Size(850, 550);
-            form.Show();
-        }
-        private void label4_Click(object sender, EventArgs e)
-        {
-        }
-        private void Form1_Load(object sender, EventArgs e)
-        {
-        }
-        private void guna2Panel1_Paint(object sender, PaintEventArgs e)
-        {
-        }
-
-        private void label6_Click(object sender, EventArgs e)
-        {
-            if (label6.Text == "Register")
-                changeSuit("Register", Color.FromArgb(80, 200, 120), "Already", "SignIn");
-            else
-                changeSuit("SignIn", Color.FromArgb(94, 148, 255), "Don't", "Register");
-        }
         private void changeSuit(string type, Color hex, string a, string head)
         {
+            // change the form functionality to act as register or sign in
             if (type == "Register")
             {
                 label2.Text = "Set Password";
@@ -137,14 +124,27 @@ namespace AzureBankGui
                 guna2Button1.Click -= SignUp;
                 guna2Button1.Click += SignIn;
             }
-            guna2Button1.Text = type;
-            guna2Button1.FillColor = hex;
+            guna2Button1.Text = type;   // text for the button
+            guna2Button1.FillColor = hex;   // color for the button
 
-            //label2.Text = "Set Password";
-            //label3.Text = "Set UserName";
+            label5.Text = $"{a} have an account?";    // text for the description
+            typeOfLogin.Text = head;    // text for the title
+        }
 
-            label5.Text = $"{a} have an account?";
-            label6.Text = head;
+        private void ToggleMethodType(object sender, EventArgs e)
+        {
+            // change the form type to register or sign in
+            if (typeOfLogin.Text == "Register")
+                changeSuit("Register", Color.FromArgb(80, 200, 120), "Already", "SignIn");
+            else
+                changeSuit("SignIn", Color.FromArgb(94, 148, 255), "Don't", "Register");
+        }
+        private void LoadPage(Form form)
+        {
+            // load the new page for user/admin
+            this.Hide();
+            form.Size = new Size(850, 550);
+            form.Show();
         }
     }
 }
