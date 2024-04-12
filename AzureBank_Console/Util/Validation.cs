@@ -7,6 +7,7 @@ using System.Xml.Linq;
 
 namespace AzureBankConsole.Util
 {
+    // this class is used to validate user input
     internal class Validation
     {
         public static bool ValidDepositAmount(int amount)
@@ -23,7 +24,7 @@ namespace AzureBankConsole.Util
         }
         public static bool IsValid(string type, string check, bool flag = true)
         {
-            if (string.IsNullOrWhiteSpace(check))
+            if (string.IsNullOrWhiteSpace(check)) 
             {
                 UtilUi.Error($"{type} can't be empty", false);
                 return false;
@@ -43,7 +44,7 @@ namespace AzureBankConsole.Util
                 UtilUi.Error($"{type} can't have a space", false);
                 return false;
             }
-            if (flag)
+            if (flag)    // check for username and password
             {
                 if (check.Any(char.IsDigit))
                 {
@@ -72,9 +73,7 @@ namespace AzureBankConsole.Util
             foreach (char c in str)
             {
                 if (!char.IsLetterOrDigit(c) && c != ' ')
-                {
                     return true;
-                }
             }
             return false;
         }

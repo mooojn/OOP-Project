@@ -13,26 +13,24 @@ namespace AzureBankConsole.Util
     {
         public static void ShowAllUsers(IUser userDL, List<User> users)
         {
-            MainUi.Header();
             users = userDL.ReadAll();
-            int i = 0;
-            AdminUi.userInfoHeader();
-            if (users == null)
-            {
-                UtilUi.Error("No Users Found", false);
+            if (users == null) {
+                UtilUi.Error("No Users Found", false);    // no users found in database
                 return;
             }
-            foreach (User usr in users) {
-                Console.WriteLine($"{i}, {usr.toString()}");
-                i++;
-            }
+            MainUi.Header();
+            
+            // show all users
+            AdminUi.userInfoHeader();
+            for (int i = 0; i < users.Count; i++)
+                Console.WriteLine($"{i}, {users[i].toString()}");
         }
         public static void ChangePassword(IUser userDL, User user) 
         {
             MainUi.Header();
-
-            string newPass = UtilUi.GetMaskedInput("Set new password: ");
-
+            string newPass = UtilUi.GetMaskedInput("Set new password: ");  // get new password
+            
+            // set new pass
             UtilUi.Process();
             user.setPassword(newPass);
             userDL.Update(user);
@@ -44,16 +42,14 @@ namespace AzureBankConsole.Util
         {
             MainUi.Header();
             string name = UserUi.GetName();
-            //userName is not unique so back to menu
-            if (userDL.UserNameExists(name))
-            {
+            if (userDL.UserNameExists(name)) {
                 UtilUi.Process();
-                UtilUi.Error("User already exists.");
+                UtilUi.Error("User already exists.");    //userName is not unique so back to menu
                 return false;
             }
-            string password = UtilUi.GetMaskedInput();   // as user unique so getting password
+            string password = UtilUi.GetMaskedInput();    // as user unique so getting password
             UtilUi.Process();
-            userDL.Create(new User(name, password));
+            userDL.Create(new User(name, password));    // create new user
             return true;
         }
     }
