@@ -12,6 +12,7 @@ using Guna.UI2.WinForms;
 
 namespace AzureBankGui.Utils
 {
+    // this class is responsible for validating user input
     internal class Validation
     {
         public static bool ValidDepositAmount(int amount)
@@ -55,7 +56,6 @@ namespace AzureBankGui.Utils
                     MessageUi.Error($"{type} can't have a number");
                     return false;
                 }
-
                 else if (ContainsSymbol(check))
                 {
                     MessageUi.Error($"{type} can't have a special character");
@@ -77,9 +77,7 @@ namespace AzureBankGui.Utils
             foreach (char c in str)
             {
                 if (!char.IsLetterOrDigit(c) && c != ' ')
-                {
                     return true;
-                }
             }
             return false;
         }

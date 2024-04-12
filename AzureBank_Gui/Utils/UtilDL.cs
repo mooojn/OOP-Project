@@ -16,38 +16,22 @@ namespace AzureBankGui
     {
         public static Form activeForm;
         public static Guna2Button activeButton;
-        //public static void ExecuteNonQuery(SqlCommand command, string errorMessage)
-        //{
-        //    Program.connection.Open();
-        //    try {
-        //        command.ExecuteNonQuery();
-        //    }
-        //    catch (Exception e) {
-        //        MessageBox.Show(e.Message);
-        //    }   
-        //    Program.connection.Close();
-        //}
         public static bool NullBoxIn(Control container)
         {
+            // Check if any textbox in the container is empty
             foreach (Control control in container.Controls)
             {
                 if (control is Guna2TextBox gunaTextBox && gunaTextBox.Text == "")
-                {
                     return true; // Return true as soon as an empty textbox is found
-                }
-                if (control is Guna2ComboBox guna2ComboBox && guna2ComboBox.Text == "")
-                {
+                else if (control is Guna2ComboBox guna2ComboBox && guna2ComboBox.Text == "")
                     return true;
-                }
             }
             return false;
         }
         public static void openChildForm(Form formToOpen, Guna2Panel mainPanel)
         {
             if (activeForm != null)
-            {
                 activeForm.Close();
-            }
             activeForm = formToOpen;
 
             formToOpen.TopLevel = false;
@@ -62,10 +46,9 @@ namespace AzureBankGui
         }
         public static void activeButtonStateChange(Guna2Button button)
         {
+            // Uncheck the previous button and check the new button
             if (activeButton != null)
-            {
                 activeButton.Checked = false;
-            }
             activeButton = button;
             activeButton.Checked = true;
         }
@@ -73,7 +56,7 @@ namespace AzureBankGui
         {
             FormToClose.Close();
             Form authPage = new AuthenticationPage();
-            authPage.Show();
+            authPage.Show();    // Show the main authentication page
         }
         public static void transactionClose()
         {

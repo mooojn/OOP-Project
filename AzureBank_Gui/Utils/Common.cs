@@ -20,35 +20,30 @@ namespace AzureBank.Utils
 
             promptForm.label2.Text = "Set new Password";
 
+            // event handlers
             promptForm.guna2Button1.Click -= promptForm.validatePass;
             promptForm.guna2Button1.Click += promptForm.changePass;
-
-
+            
+            // result of the prompt form
             DialogResult result = promptForm.ShowDialog();
             if (result == DialogResult.OK)
-            {
                 MessageUi.ShowMessage("Success", "Password changed successfully", MessageDialogIcon.Information);
-            }
             else
-            {
                 MessageUi.ShowMessage("Failed", "Password change was not successful");
-                // Authentication failed or canceled, handle accordingly
-            }
-
         }
         public static void LoadComboBox(Guna2ComboBox box, User user)
         {
             box.Items.Clear();
+            // Get all names from the user's data 
             List<string> names = ObjectHandler.GetUserDL().ReadAllNames(user.getName());
             foreach (string name in names)
-            {
                 box.Items.Add(name);
-            }
         }
         public static void AttachEvents(Control parent)
         {
             foreach (Control control in parent.Controls)
             {
+                // assign event handlers to controls
                 if (control is Guna2ImageButton imgButton)
                 {
                     imgButton.Enter += ButtonIE;

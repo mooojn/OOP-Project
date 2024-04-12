@@ -12,6 +12,7 @@ using Guna.UI2.WinForms;
 
 namespace AzureBankGui
 {
+    // this class is responsible for displaying messages to the user
     internal class MessageUi
     {
         public static void UnexpectedError()
