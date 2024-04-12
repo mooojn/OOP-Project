@@ -18,6 +18,7 @@ namespace AzureBank
         public AdminDashboard()
         {
             InitializeComponent();
+            Common.AttachEvents(this);    // for the animation on tab change
         }
         private void AdminDashboard_Load(object sender, EventArgs e)
         {

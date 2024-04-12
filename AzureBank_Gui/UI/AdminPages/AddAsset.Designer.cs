@@ -142,7 +142,6 @@
             this.Controls.Add(this.nameBox);
             this.Name = "AddAsset";
             this.Text = "AddAsset";
-            this.Load += new System.EventHandler(this.AddAsset_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

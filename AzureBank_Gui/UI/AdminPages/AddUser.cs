@@ -11,6 +11,7 @@ using System.Windows.Forms;
 using AzureBankDLL.BL;
 using Guna.UI2.WinForms;
 using AzureBank;
+using AzureBank.Utils;
 
 namespace AzureBankGui
 {
@@ -19,6 +20,7 @@ namespace AzureBankGui
         public AddUser()
         {
             InitializeComponent();
+            Common.AttachEvents(this);    // for the animation on tab change
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -48,11 +50,6 @@ namespace AzureBankGui
             Form f = new DeleteUser();
             f.Show();
         }
-        private void label3_Click(object sender, EventArgs e) {}
-        private void label2_Click(object sender, EventArgs e) {}
-        private void nameBox_TextChanged(object sender, EventArgs e) {}
         private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
-        private void passBox_TextChanged(object sender, EventArgs e) {}
-        private void label5_Click(object sender, EventArgs e) {}
     }
 }

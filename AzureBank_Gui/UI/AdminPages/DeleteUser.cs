@@ -19,6 +19,7 @@ namespace AzureBank
         {
             InitializeComponent();
             Common.LoadComboBox(nameBox, AdminPage.admin);    // load the users in the combobox
+            Common.AttachEvents(this);    // for the animation on tab change
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
@@ -33,6 +34,5 @@ namespace AzureBank
             MessageUi.ShowMessage("Success", "User deleted Successfully", MessageDialogIcon.Information);
             Common.LoadComboBox(nameBox, AdminPage.admin);
         }
-
     }
 }

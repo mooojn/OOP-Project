@@ -103,7 +103,6 @@
             this.totalLiq.Size = new System.Drawing.Size(172, 62);
             this.totalLiq.TabIndex = 4;
             this.totalLiq.Text = "30.00";
-            this.totalLiq.Click += new System.EventHandler(this.cashAmount_Click);
             // 
             // guna2GradientPanel1
             // 

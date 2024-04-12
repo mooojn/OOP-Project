@@ -36,6 +36,5 @@ namespace AzureBank
             this.usersTable.Width = 450;
             this.usersTable.DataSource = dt;
         }
-        private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
     }
 }

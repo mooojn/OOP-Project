@@ -47,7 +47,6 @@
             this.label3.TabIndex = 31;
             this.label3.Text = "UserName";
             this.label3.UseCompatibleTextRendering = true;
-            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label2
             // 
@@ -59,7 +58,6 @@
             this.label2.TabIndex = 30;
             this.label2.Text = "Set Password";
             this.label2.UseCompatibleTextRendering = true;
-            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // nameBox
             // 
@@ -88,7 +86,6 @@
             this.nameBox.SelectedText = "";
             this.nameBox.Size = new System.Drawing.Size(457, 63);
             this.nameBox.TabIndex = 26;
-            this.nameBox.TextChanged += new System.EventHandler(this.nameBox_TextChanged);
             // 
             // guna2HtmlLabel1
             // 
@@ -127,7 +124,6 @@
             this.passBox.Size = new System.Drawing.Size(457, 63);
             this.passBox.TabIndex = 27;
             this.passBox.UseSystemPasswordChar = true;
-            this.passBox.TextChanged += new System.EventHandler(this.passBox_TextChanged);
             // 
             // guna2Button1
             // 

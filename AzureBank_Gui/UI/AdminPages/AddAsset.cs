@@ -11,6 +11,7 @@ using AzureBankGui;
 using AzureBankDLL.BL;
 using Guna.UI2.WinForms;
 using AzureBankGui.Utils;
+using AzureBank.Utils;
 
 namespace AzureBank
 {
@@ -19,6 +20,7 @@ namespace AzureBank
         public AddAsset()
         {
             InitializeComponent();
+            Common.AttachEvents(this);    // for the animation on tab change
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
@@ -38,6 +40,5 @@ namespace AzureBank
             ObjectHandler.GetAssetDL().Create(new Asset(name, worth));
             MessageUi.ShowMessage("Success", "Asset created successfully", MessageDialogIcon.Information);
         }
-        private void AddAsset_Load(object sender, EventArgs e) {}
     }
 }
