@@ -190,19 +190,7 @@ namespace AzureBankConsole
                 }
             }
         userLogin:    // goto label to login as user
-            ///////////// testtttt start//////////////////////////////////////
-            MainUi.Header();
-            Account acc = accountDL.Read(user.getName());
-            if (acc != null)
-                user.setAccount(acc);
-            else
-            {
-                Account account = TEST.CreateAcc(user.getName());
-                user.setAccount(account);
-                accountDL.Create(account);
-            }
-            ///////////// testtttt end//////////////////////////////////////
-
+            UserUi.CheckAccount(accountDL, user);
             // user loop
             while (true) {
                 choice = MainUi.UserMenu();
@@ -336,6 +324,7 @@ namespace AzureBankConsole
                 }
             }
         account:    // goto label to show account info
+            // account loop
             while (true) {
                 choice = MainUi.AccountMenu();
                 switch (choice) {
