@@ -83,7 +83,7 @@ namespace AzureBankConsole
             if (accType == "Saving")
                 return new SavingAccount(number + "SAV", holderName, amount);
             else
-                return new CurrentAccount(number + "CUR", holderName, amount);
+                return new CurrentAccount(number + "CUR" , holderName, amount);
         }
         public static void CheckAccount(IAccount accountDL, User user)
         {
