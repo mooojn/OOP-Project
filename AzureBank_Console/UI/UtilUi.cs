@@ -94,7 +94,7 @@ namespace AzureBankConsole
             else
                 return GetMaskedInput(msg);     // not valid so try again
         }
-        public static void ShowWord(string word, ConsoleColor color)
+        public static void ShowWord(string word, ConsoleColor color = ConsoleColor.White)
         {
             Console.ForegroundColor = color;
             Console.Write(word);    // print the word in the specified color
@@ -124,6 +124,18 @@ namespace AzureBankConsole
                 Thread.Sleep(delay);
             }
             Console.ResetColor();
+        }
+        public static string GenerateRandomString(int length)
+        {
+            Random rand = new Random();
+            string result = "";
+
+            for (int i = 0; i < length; i++)
+            {
+                int num = rand.Next(0, 10);
+                result += num.ToString();
+            }
+            return result;
         }
     }
 }

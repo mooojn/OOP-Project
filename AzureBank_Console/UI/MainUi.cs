@@ -11,7 +11,15 @@ namespace AzureBankConsole
         public static void Header()
         {
             Console.Clear();
-            Console.WriteLine("......Azure Bank......\n");
+            
+            UtilUi.ShowWord("...... ", ConsoleColor.DarkGreen);
+            
+            UtilUi.ShowWord("Azure ", ConsoleColor.DarkCyan);
+            UtilUi.ShowWord("Bank ");
+            
+            UtilUi.ShowWord("......", ConsoleColor.DarkGreen);
+            
+            Console.WriteLine("\n");
         }
         public static string Menu()
         {
@@ -23,25 +31,6 @@ namespace AzureBankConsole
             Console.WriteLine("3. Exit");
             Console.ResetColor();
             // input
-            return UtilUi.GetChoice();
-        }
-        public static string UserMenu()
-        {
-            Header();
-            // menu
-            Console.WriteLine("1. Check Portfolio");
-            Console.WriteLine("2. Deposit Cash");
-            Console.WriteLine("3. Withdraw Cash");
-            Console.WriteLine("4. Transfer Cash");
-            Console.WriteLine("5. View Transactions");
-            Console.WriteLine("6. Block/Unblock Transactions");
-            Console.WriteLine("7. Change Password");
-            Console.WriteLine("8. Delete Account");
-            
-            Console.ForegroundColor = ConsoleColor.Red;
-            Console.WriteLine("9. Logout");
-            Console.ResetColor();
-            // getting input
             return UtilUi.GetChoice();
         }
         public static string AdminMenu()
@@ -61,6 +50,41 @@ namespace AzureBankConsole
             Console.WriteLine("8. Logout");
             Console.ResetColor();
 
+            // getting input
+            return UtilUi.GetChoice();
+        }
+        public static string UserMenu()
+        {
+            Header();
+            // menu
+            Console.WriteLine("1. View Portfolio");
+            Console.WriteLine("2. View Account");
+            Console.WriteLine("3. Deposit Cash");
+            Console.WriteLine("4. Withdraw Cash");
+            Console.WriteLine("5. Transfer Cash");
+            Console.WriteLine("6. View Transactions");
+            Console.WriteLine("7. Block/Unblock Transactions");
+            Console.WriteLine("8. Change Password");
+            Console.WriteLine("9. Delete Account");
+            
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine("10. Logout");
+            Console.ResetColor();
+            // getting input
+            return UtilUi.GetChoice();
+        }
+        public static string AccountMenu()
+        {
+            Header();
+            // menu
+            Console.WriteLine("1. View Information");
+            Console.WriteLine("2. Deposit Cash");
+            Console.WriteLine("3. Withdraw Cash");
+            //Console.WriteLine("4. Change Account");
+
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine("5. Go Back");
+            Console.ResetColor();
             // getting input
             return UtilUi.GetChoice();
         }

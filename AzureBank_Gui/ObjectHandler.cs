@@ -12,9 +12,9 @@ namespace AzureBankGui
 {
     internal class ObjectHandler
     {
-        private static IUser userDL = new UserFH();
-        private static ITransaction transactionDL = new TransactionFH();
-        private static IAsset assetDL = new AssetFH();
+        private static IUser userDL = new UserDB();
+        private static ITransaction transactionDL = new TransactionDB();
+        private static IAsset assetDL = new AssetDB();
         public static IUser GetUserDL() 
         {
             return userDL;

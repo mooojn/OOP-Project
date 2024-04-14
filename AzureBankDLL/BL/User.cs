@@ -17,6 +17,7 @@ namespace AzureBankDLL.BL
         private string password;
         private int cash;
         private bool transactionStatus;
+        private Account account;
         private List<History> history;
         
         // constructor for initializing
@@ -26,6 +27,7 @@ namespace AzureBankDLL.BL
             this.password = pass;
             this.cash = 0;  // default val
             this.history = new List<History>();
+            this.account = null;
         }
         public User(string name, string pass, int cash, bool status)
         {
@@ -34,6 +36,7 @@ namespace AzureBankDLL.BL
             this.cash = cash;  // default val
             this.transactionStatus = status;
             this.history = new List<History>();
+            this.account = null;
         }
         public int DepositCash(int depositAmount)
         {
@@ -81,6 +84,10 @@ namespace AzureBankDLL.BL
         {
             return cash;
         }
+        public Account getAccount()
+        {
+            return account;
+        }
         public List<History> getHistory()
         {
             return history;
@@ -104,6 +111,10 @@ namespace AzureBankDLL.BL
         public void setHistory(List<History> history)
         {
             this.history = history;
+        }
+        public void setAccount(Account account)
+        {
+            this.account = account;
         }
         public void setTransactionStatus(bool status)
         {

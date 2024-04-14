@@ -18,11 +18,11 @@ namespace AzureBankDLL.DL.DB
         public bool Create(User user)
         {
             DataBase.openConnection();
-         
+
             string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";    // 0 cash, 1 transactionStatus
             SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
-            
+
             DataBase.closeConnection();
             return true;
         }

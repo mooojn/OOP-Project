@@ -50,12 +50,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BL\Account.cs" />
     <Compile Include="BL\Asset.cs" />
+    <Compile Include="BL\CurrentAccount.cs" />
     <Compile Include="BL\History.cs" />
+    <Compile Include="BL\SavingAccount.cs" />
     <Compile Include="BL\User.cs" />
+    <Compile Include="DLInterfaces\IAccount.cs" />
     <Compile Include="DLInterfaces\IAsset.cs" />
     <Compile Include="DLInterfaces\ITransaction.cs" />
     <Compile Include="DLInterfaces\IUser.cs" />
+    <Compile Include="DL\DB\AccountDB.cs" />
     <Compile Include="DL\DB\AssetDB.cs" />
     <Compile Include="DL\DB\TransactionDB.cs" />
     <Compile Include="DL\DB\UserDB.cs" />

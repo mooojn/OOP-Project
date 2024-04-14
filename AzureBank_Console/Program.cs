@@ -10,6 +10,7 @@ using AzureBankDLL.DL.DB;
 using AzureBankDLL.DL.FH;
 using AzureBankConsole.Util;
 using System.Threading;
+using System.Security.Principal;
 
 
 namespace AzureBankConsole
@@ -19,9 +20,10 @@ namespace AzureBankConsole
         static void Main(string[] args)
         {
             // DataBase objects
-            IUser userDL = new UserDB();
+            IUser userDL = new UserDB();            
             ITransaction transactionDL = new TransactionDB();
             IAsset assetDL = new AssetDB();
+            IAccount accountDL = new AccountDB();
 
         logout:    // goto label to logout admin/client
             // vars for main loop
@@ -188,10 +190,26 @@ namespace AzureBankConsole
                 }
             }
         userLogin:    // goto label to login as user
+            ///////////// testtttt start//////////////////////////////////////
+            MainUi.Header();
+            Account acc = accountDL.Read(user.getName());
+            if (acc != null)
+                user.setAccount(acc);
+            else
+            {
+                Account account = TEST.CreateAcc(user.getName());
+                user.setAccount(account);
+                accountDL.Create(account);
+            }
+            ///////////// testtttt end//////////////////////////////////////
+
             // user loop
             while (true) {
                 choice = MainUi.UserMenu();
                 switch (choice) {
+                    case Choice.VIEW_ACCOUNT:
+                        goto account;
+
                     case Choice.CHECK_PORTFOLIO:
                         MainUi.Header();
                         Console.WriteLine($"Cash: ${user.getCash()}");    // show cash holdings of current user
@@ -316,7 +334,57 @@ namespace AzureBankConsole
                         UtilUi.InvalidChoice();
                         break;
                 }
-            } 
+            }
+        account:    // goto label to show account info
+            while (true) {
+                choice = MainUi.AccountMenu();
+                switch (choice) {
+                    case Choice.ACC_VIEW_INFORMATION:
+                        MainUi.Header();
+                        Console.WriteLine(user.getAccount().toString());
+                        UtilUi.PressAnyKey();
+                        break;
+
+                    case Choice.ACC_DEPOSIT_CASH:
+                        MainUi.Header();
+                        amount = UserUi.GetAmount("Deposit");
+                        status = user.getAccount().Deposit(amount);
+                        if (status == -1)
+                            UtilUi.Error("Invalid Amount");
+                        else if (status == -2)
+                            UtilUi.Error("Deposit Amount can't be Zero");
+                        else if (status == -3)
+                            UtilUi.Error("Account can't have more than $1k");
+                        else
+                        {
+                            UtilUi.Success("Cash Deposited Successfully");
+                            accountDL.Update(user.getAccount());
+                        }
+                        break;
+
+                    case Choice.ACC_WITHDRAW_CASH:
+                        MainUi.Header();
+                        
+                        amount = user.getAccount().getType() == "Current" ? UserUi.GetAmount("Withdraw") : 0;
+                        
+                        status = user.getAccount().Withdraw(amount);
+                        if (status == -1)
+                            UtilUi.Error("Invalid Amount");
+                        else if (status == -2)
+                            UtilUi.Error("Withdraw Amount can't be Zero");
+                        else if (status == -3)
+                            UtilUi.Error("Withdraw Amount was greater than available Balance");
+                        else
+                        {
+                            UtilUi.Success("Cash Withdrawal Successful");
+                            accountDL.Update(user.getAccount());
+                        }
+                        break;
+                        
+                    case Choice.ACC_GO_BACK:
+                        goto userLogin;
+                }
+            }
         }
     }
 }

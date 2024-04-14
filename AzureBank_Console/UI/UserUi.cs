@@ -45,13 +45,26 @@ namespace AzureBankConsole
             Console.WriteLine($"type, amount, date");
             Console.ResetColor();
         }
-        public static void AccountDeletionWarning(int cash) 
+        public static void AccountDeletionWarning(int cash)
         {
             Console.WriteLine($"Your funds '${cash}' would be lost");
             UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
             Console.Write($"(press 1) or press any key to ");
             UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
             Console.Write($"your account permanently: ");
+        }        
+        public static string GetAccountType()
+        {
+        Again:
+            Console.Write("Enter the type of account Saving(1) or Current(2)\nPress the number key: ");
+            char key = Console.ReadKey().KeyChar;
+            Console.WriteLine();    // new line
+            if (key == '1')
+                return "Saving";
+            else if (key == '2')
+                return "Current";
+            else
+                goto Again;
         }
     }
 }
