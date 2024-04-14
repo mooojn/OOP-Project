@@ -355,7 +355,8 @@ namespace AzureBankConsole
                         MainUi.Header();
                         
                         amount = user.getAccount().getType() == "Current" ? UserUi.GetAmount("Withdraw") : 0;
-                        
+                        flag = user.getAccount().getType() == "Current" ? true : false;
+
                         status = user.getAccount().Withdraw(amount);
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
@@ -365,6 +366,14 @@ namespace AzureBankConsole
                             UtilUi.Error("Withdraw Amount was greater than available Balance");
                         else
                         {
+                            if (flag)
+                            {
+                                Console.WriteLine($"Balance: {user.getAccount().getBalance()}");
+                                Console.WriteLine($"After Profit: {user.getAccount().getProfit()}");
+                                Console.WriteLine($"Press any key to Withdraw");
+                                Console.ReadKey();
+                            }
+                            
                             UtilUi.Success("Cash Withdrawal Successful");
                             accountDL.Update(user.getAccount());
                         }

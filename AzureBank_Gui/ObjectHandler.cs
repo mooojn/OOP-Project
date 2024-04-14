@@ -15,6 +15,7 @@ namespace AzureBankGui
         private static IUser userDL = new UserDB();
         private static ITransaction transactionDL = new TransactionDB();
         private static IAsset assetDL = new AssetDB();
+        private static IAccount accountDL = new AccountDB();
         public static IUser GetUserDL() 
         {
             return userDL;
@@ -26,6 +27,10 @@ namespace AzureBankGui
         public static IAsset GetAssetDL()
         {
             return assetDL;
+        }
+        public static IAccount GetAccountDL()
+        {
+            return accountDL;
         }
     }
 }

@@ -13,19 +13,10 @@ namespace AzureBankDLL.BL
         
         public override int Withdraw(int amount)
         {
-            amount = 0;      // no use
-            
-            
-            Console.WriteLine($"Balance: {balance}");
-            balance = Convert.ToInt32(CheckProfit());
-            Console.WriteLine($"After Profit: {balance}");
-            Console.WriteLine($"Press any key to Withdraw");
-            Console.ReadKey();
             balance = 0;      // as cash is withdrawn
-
             return 0;
         }
-        private float CheckProfit()
+        public override float getProfit()
         {
             return balance * interestRate + balance;
         }

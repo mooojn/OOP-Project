@@ -46,7 +46,7 @@ namespace AzureBankDLL.BL
         {
             return $"AccountNumber: {number}\nBalance: {balance}";
         }
-
+        public virtual float getProfit() { return 0; }
         public virtual int Deposit(int amount)
         {
             // error encountered so returning   

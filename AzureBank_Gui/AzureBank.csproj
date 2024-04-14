@@ -100,11 +100,23 @@
     <Compile Include="UI\AdminPages\ViewUsers.Designer.cs">
       <DependentUpon>ViewUsers.cs</DependentUpon>
     </Compile>
+    <Compile Include="UI\UserPages\ViewAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserPages\ViewAccount.Designer.cs">
+      <DependentUpon>ViewAccount.cs</DependentUpon>
+    </Compile>
     <Compile Include="UI\UserPages\AuthPromptForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="UI\UserPages\AuthPromptForm.Designer.cs">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\UserPages\CreateAccount.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\UserPages\CreateAccount.Designer.cs">
+      <DependentUpon>CreateAccount.cs</DependentUpon>
     </Compile>
     <Compile Include="UI\UserPages\DepositWithdraw.cs">
       <SubType>Form</SubType>
@@ -177,6 +189,9 @@
     <EmbeddedResource Include="UI\AdminPages\ViewUsers.resx">
       <DependentUpon>ViewUsers.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserPages\ViewAccount.resx">
+      <DependentUpon>ViewAccount.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\AuthPromptForm.resx">
       <DependentUpon>AuthPromptForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -193,6 +208,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPage.resx">
       <DependentUpon>UserPage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\UserPages\CreateAccount.resx">
+      <DependentUpon>CreateAccount.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UI\UserPages\DepositWithdraw.resx">
       <DependentUpon>DepositWithdraw.cs</DependentUpon>
