@@ -372,6 +372,10 @@ namespace AzureBankConsole
                         
                     case Choice.ACC_GO_BACK:
                         goto userLogin;
+
+                    default:
+                        UtilUi.InvalidChoice();
+                        break;
                 }
             }
         }
