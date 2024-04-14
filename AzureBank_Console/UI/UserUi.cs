@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Xml.Linq;
 using AzureBankConsole.Util;
 using AzureBankDLL.BL;
+using AzureBankDLL.DL.DB;
 using AzureBankDLL.DLInterfaces;
 
 namespace AzureBankConsole
@@ -65,6 +66,37 @@ namespace AzureBankConsole
                 return "Current";
             else
                 goto Again;
+        }
+        public static Account CreateAcc(string name)
+        {
+            string randomNums = UtilUi.GenerateRandomString(3);
+
+            string number = $"{name.ToLower()}{randomNums}@AzureBank";
+            string holderName = name;
+            string accType = UserUi.GetAccountType();
+        Again:
+            int amount = UserUi.GetAmount("Deposit initially: ");
+            if (amount < 0 || amount == 0)
+                goto Again;
+
+            UtilUi.Success("Your account has been created successfully");
+            if (accType == "Saving")
+                return new SavingAccount(number + "SAV", holderName, amount);
+            else
+                return new CurrentAccount(number + "CUR", holderName, amount);
+        }
+        public static void CheckAccount(IAccount accountDL, User user)
+        {
+            MainUi.Header();
+            Account acc = accountDL.Read(user.getName());
+            if (acc != null)
+                user.setAccount(acc);
+            else
+            {
+                Account account = CreateAcc(user.getName());
+                user.setAccount(account);
+                accountDL.Create(account);
+            }
         }
     }
 }
