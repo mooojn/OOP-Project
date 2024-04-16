@@ -66,7 +66,8 @@ namespace AzureBankDLL.DL.DB
             
             // deleting from both tables
             string query = $"DELETE FROM Users WHERE name = '{userName}'\n" +
-                           $"DELETE FROM Transactions WHERE userName = '{userName}'";
+                           $"DELETE FROM Transactions WHERE userName = '{userName}'" +
+                           $"DELETE FROM Accounts WHERE userName = '{userName}'";
             
             SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
@@ -155,7 +156,7 @@ namespace AzureBankDLL.DL.DB
         public void NUKE()
         {
             DataBase.openConnection();
-            string query = "DELETE FROM Users DELETE FROM Transactions DELETE FROM Assets";
+            string query = "DELETE FROM Users DELETE FROM Transactions DELETE FROM Assets DELETE FROM Accounts";
             SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
             DataBase.closeConnection();
