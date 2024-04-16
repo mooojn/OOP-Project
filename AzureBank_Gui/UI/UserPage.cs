@@ -12,6 +12,7 @@ using AzureBankDLL.BL;
 using AzureBankDLL.DL;
 using AzureBank.Utils;
 using AzureBank;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 
 namespace AzureBankGui
@@ -65,8 +66,22 @@ namespace AzureBankGui
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            UtilDL.activeButtonStateChange(guna2Button3);
+            UtilDL.activeButtonStateChange(guna2Button2);
             UtilDL.openChildForm(new ViewAccount(), mainPanel);
+        }
+
+        private void guna2Button4_Click(object sender, EventArgs e)
+        {
+            UtilDL.activeButtonStateChange(guna2Button4);
+            AuthPromptForm promptForm = new AuthPromptForm(UserPage.user);
+            //UtilDL.openChildForm(promptForm, mainPanel);
+            DialogResult result = promptForm.ShowDialog();
+            if (result == DialogResult.OK)
+            {
+                //MessageBox.Show("Account deleted successfully.");
+                ObjectHandler.GetUserDL().Delete(UserPage.user.getName());  // remove from the dataBase 
+                UtilDL.LogOut(this);
+            }
         }
     }
 }

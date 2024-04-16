@@ -24,7 +24,13 @@ namespace AzureBank
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(nameBox.Text)) 
+            
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
+            if (string.IsNullOrEmpty(nameBox.Text))
             {
                 MessageUi.ShowMessage("Empty Name", "Please select a user to remove", MessageDialogIcon.Warning);
                 return;    // if the name is empty

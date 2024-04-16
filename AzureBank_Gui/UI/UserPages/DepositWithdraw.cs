@@ -25,53 +25,11 @@ namespace AzureBankGui
         }
         private void DepositFunc(object sender, EventArgs e)
         {
-            int cash = 0;
-            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
-            {
-                amountBox.Focus();
-                return;      // if the conversion fails, return
-            }
-            int flag = UserPage.user.DepositCash(cash);
-            // if the deposit was successful
-            if (flag == 0)
-            {
-                MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
-                ObjectHandler.GetUserDL().Update(UserPage.user);
-                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Deposit", cash));
-            }
-            // conditions for errors
-            else if (flag == -1)
-                MessageUi.NegativeAmountError("Deposit");
-            else if (flag == -2)
-                MessageUi.ZeroAmountError("Deposit");
-            else
-                MessageUi.UnexpectedError();
+            
         }
         private void WiithdrawFunc(object sender, EventArgs e)
         {
-            int cash = 0;
-            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
-            {
-                amountBox.Focus();
-                return;      // if the conversion fails, return
-            }
-            int flag = UserPage.user.WithdrawCash(cash);
-            // if the withdrawal was successful
-            if (flag == 0)
-            {
-                MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
-                ObjectHandler.GetUserDL().Update(UserPage.user);
-                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
-            }
-            // conditions for errors
-            else if (flag == -1)
-                MessageUi.NegativeAmountError("Withdraw");
-            else if (flag == -2)
-                MessageUi.ZeroAmountError("Withdraw");
-            else if (flag == -3)
-                MessageUi.ShowMessage("Out of Balance", "Withdraw amount was greater than the balance of the Account");
-            else
-                MessageUi.UnexpectedError();
+            
         }
         private void addAmount(int amount)
         {
@@ -102,5 +60,59 @@ namespace AzureBankGui
             UtilDL.transactionClose();
         }
         private void DepositWithdraw_Load(object sender, EventArgs e) {}
+
+        private void transactICON_Click(object sender, EventArgs e)
+        {
+            transactICON.ImageSize = new Size(32, 32);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
+            int flag = UserPage.user.DepositCash(cash);
+            // if the deposit was successful
+            if (flag == 0)
+            {
+                MessageUi.ShowMessage("Success", "Cash has been deposited successfully", MessageDialogIcon.Information);
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Deposit", cash));
+            }
+            // conditions for errors
+            else if (flag == -1)
+                MessageUi.NegativeAmountError("Deposit");
+            else if (flag == -2)
+                MessageUi.ZeroAmountError("Deposit");
+            else
+                MessageUi.UnexpectedError();
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
+            int flag = UserPage.user.WithdrawCash(cash);
+            // if the withdrawal was successful
+            if (flag == 0)
+            {
+                MessageUi.ShowMessage("Success", "Cash Withdrawal was successful", MessageDialogIcon.Information);
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
+            }
+            // conditions for errors
+            else if (flag == -1)
+                MessageUi.NegativeAmountError("Withdraw");
+            else if (flag == -2)
+                MessageUi.ZeroAmountError("Withdraw");
+            else if (flag == -3)
+                MessageUi.ShowMessage("Out of Balance", "Withdraw amount was greater than the balance of the Account");
+            else
+                MessageUi.UnexpectedError();
+        }
     }
 }

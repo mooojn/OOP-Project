@@ -24,6 +24,12 @@ namespace AzureBank
         }
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
             string name = nameBox.Text;
             int worth = 0;
             if (!Validation.IsValid("Asset Name", name))

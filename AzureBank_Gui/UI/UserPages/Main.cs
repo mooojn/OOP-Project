@@ -23,17 +23,13 @@ namespace AzureBankGui
         {
             InitializeComponent();
             Common.AttachEvents(this);     // for the animation on tab change
-
-            cashAmount.Text = UserPage.user.getCash().ToString();   // set the cash amount
-            // vars set
+                                           // vars set
             panel = mainPanel;
             userPage = f;
-            
-            string msg = !UserPage.user.getTransactionStatus() ? "Enable" : "Disable";
-            guna2Button3.Text = $"{msg} Transactions";
         }
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
             if (!UserPage.user.getTransactionStatus()) 
             {
                 MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
@@ -45,6 +41,7 @@ namespace AzureBankGui
 
         private void guna2ImageButton4_Click(object sender, EventArgs e)
         {
+            guna2ImageButton4.ImageSize = new Size(32, 32);
             if (!UserPage.user.getTransactionStatus())
             {
                 MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
@@ -66,7 +63,7 @@ namespace AzureBankGui
         }
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            Common.ChangePassword(UserPage.user);
+            
         }
 
         private void guna2Button3_Click(object sender, EventArgs e)
@@ -74,13 +71,51 @@ namespace AzureBankGui
             bool flag = !UserPage.user.getTransactionStatus();  // toggling the status
             UserPage.user.setTransactionStatus(flag);
             ObjectHandler.GetUserDL().Update(UserPage.user);
-            // change the text of the button
-            string msg = !flag ? "Enable" : "Disable";
-            guna2Button3.Text = $"{msg} Transactions";
         }
         private void transactionHistory_CellContentClick(object sender, DataGridViewCellEventArgs e) {}
-        private void Main_Load(object sender, EventArgs e) {}
+        private void Main_Load(object sender, EventArgs e) 
+        {
+            changeTransactionStatusIcon();
+            cashAmount.Text = UserPage.user.getCash().ToString();   // set the cash amount
+        }
         private void guna2ImageButton2_Click(object sender, EventArgs e) {}
         private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e) {}
+
+        private void guna2ImageButton3_Click(object sender, EventArgs e)
+        {
+            transactICON.ImageSize = new Size(32, 32);
+            bool flag = !UserPage.user.getTransactionStatus();  // toggling the status
+            UserPage.user.setTransactionStatus(flag);
+            ObjectHandler.GetUserDL().Update(UserPage.user);
+            changeTransactionStatusIcon();
+            // change the text of the button
+            //string msg = !flag ? "Enable" : "Disable";
+            //guna2Button3.Text = $"{msg} Transactions";
+        }
+        private void changeTransactionStatusIcon()
+        {
+            if (UserPage.user.getTransactionStatus())
+                // unlocked
+                transactICON.Image = AzureBank.Properties.Resources.credit_card_payment;
+            else
+                // locked
+                transactICON.Image = AzureBank.Properties.Resources.no_credit_card;
+        }
+
+        private void guna2ImageButton2_Click_1(object sender, EventArgs e)
+        {
+            guna2ImageButton2.ImageSize = new Size(32, 32);
+            Common.ChangePassword(UserPage.user);
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

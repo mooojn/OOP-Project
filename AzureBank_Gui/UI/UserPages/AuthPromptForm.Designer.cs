@@ -28,25 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(AuthPromptForm));
             this.label2 = new System.Windows.Forms.Label();
             this.passBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.guna2Button1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SuspendLayout();
-            // 
-            // guna2Button1
-            // 
-            this.guna2Button1.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.guna2Button1.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.guna2Button1.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.guna2Button1.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.guna2Button1.ForeColor = System.Drawing.Color.White;
-            this.guna2Button1.Location = new System.Drawing.Point(294, 310);
-            this.guna2Button1.Name = "guna2Button1";
-            this.guna2Button1.Size = new System.Drawing.Size(161, 57);
-            this.guna2Button1.TabIndex = 1;
-            this.guna2Button1.Text = "Proceed";
-            this.guna2Button1.Click += new System.EventHandler(this.validatePass);
             // 
             // label2
             // 
@@ -87,14 +74,42 @@
             this.passBox.TabIndex = 0;
             this.passBox.UseSystemPasswordChar = true;
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(332, 389);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(103, 28);
+            this.label7.TabIndex = 50;
+            this.label7.Text = "Proceed";
+            // 
+            // guna2Button1
+            // 
+            this.guna2Button1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2Button1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2Button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2Button1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2Button1.Image = ((System.Drawing.Image)(resources.GetObject("guna2Button1.Image")));
+            this.guna2Button1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2Button1.ImageRotate = 0F;
+            this.guna2Button1.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2Button1.Location = new System.Drawing.Point(311, 258);
+            this.guna2Button1.Name = "guna2Button1";
+            this.guna2Button1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2Button1.Size = new System.Drawing.Size(128, 128);
+            this.guna2Button1.TabIndex = 49;
+            this.guna2Button1.Click += new System.EventHandler(this.transactICON_Click);
+            // 
             // AuthPromptForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.passBox);
-            this.Controls.Add(this.guna2Button1);
             this.Name = "AuthPromptForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AuthPromptForm";
@@ -106,7 +121,8 @@
 
         #endregion
         public System.Windows.Forms.Label label2;
-        public Guna.UI2.WinForms.Guna2Button guna2Button1;
         public Guna.UI2.WinForms.Guna2TextBox passBox;
+        private System.Windows.Forms.Label label7;
+        public Guna.UI2.WinForms.Guna2ImageButton guna2Button1;
     }
 }

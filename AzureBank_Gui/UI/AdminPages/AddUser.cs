@@ -25,7 +25,18 @@ namespace AzureBankGui
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
-            if (!Validation.IsValid("Username", nameBox.Text)) 
+            
+        }
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
+            if (!Validation.IsValid("Username", nameBox.Text))
             {
                 nameBox.Focus();
                 return;    // if the name is invalid
@@ -45,11 +56,17 @@ namespace AzureBankGui
             ObjectHandler.GetUserDL().Create(new User(nameBox.Text, passBox.Text));
             MessageUi.ShowMessage("Success", "User created successfully", MessageDialogIcon.Information);
         }
-        private void guna2Button2_Click(object sender, EventArgs e)
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
         {
+            guna2ImageButton2.ImageSize = new Size(32, 32);
             Form f = new DeleteUser();
             f.Show();
         }
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
+
+        private void guna2ImageButton2_Leave(object sender, EventArgs e)
+        {
+            
+        }
     }
 }

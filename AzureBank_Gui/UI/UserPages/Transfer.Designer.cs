@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Transfer));
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button2 = new Guna.UI2.WinForms.Guna2Button();
@@ -36,8 +37,9 @@
             this.amountBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.label1 = new System.Windows.Forms.Label();
-            this.transferBtn = new Guna.UI2.WinForms.Guna2Button();
             this.transferNames = new Guna.UI2.WinForms.Guna2ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.transactICON = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SuspendLayout();
             // 
             // guna2Button3
@@ -164,22 +166,6 @@
             this.label1.Text = "Transfer To";
             this.label1.UseCompatibleTextRendering = true;
             // 
-            // transferBtn
-            // 
-            this.transferBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.transferBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.transferBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.transferBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.transferBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(170)))), ((int)(((byte)(231)))));
-            this.transferBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.transferBtn.ForeColor = System.Drawing.Color.White;
-            this.transferBtn.Location = new System.Drawing.Point(394, 544);
-            this.transferBtn.Name = "transferBtn";
-            this.transferBtn.Size = new System.Drawing.Size(196, 72);
-            this.transferBtn.TabIndex = 2;
-            this.transferBtn.Text = "Transfer";
-            this.transferBtn.Click += new System.EventHandler(this.transferBtn_Click);
-            // 
             // transferNames
             // 
             this.transferNames.BackColor = System.Drawing.Color.Transparent;
@@ -196,13 +182,42 @@
             this.transferNames.TabIndex = 1;
             this.transferNames.SelectedIndexChanged += new System.EventHandler(this.transferNames_SelectedIndexChanged);
             // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(439, 657);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(116, 28);
+            this.label7.TabIndex = 48;
+            this.label7.Text = "Transfer";
+            this.label7.Click += new System.EventHandler(this.label7_Click);
+            // 
+            // transactICON
+            // 
+            this.transactICON.BackColor = System.Drawing.Color.Transparent;
+            this.transactICON.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.transactICON.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transactICON.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.transactICON.Image = ((System.Drawing.Image)(resources.GetObject("transactICON.Image")));
+            this.transactICON.ImageOffset = new System.Drawing.Point(0, 0);
+            this.transactICON.ImageRotate = 0F;
+            this.transactICON.ImageSize = new System.Drawing.Size(32, 32);
+            this.transactICON.Location = new System.Drawing.Point(427, 526);
+            this.transactICON.Name = "transactICON";
+            this.transactICON.PressedState.ImageSize = new System.Drawing.Size(32, 32);
+            this.transactICON.Size = new System.Drawing.Size(128, 128);
+            this.transactICON.TabIndex = 47;
+            this.transactICON.Click += new System.EventHandler(this.transactICON_Click);
+            // 
             // Transfer
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(976, 853);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.transactICON);
             this.Controls.Add(this.transferNames);
-            this.Controls.Add(this.transferBtn);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button4);
@@ -230,7 +245,8 @@
         private Guna.UI2.WinForms.Guna2TextBox amountBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
         private System.Windows.Forms.Label label1;
-        private Guna.UI2.WinForms.Guna2Button transferBtn;
         private Guna.UI2.WinForms.Guna2ComboBox transferNames;
+        private System.Windows.Forms.Label label7;
+        private Guna.UI2.WinForms.Guna2ImageButton transactICON;
     }
 }

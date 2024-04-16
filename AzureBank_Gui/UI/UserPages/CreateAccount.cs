@@ -20,6 +20,7 @@ namespace AzureBank
 {
     public partial class CreateAccount : Form
     {
+        Account account = null;
         public CreateAccount()
         {
             InitializeComponent();
@@ -40,13 +41,14 @@ namespace AzureBank
 
             int amount = 0;
             Validation.ConvertStringToVar(ref amount, cashBox.Text);
-            if (!Validation.ValidDepositAmount(amount))
+            if (!Validation.ValidAccountDeposit(amount))
             {
+                MessageUi.ShowMessage("Error", "Amount must be less than 100 and non negative", MessageDialogIcon.Warning);
                 cashBox.Focus();
                 return;
             }
 
-            Account account = null;
+            
             if (accountType == "Saving")
                 account = new SavingAccount(accountNumber + "SAV", holderName, amount);
             else
@@ -69,6 +71,15 @@ namespace AzureBank
                 result += num.ToString();
             }
             return result;
+        }
+
+        private void CreateAccount_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (account == null)
+            {
+                MessageUi.ShowMessage("Account Missing", "Please provide account details", MessageDialogIcon.Warning);
+                e.Cancel = true;
+            }
         }
     }
 }

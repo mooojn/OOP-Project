@@ -26,42 +26,7 @@ namespace AzureBankGui
         }
         private void transferBtn_Click(object sender, EventArgs e)
         {
-            int cash = 0;
-            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
-            {
-                amountBox.Focus();
-                return;      // if the conversion fails, return
-            }
-            if (string.IsNullOrEmpty(transferNames.Text))
-            {
-                transferNames.Focus();
-                return;    // empty box for transfer name
-            }
-
-            User user = ObjectHandler.GetUserDL().Read(transferNames.Text);
-            int flag = UserPage.user.TransferCash(user, cash);
-            // if the transfer was successful
-            if (flag == 0)
-            {
-                MessageUi.ShowMessage("Success", $"Cash has been Transfered to {transferNames.Text}", MessageDialogIcon.Information);
-                
-                // update the balance of the user who made the transfer
-                ObjectHandler.GetUserDL().Update(UserPage.user);
-                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
-                
-                // update the balance of the user who received the transfer
-                ObjectHandler.GetUserDL().Update(user);
-                ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Deposit", cash));
-            }
-            // conditions for errors
-            else if (flag == -1)
-                MessageUi.NegativeAmountError("Transfer");
-            else if (flag == -2)
-                MessageUi.ZeroAmountError("Transfer");
-            else if (flag == -3)
-                MessageUi.ShowMessage("Out of Balance", "Transfer amount was greater than the balance of the Account");
-            else
-                MessageUi.UnexpectedError();
+            
         }
         private void Transfer_FormClosing(object sender, FormClosingEventArgs e)
         {
@@ -95,5 +60,51 @@ namespace AzureBankGui
         }
         private void transferNames_SelectedIndexChanged(object sender, EventArgs e) {}
         private void Transfer_Load(object sender, EventArgs e) {}
+
+        private void transactICON_Click(object sender, EventArgs e)
+        {
+            transactICON.ImageSize = new Size(32, 32);
+            int cash = 0;
+            if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
+            {
+                amountBox.Focus();
+                return;      // if the conversion fails, return
+            }
+            if (string.IsNullOrEmpty(transferNames.Text))
+            {
+                transferNames.Focus();
+                return;    // empty box for transfer name
+            }
+
+            User user = ObjectHandler.GetUserDL().Read(transferNames.Text);
+            int flag = UserPage.user.TransferCash(user, cash);
+            // if the transfer was successful
+            if (flag == 0)
+            {
+                MessageUi.ShowMessage("Success", $"Cash has been Transfered to {transferNames.Text}", MessageDialogIcon.Information);
+
+                // update the balance of the user who made the transfer
+                ObjectHandler.GetUserDL().Update(UserPage.user);
+                ObjectHandler.GetTransactionDL().Save(UserPage.user.getName(), new History("Withdraw", cash));
+
+                // update the balance of the user who received the transfer
+                ObjectHandler.GetUserDL().Update(user);
+                ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Deposit", cash));
+            }
+            // conditions for errors
+            else if (flag == -1)
+                MessageUi.NegativeAmountError("Transfer");
+            else if (flag == -2)
+                MessageUi.ZeroAmountError("Transfer");
+            else if (flag == -3)
+                MessageUi.ShowMessage("Out of Balance", "Transfer amount was greater than the balance of the Account");
+            else
+                MessageUi.UnexpectedError();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

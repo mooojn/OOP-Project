@@ -15,6 +15,12 @@ namespace AzureBankGui.Utils
     // this class is responsible for validating user input
     internal class Validation
     {
+        public static bool ValidAccountDeposit(int amount)
+        {
+            if (amount > 100)
+                return false;
+            return ValidDepositAmount(amount);
+        }
         public static bool ValidDepositAmount(int amount)
         {
             if (amount == 0 || amount < 0)

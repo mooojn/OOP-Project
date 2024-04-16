@@ -244,6 +244,26 @@
   <ItemGroup>
     <None Include="Resources\view.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <None Include="Resources\unlocked-security-of-credit-transaction.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\secure-payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\credit-card-payment.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\no-credit-card.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\show.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide %281%29.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\hide %281%291.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

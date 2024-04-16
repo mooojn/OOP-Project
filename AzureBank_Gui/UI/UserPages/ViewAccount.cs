@@ -25,6 +25,7 @@ namespace AzureBank
         public ViewAccount()
         {
             InitializeComponent();
+            header.Text = acc.getType();
         }
 
         private void ViewAccount_Load(object sender, EventArgs e)
@@ -34,6 +35,17 @@ namespace AzureBank
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            
+        }
+
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void transactICON_Click(object sender, EventArgs e)
+        {
+            transactICON.ImageSize = new Size(32, 32);
             int amount = 0;
             Validation.ConvertStringToVar(ref amount, cashBox.Text);
             if (!Validation.ValidDepositAmount(amount))
@@ -51,14 +63,15 @@ namespace AzureBank
                 MessageUi.ShowMessage("Error", "Account can't have more than $1k", MessageDialogIcon.Warning);
             else
             {
-                MessageUi.ShowMessage("Success","Cash Deposited Successfully", MessageDialogIcon.Information);
+                MessageUi.ShowMessage("Success", "Cash Deposited Successfully", MessageDialogIcon.Information);
                 ObjectHandler.GetAccountDL().Update(UserPage.user.getAccount());
                 balance.Text = Convert.ToString(UserPage.user.getAccount().getBalance());
             }
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
             int amount = 0;
             Validation.ConvertStringToVar(ref amount, cashBox.Text);
             if (!Validation.ValidDepositAmount(amount))
@@ -66,7 +79,7 @@ namespace AzureBank
                 cashBox.Focus();
                 return;
             }
-            
+
             if (UserPage.user.getAccount().getType() == "Saving" ? true : false)
                 MessageBox.Show($"Balance: {UserPage.user.getAccount().getBalance()}\nAfter Profit: {UserPage.user.getAccount().getProfit()}");
 

@@ -30,15 +30,7 @@ namespace AzureBankGui
         }
         public void validatePass(object sender, EventArgs e)
         {
-            // Authentication successful
-            if (passBox.Text == UserPage.user.getPassword())
-            {
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-            }
-            // Authentication failed
-            else
-                MessageBox.Show("Invalid password.");
+            
         }
         public void changePass(object sender, EventArgs e)
         {
@@ -52,5 +44,19 @@ namespace AzureBankGui
         }
         private void AuthPromptForm_Load(object sender, EventArgs e) {}
         private void btnLogin_Click(object sender, EventArgs e) {}
+
+        private void transactICON_Click(object sender, EventArgs e)
+        {
+            guna2Button1.ImageSize = new Size(32, 32);
+            // Authentication successful
+            if (passBox.Text == UserPage.user.getPassword())
+            {
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            // Authentication failed
+            else
+                MessageBox.Show("Invalid password.");
+        }
     }
 }

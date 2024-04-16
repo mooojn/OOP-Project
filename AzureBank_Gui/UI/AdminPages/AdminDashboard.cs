@@ -49,21 +49,34 @@ namespace AzureBank
 
         private void guna2Button2_Click(object sender, EventArgs e)
         {
-            Common.ChangePassword(AdminPage.admin);
+            
         }
 
         private void guna2Button1_Click(object sender, EventArgs e)
         {
+            
+        }
+        private void cashAmount_Click(object sender, EventArgs e) {}
+
+        private void guna2ImageButton2_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton2.ImageSize = new Size(32, 32);
+            Common.ChangePassword(AdminPage.admin);
+        }
+
+        private void guna2ImageButton1_Click(object sender, EventArgs e)
+        {
+            guna2ImageButton1.ImageSize = new Size(32, 32);
             // All of the data will be deleted
             AuthPromptForm auth = new AuthPromptForm(AdminPage.admin);
             DialogResult result = auth.ShowDialog();
-            if (result == DialogResult.OK) { 
+            if (result == DialogResult.OK)
+            {
 
                 ObjectHandler.GetUserDL().NUKE();
                 MessageUi.ShowMessage("Nuked", "The database have been Nuked");
                 Application.Exit();
             }
         }
-        private void cashAmount_Click(object sender, EventArgs e) {}
     }
 }

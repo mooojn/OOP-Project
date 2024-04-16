@@ -28,8 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.withdrawBtn = new Guna.UI2.WinForms.Guna2Button();
-            this.depositBtn = new Guna.UI2.WinForms.Guna2Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DepositWithdraw));
             this.label3 = new System.Windows.Forms.Label();
             this.amountBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
@@ -38,39 +37,11 @@
             this.guna2Button3 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button4 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2Button5 = new Guna.UI2.WinForms.Guna2Button();
+            this.label4 = new System.Windows.Forms.Label();
+            this.transactICON = new Guna.UI2.WinForms.Guna2ImageButton();
+            this.label1 = new System.Windows.Forms.Label();
+            this.guna2ImageButton1 = new Guna.UI2.WinForms.Guna2ImageButton();
             this.SuspendLayout();
-            // 
-            // withdrawBtn
-            // 
-            this.withdrawBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.withdrawBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.withdrawBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.withdrawBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.withdrawBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(170)))), ((int)(((byte)(231)))));
-            this.withdrawBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.withdrawBtn.ForeColor = System.Drawing.Color.White;
-            this.withdrawBtn.Location = new System.Drawing.Point(469, 561);
-            this.withdrawBtn.Name = "withdrawBtn";
-            this.withdrawBtn.Size = new System.Drawing.Size(196, 72);
-            this.withdrawBtn.TabIndex = 2;
-            this.withdrawBtn.Text = "Withdraw";
-            this.withdrawBtn.Click += new System.EventHandler(this.WiithdrawFunc);
-            // 
-            // depositBtn
-            // 
-            this.depositBtn.DisabledState.BorderColor = System.Drawing.Color.DarkGray;
-            this.depositBtn.DisabledState.CustomBorderColor = System.Drawing.Color.DarkGray;
-            this.depositBtn.DisabledState.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(169)))), ((int)(((byte)(169)))), ((int)(((byte)(169)))));
-            this.depositBtn.DisabledState.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(141)))), ((int)(((byte)(141)))), ((int)(((byte)(141)))));
-            this.depositBtn.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(170)))), ((int)(((byte)(231)))));
-            this.depositBtn.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.depositBtn.ForeColor = System.Drawing.Color.White;
-            this.depositBtn.Location = new System.Drawing.Point(208, 561);
-            this.depositBtn.Name = "depositBtn";
-            this.depositBtn.Size = new System.Drawing.Size(196, 72);
-            this.depositBtn.TabIndex = 1;
-            this.depositBtn.Text = "Deposit";
-            this.depositBtn.Click += new System.EventHandler(this.DepositFunc);
             // 
             // label3
             // 
@@ -201,11 +172,69 @@
             this.guna2Button5.Text = "500$";
             this.guna2Button5.Click += new System.EventHandler(this.guna2Button5_Click);
             // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(223, 656);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 28);
+            this.label4.TabIndex = 31;
+            this.label4.Text = "Deposit";
+            // 
+            // transactICON
+            // 
+            this.transactICON.BackColor = System.Drawing.Color.Transparent;
+            this.transactICON.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.transactICON.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.transactICON.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.transactICON.Image = ((System.Drawing.Image)(resources.GetObject("transactICON.Image")));
+            this.transactICON.ImageOffset = new System.Drawing.Point(0, 0);
+            this.transactICON.ImageRotate = 0F;
+            this.transactICON.ImageSize = new System.Drawing.Size(32, 32);
+            this.transactICON.Location = new System.Drawing.Point(209, 525);
+            this.transactICON.Name = "transactICON";
+            this.transactICON.PressedState.ImageSize = new System.Drawing.Size(32, 32);
+            this.transactICON.Size = new System.Drawing.Size(128, 128);
+            this.transactICON.TabIndex = 30;
+            this.transactICON.Click += new System.EventHandler(this.transactICON_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(580, 656);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(116, 28);
+            this.label1.TabIndex = 33;
+            this.label1.Text = "Withdraw";
+            // 
+            // guna2ImageButton1
+            // 
+            this.guna2ImageButton1.BackColor = System.Drawing.Color.Transparent;
+            this.guna2ImageButton1.CheckedState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.guna2ImageButton1.HoverState.ImageSize = new System.Drawing.Size(64, 64);
+            this.guna2ImageButton1.Image = ((System.Drawing.Image)(resources.GetObject("guna2ImageButton1.Image")));
+            this.guna2ImageButton1.ImageOffset = new System.Drawing.Point(0, 0);
+            this.guna2ImageButton1.ImageRotate = 0F;
+            this.guna2ImageButton1.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2ImageButton1.Location = new System.Drawing.Point(568, 525);
+            this.guna2ImageButton1.Name = "guna2ImageButton1";
+            this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
+            this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
+            this.guna2ImageButton1.TabIndex = 32;
+            this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
+            // 
             // DepositWithdraw
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(888, 695);
+            this.ClientSize = new System.Drawing.Size(888, 786);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.guna2ImageButton1);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.transactICON);
             this.Controls.Add(this.guna2Button5);
             this.Controls.Add(this.guna2Button3);
             this.Controls.Add(this.guna2Button4);
@@ -214,8 +243,6 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amountBox);
             this.Controls.Add(this.guna2HtmlLabel1);
-            this.Controls.Add(this.withdrawBtn);
-            this.Controls.Add(this.depositBtn);
             this.Name = "DepositWithdraw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepositWithdraw";
@@ -227,9 +254,6 @@
         }
 
         #endregion
-
-        private Guna.UI2.WinForms.Guna2Button withdrawBtn;
-        private Guna.UI2.WinForms.Guna2Button depositBtn;
         private System.Windows.Forms.Label label3;
         private Guna.UI2.WinForms.Guna2TextBox amountBox;
         private Guna.UI2.WinForms.Guna2HtmlLabel guna2HtmlLabel1;
@@ -238,5 +262,9 @@
         private Guna.UI2.WinForms.Guna2Button guna2Button3;
         private Guna.UI2.WinForms.Guna2Button guna2Button4;
         private Guna.UI2.WinForms.Guna2Button guna2Button5;
+        private System.Windows.Forms.Label label4;
+        private Guna.UI2.WinForms.Guna2ImageButton transactICON;
+        private System.Windows.Forms.Label label1;
+        private Guna.UI2.WinForms.Guna2ImageButton guna2ImageButton1;
     }
 }

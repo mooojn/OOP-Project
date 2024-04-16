@@ -98,13 +98,13 @@ namespace AzureBankGui
             // toggle the password visibility icon
             if (passBox.PasswordChar == '●')
             {
-                passBoxBtn.Image = AzureBankGui.Properties.Resources.hide1;
+                passBoxBtn.Image = AzureBank.Properties.Resources.hide;
                 passBox.UseSystemPasswordChar = false;
                 passBox.PasswordChar = '\0';
             }
             else
             {
-                passBoxBtn.Image = AzureBankGui.Properties.Resources.view1;
+                passBoxBtn.Image = AzureBank.Properties.Resources.view;
                 passBox.UseSystemPasswordChar = true;
                 passBox.PasswordChar = '●';
             }
