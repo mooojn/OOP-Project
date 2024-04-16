@@ -64,6 +64,7 @@
     <Compile Include="DL\DB\AssetDB.cs" />
     <Compile Include="DL\DB\TransactionDB.cs" />
     <Compile Include="DL\DB\UserDB.cs" />
+    <Compile Include="DL\FH\AccountFH.cs" />
     <Compile Include="DL\FH\AssetFH.cs" />
     <Compile Include="DL\FH\TransactionFH.cs" />
     <Compile Include="DL\FH\UserFH.cs" />

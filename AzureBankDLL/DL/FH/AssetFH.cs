@@ -25,9 +25,8 @@ namespace AzureBankDLL.DL.FH
                 }
                 return true; // Successfully written
             }
-            catch (IOException e)
+            catch (IOException)
             {
-                Console.WriteLine($"An error occurred while writing to the file: {e.Message}");
                 return false; // Failed to write
             }
         }
@@ -54,9 +53,9 @@ namespace AzureBankDLL.DL.FH
                     }
                 }
             }
-            catch (IOException e)
+            catch (IOException)
             {
-                Console.WriteLine($"An error occurred while reading the file: {e.Message}");
+                return assets;
             }
             return assets;
         }

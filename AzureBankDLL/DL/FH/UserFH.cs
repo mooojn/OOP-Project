@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using AzureBankDLL.DLInterfaces;
 using System.IO;
 using PassHashingWithSaltsDLL;
+using System.Runtime.Remoting.Messaging;
 
 namespace AzureBankDLL.DL.FH
 {
@@ -16,26 +17,31 @@ namespace AzureBankDLL.DL.FH
         private string tempFileName = "temp_users.csv";   // for updation and deletion
         public bool Create(User user)
         {
-            try {
+            try 
+            {
                 // Open or create the file to write user information
-                using (StreamWriter writer = new StreamWriter(fileName, true)) {
+                using (StreamWriter writer = new StreamWriter(fileName, true))
+                {
                     // Write user information to the file
                     writer.WriteLine($"{user.getName()}, {user.getPassword()}, 0, True");
                 }
                 return true; // Operation succeeded
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return false; // Operation failed
             }
         }
         public User Read(string userName)
         {
-            try {
+            try 
+            {
                 // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName)) {
+                using (StreamReader reader = new StreamReader(fileName)) 
+                {
                     string line;
-                    while ((line = reader.ReadLine()) != null) {
+                    while ((line = reader.ReadLine()) != null) 
+                    {
                         // Split the line by comma to extract user information
                         string[] parts = line.Split(',');
                         string name = parts[0].Trim();
@@ -44,7 +50,8 @@ namespace AzureBankDLL.DL.FH
                         bool transactionStatus = bool.Parse(parts[3].Trim());
 
                         // Check if the current line corresponds to the requested user
-                        if (name == userName) {
+                        if (name == userName) 
+                        {
                             return new User(name, pass, cash, transactionStatus);
                         }
                     }
@@ -52,32 +59,35 @@ namespace AzureBankDLL.DL.FH
                 // User not found
                 return null;
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) {
                 return null;
             }
         }
         public bool Update(User user)
         {
-            try {
-                
-
+            try 
+            {
                 // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName)) {
+                using (StreamReader reader = new StreamReader(fileName)) 
+                {
                     // Open a temporary file to write updated user information
-                    using (StreamWriter writer = new StreamWriter(tempFileName)) {
+                    using (StreamWriter writer = new StreamWriter(tempFileName)) 
+                    {
                         string line;
-                        while ((line = reader.ReadLine()) != null) {
+                        while ((line = reader.ReadLine()) != null) 
+                        {
                             // Split the line by comma to extract user information
                             string[] parts = line.Split(',');
                             string name = parts[0].Trim();
 
                             // Check if the current line corresponds to the user being updated
-                            if (name == user.getName()) {
+                            if (name == user.getName())
+                            {
                                 // Write the updated user information to the temporary file
                                 writer.WriteLine($"{user.getName()}, {user.getPassword()}, {user.getCash()}, {Convert.ToBoolean(user.getTransactionStatus())}");
                             }
-                            else {
+                            else 
+                            {
                                 // Write the unchanged user information to the temporary file
                                 writer.WriteLine(line);
                             }
@@ -90,16 +100,15 @@ namespace AzureBankDLL.DL.FH
 
                 return true; // Update succeeded
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return false; // Update failed
             }
         }
         public bool Delete(string userName)
         {
-            try {
-                
-
+            try 
+            {
                 // Open the file to read user information
                 using (StreamReader reader = new StreamReader(fileName))
                 {
@@ -128,8 +137,8 @@ namespace AzureBankDLL.DL.FH
 
                 return true; // Deletion succeeded
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return false; // Deletion failed
             }
         }
@@ -137,12 +146,14 @@ namespace AzureBankDLL.DL.FH
         {
             List<User> users = new List<User>();
 
-            try {
-
+            try 
+            {
                 // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName)) {
+                using (StreamReader reader = new StreamReader(fileName)) 
+                {
                     string line;
-                    while ((line = reader.ReadLine()) != null) {
+                    while ((line = reader.ReadLine()) != null) 
+                    {
                         // Split the line by comma to extract user information
                         string[] parts = line.Split(',');
                         string name = parts[0].Trim();
@@ -158,29 +169,31 @@ namespace AzureBankDLL.DL.FH
                         users.Add(new User(name, pass, cash, transactionStatus));
                     }
                 }
-
                 return users;
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return null;
             }
         }
         public int FindUser(User usr)
         {
-            try {
-
+            try 
+            {
                 // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName)) {
+                using (StreamReader reader = new StreamReader(fileName)) 
+                {
                     string line;
-                    while ((line = reader.ReadLine()) != null) {
+                    while ((line = reader.ReadLine()) != null)
+                    {
                         // Split the line by comma to extract user information
                         string[] parts = line.Split(',');
                         string name = parts[0].Trim();
                         string pass = parts[1].Trim();
 
                         // Check if the current line corresponds to the user being searched for
-                        if (name == usr.getName() && pass == usr.getPassword()) {
+                        if (name == usr.getName() && pass == usr.getPassword())
+                        {
                             // If user is admin, return 1; otherwise, return 2
                             return name == "admin" ? 1 : 2;
                         }
@@ -189,35 +202,37 @@ namespace AzureBankDLL.DL.FH
                 // User not found
                 return 0;
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return -1; // Return -1 to indicate an error
             }
         }
         public bool UserNameExists(string name)
         {
-            try {
-
+            try 
+            {
                 // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName)) {
+                using (StreamReader reader = new StreamReader(fileName)) 
+                {
                     string line;
-                    while ((line = reader.ReadLine()) != null) {
+                    while ((line = reader.ReadLine()) != null) 
+                    {
                         // Split the line by comma to extract user name
                         string[] parts = line.Split(',');
                         string userName = parts[0].Trim();
 
                         // Check if the current line corresponds to the user being searched for
-                        if (userName == name) {
+                        if (userName == name) 
+                        {
                             return true; // User name exists
                         }
                     }
                 }
-
                 // User name not found
                 return false;
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
                 return false; // Return false to indicate an error
             }
         }
@@ -241,31 +256,31 @@ namespace AzureBankDLL.DL.FH
                     // Skip the name if it's 'admin' or matches the name to exclude
                     if (name != "admin" && name != nameToExclude)
                     {
-                        //Console.WriteLine(name);
-                        //Console.ReadKey();
                         userNames.Add(name);
                     }
                 }
             }
             else
             {
-                Console.WriteLine("File not found: " + fileName);
+                return null;
             }
-
             return userNames;
         }
         // this func removes all of the data from all tables
         public void NUKE()
         {
-            try {
+            try 
+            {
                 // Delete all the file
                 File.Delete(fileName);
                 File.Delete(tempFileName);
                 File.Delete(TransactionFH.fileName);
                 File.Delete(AssetFH.fileName);
+                File.Delete(AccountFH.fileName);
             }
-            catch (Exception ex) {
-                Console.WriteLine($"An error occurred: {ex.Message}");
+            catch (Exception) 
+            {
+                return;
             }
         }
     }

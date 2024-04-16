@@ -101,7 +101,7 @@ namespace AzureBankConsole
             Console.ResetColor();
         }
         // effect for nuke easter egg
-        public static void RedDrippingEffect(int height, int width, int delay = 20)
+        public static void RedDrippingEffect(int height, int width, int delay = 5)
         {
             Console.Clear();
             Random random = new Random();

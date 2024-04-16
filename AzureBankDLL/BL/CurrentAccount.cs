@@ -12,15 +12,9 @@ namespace AzureBankDLL.BL
         public CurrentAccount(string accountNumber, string accountHolderName, int balance) : base(accountNumber, accountHolderName, balance) { }
         public override int Deposit(int amount)
         {
-            // error encountered so returning
-            if (amount < 0)
-                return -1;
-            else if (amount == 0)
-                return -2;
-
-            // adding cash
-            balance += amount;  // no limit for current account
-            return 0;   // success
+            if (amount + balance > 2000)    // default limit of 2k dollars
+                return -3;
+            return base.Deposit(amount);
         }
         public override int Withdraw(int amount)
         {

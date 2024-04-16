@@ -29,9 +29,8 @@ namespace AzureBankDLL.DL.FH
 
                 return true; // Return true if saving is successful
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Error saving transaction: {ex.Message}");
                 return false; // Return false if an error occurs
             }
         }
@@ -64,13 +63,11 @@ namespace AzureBankDLL.DL.FH
                     }
                 }
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine($"Error reading transactions: {ex.Message}");
+                return history;
             }
-
             return history;
         }
-
     }
 }

@@ -46,11 +46,12 @@ namespace AzureBankConsole
             Console.WriteLine($"type, amount, date");
             Console.ResetColor();
         }
-        public static void AccountDeletionWarning(int cash)
+        public static void AccountDeletionWarning(int cash, int accountBalance)
         {
-            Console.WriteLine($"Your funds '${cash}' would be lost");
+            Console.WriteLine($"Your funds '${cash}' and account balance '${accountBalance}' would be lost");
+            Console.Write($"Press any key to ");
             UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
-            Console.Write($"(press 1) or press any key to ");
+            Console.Write($" or Press(1) to ");
             UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
             Console.Write($"your account permanently: ");
         }        
@@ -77,7 +78,15 @@ namespace AzureBankConsole
         Again:
             int amount = UserUi.GetAmount("Deposit initially: ");
             if (amount < 0 || amount == 0)
+            {
+                UtilUi.Error("Please provide valid amount", false);
                 goto Again;
+            }
+            else if (amount > 100)
+            {
+                UtilUi.Error("Initial deposit must be less than $100", false);
+                goto Again;
+            }
 
             UtilUi.Success("Your account has been created successfully");
             if (accType == "Saving")

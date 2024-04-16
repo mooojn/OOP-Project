@@ -44,15 +44,13 @@ namespace AzureBankDLL.BL
         }
         public string toString()
         {
-            return $"AccountNumber: {number}\nBalance: {balance}";
+            return $"AccountNumber: {number}\nBalance: ${balance}";
         }
         public virtual float getProfit() { return 0; }
         public virtual int Deposit(int amount)
         {
             // error encountered so returning   
-            if (amount + balance > 1000)    // default limit of 1k dollars
-                return -3;
-            else if (amount < 0)
+            if (amount < 0)
                 return -1;
             else if (amount == 0)
                 return -2;

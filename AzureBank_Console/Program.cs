@@ -200,7 +200,8 @@ namespace AzureBankConsole
 
                     case Choice.CHECK_PORTFOLIO:
                         MainUi.Header();
-                        Console.WriteLine($"Cash: ${user.getCash()}");    // show cash holdings of current user
+                        Console.WriteLine($"Main Balance: ${user.getCash()}");    // show cash holdings of current user
+                        Console.WriteLine($"Account Balance: ${user.getAccount().getBalance()}");    // show account balance of current user
                         UtilUi.PressAnyKey();
                         break;
 
@@ -306,13 +307,13 @@ namespace AzureBankConsole
                     
                     case Choice.DELETE_ACCOUNT:
                         MainUi.Header();
-                        UserUi.AccountDeletionWarning(user.getCash());  // show warning
+                        UserUi.AccountDeletionWarning(user.getCash(), user.getAccount().getBalance());  // show warning
                         // get user confirmation
                         char keyPressed = Console.ReadKey().KeyChar;
                         if (keyPressed == '1')  // if user wants to go back
-                            break;
-                        else  
                             userDL.Delete(user.getName());
+                        else  
+                            break;
                         goto logout;    // after deleting account, user is logged out
 
                     case Choice.USER_LOGOUT:
@@ -330,22 +331,31 @@ namespace AzureBankConsole
                 switch (choice) {
                     case Choice.ACC_VIEW_INFORMATION:
                         MainUi.Header();
-                        Console.WriteLine(user.getAccount().toString());
+                        Console.WriteLine(user.getAccount().toString());    // show account info
                         UtilUi.PressAnyKey();
                         break;
 
                     case Choice.ACC_DEPOSIT_CASH:
                         MainUi.Header();
-                        amount = UserUi.GetAmount("Deposit");
-                        status = user.getAccount().Deposit(amount);
+                        amount = UserUi.GetAmount("Deposit");   // get amount
+                        status = user.getAccount().Deposit(amount);     // validating deposit amount
+                        
+                        // show error/success messages according to status
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
                             UtilUi.Error("Deposit Amount can't be Zero");
                         else if (status == -3)
-                            UtilUi.Error("Account can't have more than $1k");
+                        {
+                            // err msg according to account type
+                            if (user.getAccount().getType() == "Saving")
+                                UtilUi.Error("Account can't have more than $1k");
+                            else
+                                UtilUi.Error("Account can't have more than $2k");
+                        }
                         else
                         {
+                            // success msg
                             UtilUi.Success("Cash Deposited Successfully");
                             accountDL.Update(user.getAccount());
                         }
@@ -355,6 +365,8 @@ namespace AzureBankConsole
                         MainUi.Header();
                         
                         amount = user.getAccount().getType() == "Current" ? UserUi.GetAmount("Withdraw") : 0;
+                        
+                        // show balance and profit for saving account at the time of withdrawal
                         flag = user.getAccount().getType() == "Saving" ? true : false;
                         if (flag)
                         {
@@ -363,7 +375,10 @@ namespace AzureBankConsole
                             Console.WriteLine($"Press any key to Withdraw");
                             Console.ReadKey();
                         }
+
+                        // withdraw amount for current account
                         status = user.getAccount().Withdraw(amount);
+                        // show error/success messages according to status
                         if (status == -1)
                             UtilUi.Error("Invalid Amount");
                         else if (status == -2)
@@ -372,13 +387,14 @@ namespace AzureBankConsole
                             UtilUi.Error("Withdraw Amount was greater than available Balance");
                         else
                         {
-                            UtilUi.Success("Cash Withdrawal Successful");
+                            // success msg
+                            UtilUi.Success($"Cash Withdrawal was Successful");
                             accountDL.Update(user.getAccount());
                         }
                         break;
                         
                     case Choice.ACC_GO_BACK:
-                        goto userLogin;
+                        goto userLogin;     // go back to user page
 
                     default:
                         UtilUi.InvalidChoice();
