@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ObjectHandler.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UI\AdminUi.cs" />
@@ -54,7 +55,6 @@
     <Compile Include="UI\UtilUi.cs" />
     <Compile Include="Util\Choice.cs" />
     <Compile Include="Util\Common.cs" />
-    <Compile Include="Util\FilePath.cs" />
     <Compile Include="Util\Validation.cs" />
   </ItemGroup>
   <ItemGroup>

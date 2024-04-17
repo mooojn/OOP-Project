@@ -13,27 +13,14 @@ using System.Threading;
 using System.Security.Principal;
 
 
+
 namespace AzureBankConsole
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            // file_handling objects
-            IUser userDL = UserFH.getInstance(FilePath.USER_FILE);
-            ITransaction transactionDL = TransactionFH.getInstance(FilePath.TRANSACTION_FILE);
-            IAsset assetDL = AssetFH.getInstance(FilePath.ASSET_FILE);
-            IAccount accountDL = AccountFH.getInstance(FilePath.ACCOUNT_FILE);
-
-            // database objects
-            //IUser userDL = UserDB.getInstance();
-            //ITransaction transactionDL = TransactionDB.getInstance();
-            //IAsset assetDL = AssetDB.getInstance();
-            //IAccount accountDL = AccountDB.getInstance();
-
-///////////////////////////////////////////////////////// main program /////////////////////////////////////////////////// 
-
-        logout:    // goto label to logout admin/client
+   logout:    // goto label to logout admin/client
             // vars for main loop
             List<User> users;
             List<Asset> assets;
@@ -55,7 +42,7 @@ namespace AzureBankConsole
                         name = UserUi.GetName();
 
                         // check if user exists
-                        if (!userDL.UserNameExists(name)) {
+                        if (!ObjectHandler.GetUserDL().UserNameExists(name)) {
                             UtilUi.Process();
                             UtilUi.Error("User does not exist...");
                             break;
@@ -65,10 +52,10 @@ namespace AzureBankConsole
                         UtilUi.Process();
                         
                         user = new User(name, password);
-                        status = userDL.FindUser(user);
+                        status = ObjectHandler.GetUserDL().FindUser(user);
                         // 1 for admin, 2 for user, 0 for invalid password
                         if (status == 1 || status == 2) {
-                            user = userDL.Read(user.getName());    // assign user info to user object for further use
+                            user = ObjectHandler.GetUserDL().Read(user.getName());    // assign user info to user object for further use
                             UtilUi.Success("Authentication was Successful");
                         }
                         if (status == 1)
@@ -80,7 +67,7 @@ namespace AzureBankConsole
                         break;
 
                     case Choice.USER_SIGN_UP:
-                        flag = Common.SignUp(userDL);    // func to sign up user
+                        flag = Common.SignUp(ObjectHandler.GetUserDL());    // func to sign up user
                         if (flag)    // user is created successfully
                             UtilUi.Success("User Created Successfully");
                         break;
@@ -107,8 +94,8 @@ namespace AzureBankConsole
                         int totalLiquidity = 0;
                         int userCount = 0;
                         // get all users and assets
-                        assets = assetDL.ReadAll();
-                        users = userDL.ReadAll();
+                        assets = ObjectHandler.GetAssetDL().ReadAll();
+                        users = ObjectHandler.GetUserDL().ReadAll();
                         // calculate liquidity
                         assets.ForEach(a => assetsLiquidity += a.getWorth());
                         if (users != null) {
@@ -124,7 +111,7 @@ namespace AzureBankConsole
                         char response = '5';    // def value
                         // loop to add multiple users if needed
                         while (response != '0') {
-                            flag = Common.SignUp(userDL);
+                            flag = Common.SignUp(ObjectHandler.GetUserDL());
                             if (flag)    // user creation was successful
                                 UtilUi.Success("User Created Successfully", false);
                             response = AdminUi.GetAnotherInput();
@@ -134,19 +121,19 @@ namespace AzureBankConsole
                     case Choice.ADD_ASSET:
                         MainUi.Header();
                         Asset asset = AdminUi.GetAssetInput();    // get asset input
-                        assetDL.Create(asset);    // create asset
+                        ObjectHandler.GetAssetDL().Create(asset);    // create asset
                         UtilUi.Success("Asset Added Successfully");
                         break;
 
                     case Choice.VIEW_USERS:
-                        users = userDL.ReadAll();    // get all users
-                        Common.ShowAllUsers(userDL, users);    // show all users info
+                        users = ObjectHandler.GetUserDL().ReadAll();    // get all users
+                        Common.ShowAllUsers(ObjectHandler.GetUserDL(), users);    // show all users info
                         UtilUi.PressAnyKey();
                         break;
 
                     case Choice.VIEW_ASSETS:
                         MainUi.Header();
-                        assets = assetDL.ReadAll();    // get all assets
+                        assets = ObjectHandler.GetAssetDL().ReadAll();    // get all assets
                         
                         // show all assets along with their index
                         AdminUi.AssetInfoHeader();
@@ -157,8 +144,8 @@ namespace AzureBankConsole
                         break;
                     
                     case Choice.DELETE_USER:
-                        users = userDL.ReadAll();
-                        Common.ShowAllUsers(userDL, users);    // show all users
+                        users = ObjectHandler.GetUserDL().ReadAll();
+                        Common.ShowAllUsers(ObjectHandler.GetUserDL(), users);    // show all users
                         
                         int index = AdminUi.GetDeletionIndex();
                         if (users == null)    // in case no users are present
@@ -169,14 +156,14 @@ namespace AzureBankConsole
                             break;
                         }
                         UtilUi.Process();
-                        userDL.Delete(users[index].getName());    // delete user
+                        ObjectHandler.GetUserDL().Delete(users[index].getName());    // delete user
                         
-                        Common.ShowAllUsers(userDL, users);    // show updated users after deletion
+                        Common.ShowAllUsers(ObjectHandler.GetUserDL(), users);    // show updated users after deletion
                         UtilUi.PressAnyKey();
                         break;
 
                     case Choice.CHANGE_ADMIN_Password:
-                        Common.ChangePassword(userDL, user);    // change password for admin
+                        Common.ChangePassword(ObjectHandler.GetUserDL(), user);    // change password for admin
                         break;
 
                     case Choice.ADMIN_LOGOUT:
@@ -184,7 +171,7 @@ namespace AzureBankConsole
                     
                     // Easter Egg
                     case Choice.EASTER_EGG:
-                        userDL.NUKE();  // nuke the database
+                        ObjectHandler.GetUserDL().NUKE();  // nuke the database
                         UtilUi.RedDrippingEffect(Console.WindowHeight, Console.WindowWidth);    // special effect
 
                         Thread.Sleep(1700);
@@ -198,7 +185,7 @@ namespace AzureBankConsole
                 }
             }
         userLogin:    // goto label to login as user
-            UserUi.CheckAccount(accountDL, user);
+            UserUi.CheckAccount(ObjectHandler.GetAccountDL(), user);
             // user loop
             while (true) {
                 choice = MainUi.UserMenu();
@@ -229,8 +216,8 @@ namespace AzureBankConsole
                             UtilUi.Error("Deposit Amount can't be Zero");
                         else {
                             UtilUi.Success("Cash Deposited Successfully");
-                            userDL.Update(user);  // update info in database
-                            transactionDL.Save(user.getName(), new History("Deposit", amount));    // save transaction history
+                            ObjectHandler.GetUserDL().Update(user);  // update info in database
+                            ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Deposit", amount));    // save transaction history
                         }
                         break;
 
@@ -252,8 +239,8 @@ namespace AzureBankConsole
                             UtilUi.Error("Withdraw Amount was greater than available Balance");
                         else {
                             UtilUi.Success("Cash Withdrawal was Successful");
-                            userDL.Update(user);    // update info in database
-                            transactionDL.Save(user.getName(), new History("Withdraw", amount));    // save transaction history
+                            ObjectHandler.GetUserDL().Update(user);    // update info in database
+                            ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Withdraw", amount));    // save transaction history
                         }
                         break;
                   
@@ -265,7 +252,7 @@ namespace AzureBankConsole
                         MainUi.Header();
                         amount = UserUi.GetAmount("Transfer");
                         name = UserUi.GetName("Enter the name of the reciever: "); 
-                        User reciever = userDL.Read(name);    // get user object of receiver
+                        User reciever = ObjectHandler.GetUserDL().Read(name);    // get user object of receiver
                         if (reciever == null) {    // receiver does not exist
                             UtilUi.Error("User does not exist");
                             break;
@@ -281,17 +268,17 @@ namespace AzureBankConsole
                             UtilUi.Error("Transfer Amount was greater than available Balance");
                         else {
                             UtilUi.Success("Cash Transfer was Successful");
-                            userDL.Update(user);    // update info of sender in database
-                            userDL.Update(reciever);    // update info of receiver in database
+                            ObjectHandler.GetUserDL().Update(user);    // update info of sender in database
+                            ObjectHandler.GetUserDL().Update(reciever);    // update info of receiver in database
                             // In transfer, amount is withdrawn from one account and deposited in another
-                            transactionDL.Save(user.getName(), new History("Withdraw", amount));
-                            transactionDL.Save(reciever.getName(), new History("Deposit", amount));
+                            ObjectHandler.GetTransactionDL().Save(user.getName(), new History("Withdraw", amount));
+                            ObjectHandler.GetTransactionDL().Save(reciever.getName(), new History("Deposit", amount));
                         }
                         break;
 
                     case Choice.VIEW_TRANSACTIONS_HISTORY:
                         MainUi.Header();
-                        List<History> history = transactionDL.ReadAll(user.getName());  // all transactions of user
+                        List<History> history = ObjectHandler.GetTransactionDL().ReadAll(user.getName());  // all transactions of user
                         
                         // show all transactions
                         UserUi.TransactionHeader();  
@@ -305,12 +292,12 @@ namespace AzureBankConsole
                         flag = user.getTransactionStatus();    // current status
                         string res = flag ? "Blocked" : "Unblocked";    // response to show using ternary operator
                         user.setTransactionStatus(!flag);   // toggle status
-                        userDL.Update(user);    // update status in database
+                        ObjectHandler.GetUserDL().Update(user);    // update status in database
                         UtilUi.Success($"Transaction Status {res} Successfully");   // show success message
                         break;
                    
                     case Choice.CHANGE_USER_PASSWORD:
-                        Common.ChangePassword(userDL, user);    // change password for user
+                        Common.ChangePassword(ObjectHandler.GetUserDL(), user);    // change password for user
                         break;
                     
                     case Choice.DELETE_ACCOUNT:
@@ -319,7 +306,7 @@ namespace AzureBankConsole
                         // get user confirmation
                         char keyPressed = Console.ReadKey().KeyChar;
                         if (keyPressed == '1')  // if user wants to go back
-                            userDL.Delete(user.getName());
+                            ObjectHandler.GetUserDL().Delete(user.getName());
                         else  
                             break;
                         goto logout;    // after deleting account, user is logged out
@@ -365,7 +352,7 @@ namespace AzureBankConsole
                         {
                             // success msg
                             UtilUi.Success("Cash Deposited Successfully");
-                            accountDL.Update(user.getAccount());
+                            ObjectHandler.GetAccountDL().Update(user.getAccount());
                         }
                         break;
 
@@ -397,7 +384,7 @@ namespace AzureBankConsole
                         {
                             // success msg
                             UtilUi.Success($"Cash Withdrawal was Successful");
-                            accountDL.Update(user.getAccount());
+                            ObjectHandler.GetAccountDL().Update(user.getAccount());
                         }
                         break;
                         
