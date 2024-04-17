@@ -19,11 +19,19 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-            // DataBase objects
-            IUser userDL = new UserDB();            
-            ITransaction transactionDL = new TransactionDB();
-            IAsset assetDL = new AssetDB();
-            IAccount accountDL = new AccountDB();
+            // file_handling objects
+            IUser userDL = UserFH.getInstance(FilePath.USER_FILE);
+            ITransaction transactionDL = TransactionFH.getInstance(FilePath.TRANSACTION_FILE);
+            IAsset assetDL = AssetFH.getInstance(FilePath.ASSET_FILE);
+            IAccount accountDL = AccountFH.getInstance(FilePath.ACCOUNT_FILE);
+
+            // database objects
+            //IUser userDL = UserDB.getInstance();
+            //ITransaction transactionDL = TransactionDB.getInstance();
+            //IAsset assetDL = AssetDB.getInstance();
+            //IAccount accountDL = AccountDB.getInstance();
+
+///////////////////////////////////////////////////////// main program /////////////////////////////////////////////////// 
 
         logout:    // goto label to logout admin/client
             // vars for main loop

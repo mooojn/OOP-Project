@@ -8,13 +8,25 @@ using AzureBankDLL.DLInterfaces;
 using System.IO;
 using PassHashingWithSaltsDLL;
 using System.Runtime.Remoting.Messaging;
+using System.Management.Instrumentation;
 
 namespace AzureBankDLL.DL.FH
 {
     public class UserFH  : IUser           
     {
-        private string fileName = "users.csv";
+        private string fileName;
         private string tempFileName = "temp_users.csv";   // for updation and deletion
+        private static UserFH instance = null;
+        private UserFH(string fileName)
+        {
+            this.fileName = fileName;
+        }
+        public static UserFH getInstance(string fileName)
+        {
+            if (instance == null)
+                instance = new UserFH(fileName);
+            return instance;
+        }
         public bool Create(User user)
         {
             try 
@@ -107,39 +119,56 @@ namespace AzureBankDLL.DL.FH
         }
         public bool Delete(string userName)
         {
-            try 
+            try
             {
-                // Open the file to read user information
-                using (StreamReader reader = new StreamReader(fileName))
+                // Delete user from Users file
+                string[] users = File.ReadAllLines(fileName);
+                using (StreamWriter writer = new StreamWriter(fileName))
                 {
-                    // Open a temporary file to write user information excluding the user to delete
-                    using (StreamWriter writer = new StreamWriter(tempFileName))
+                    foreach (string user in users)
                     {
-                        string line;
-                        while ((line = reader.ReadLine()) != null)
+                        string[] userInfo = user.Split(',');
+                        if (userInfo[0] != userName)
                         {
-                            // Split the line by comma to extract user information
-                            string[] parts = line.Split(',');
-                            string name = parts[0].Trim();
-
-                            // Check if the current line corresponds to the user being deleted
-                            if (name != userName)
-                            {
-                                // Write the user information (excluding the user to delete) to the temporary file
-                                writer.WriteLine(line);
-                            }
+                            writer.WriteLine(user);
                         }
                     }
                 }
-                // Replace the original file with the temporary file
-                File.Delete(fileName);
-                File.Move(tempFileName, fileName);
 
-                return true; // Deletion succeeded
+                // Delete transactions related to the user from Transactions file
+                string[] transactions = File.ReadAllLines(TransactionFH.fileName);
+                using (StreamWriter writer = new StreamWriter(TransactionFH.fileName))
+                {
+                    foreach (string transaction in transactions)
+                    {
+                        string[] transactionInfo = transaction.Split(',');
+                        if (transactionInfo[0] != userName)
+                        {
+                            writer.WriteLine(transaction);
+                        }
+                    }
+                }
+
+                // Delete account related to the user from Accounts file
+                string[] accounts = File.ReadAllLines(AccountFH.fileName);
+                using (StreamWriter writer = new StreamWriter(AccountFH.fileName))
+                {
+                    foreach (string account in accounts)
+                    {
+                        string[] accountInfo = account.Split(',');
+                        if (accountInfo[1] != userName)
+                        {
+                            writer.WriteLine(account);
+                        }
+                    }
+                }
+
+                return true;
             }
-            catch (Exception) 
+            catch (Exception ex)
             {
-                return false; // Deletion failed
+                Console.WriteLine($"Error deleting user: {ex.Message}");
+                return false;
             }
         }
         public List<User> ReadAll()

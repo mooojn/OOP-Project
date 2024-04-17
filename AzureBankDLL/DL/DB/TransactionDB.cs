@@ -11,6 +11,14 @@ namespace AzureBankDLL.DL.DB
 {
     public class TransactionDB : ITransaction
     {
+        private static TransactionDB instance = null;
+        private TransactionDB() { }
+        public static TransactionDB getInstance()
+        {
+            if (instance == null)
+                instance = new TransactionDB();
+            return instance;
+        }
         public bool Save(string name, History history)
         {
             DataBase.openConnection();

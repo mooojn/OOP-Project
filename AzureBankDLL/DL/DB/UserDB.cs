@@ -15,6 +15,15 @@ namespace AzureBankDLL.DL.DB
 {
     public class UserDB : IUser
     {
+        private static UserDB instance = null;
+        private UserDB() { }
+        public static UserDB getInstance()
+        {
+            if (instance == null)
+                instance = new UserDB();
+            return instance;
+        }
+
         public bool Create(User user)
         {
             DataBase.openConnection();

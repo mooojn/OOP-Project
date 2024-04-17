@@ -12,7 +12,19 @@ namespace AzureBankDLL.DL.FH
 {
     public class TransactionFH : ITransaction
     {
-        public static string fileName = "transactions.csv";
+        internal static string fileName;
+        private static TransactionFH instance = null;
+        private TransactionFH(string file)
+        {
+            fileName = file;
+        }
+        public static TransactionFH getInstance(string fileName)
+        {
+            if (instance == null)
+                instance = new TransactionFH(fileName);
+            return instance;
+        }
+
         public bool Save(string name, History history)
         {
             try

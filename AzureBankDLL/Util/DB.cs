@@ -9,7 +9,8 @@ namespace AzureBankDLL
 {
     public static class DataBase
     {
-        public static SqlConnection connection = new SqlConnection("Server=DESKTOP-AJHCE58\\MOOOJN;DataBase=Azure-Bank;Trusted_Connection=True;");
+        private static string connectionString = "Server=DESKTOP-AJHCE58\\MOOOJN;DataBase=Azure-Bank;Trusted_Connection=True;";
+        public static SqlConnection connection = new SqlConnection(connectionString);
         public static void openConnection()
         {
             connection.Open();
@@ -17,6 +18,10 @@ namespace AzureBankDLL
         public static void closeConnection()
         {
             connection.Close();
+        }
+        public static void setConnectionString(string connString)
+        {
+            connectionString = connString;
         }
     }
 }

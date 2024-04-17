@@ -54,6 +54,7 @@
     <Compile Include="UI\UtilUi.cs" />
     <Compile Include="Util\Choice.cs" />
     <Compile Include="Util\Common.cs" />
+    <Compile Include="Util\FilePath.cs" />
     <Compile Include="Util\Validation.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -7,12 +7,24 @@ using System.Text;
 using System.Threading.Tasks;
 using AzureBankDLL.DLInterfaces;
 using System.IO;
+using System.Windows.Forms.Design;
 
 namespace AzureBankDLL.DL.FH
 {
     public class AssetFH : IAsset
     {
-        public static string fileName = "assets.csv";
+        internal static string fileName;
+        private static AssetFH instance = null;
+        private AssetFH(string file)
+        {
+            fileName = file;
+        }
+        public static AssetFH getInstance(string fileName)
+        {
+            if (instance == null)
+                instance = new AssetFH(fileName);
+            return instance;
+        }
         public bool Create(Asset asset)
         {
             try

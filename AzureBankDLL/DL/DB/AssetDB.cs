@@ -12,6 +12,14 @@ namespace AzureBankDLL.DL.DB
 {
     public class AssetDB : IAsset
     {
+        private static AssetDB instance = null;
+        private AssetDB() { }
+        public static AssetDB getInstance()
+        {
+            if (instance == null)
+                instance = new AssetDB();
+            return instance;
+        }
         public bool Create(Asset asset) 
         {
             DataBase.openConnection();

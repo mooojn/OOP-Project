@@ -6,13 +6,27 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AzureBankDLL.DLInterfaces;
+using System.Management.Instrumentation;
 
 
 namespace AzureBankDLL.DL.FH
 {
     public class AccountFH : IAccount
     {
-        public static string fileName = "accounts.csv";
+
+        internal static string fileName;
+        private static AccountFH instance = null;
+        private AccountFH(string file)
+        {
+            fileName = file;
+        }
+        public static AccountFH getInstance(string fileName)
+        {
+            if (instance == null)
+                instance = new AccountFH(fileName);
+            return instance;
+        }
+
 
         public bool Create(Account account)
         {

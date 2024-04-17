@@ -12,6 +12,14 @@ namespace AzureBankDLL.DL.DB
 {
     public class AccountDB : IAccount
     {
+        private static AccountDB instance = null;
+        private AccountDB() { }
+        public static AccountDB getInstance()
+        {
+            if (instance == null)
+                instance = new AccountDB();
+            return instance;
+        }
         public bool Create(Account account)
         {
             DataBase.openConnection();

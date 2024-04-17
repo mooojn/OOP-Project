@@ -68,9 +68,9 @@ namespace AzureBankConsole
         public static void DisplayLiquidity(int totalLiquidity, int assetsLiquidity, int usersLiquidity, int userCount)
         {
             Console.WriteLine($"Total available Liquidity: ${totalLiquidity}");
-            Console.WriteLine($"Assets Liquidity: ${assetsLiquidity}");
-            Console.WriteLine($"Users Liquidity: ${usersLiquidity}");
-            Console.WriteLine($"Registered Users: ${userCount}");
+            Console.WriteLine($"Amount in Assets: ${assetsLiquidity}");
+            Console.WriteLine($"Amount in User Funds: ${usersLiquidity}");
+            Console.WriteLine($"Registered Users: {userCount}");
             UtilUi.PressAnyKey();
         }
     }
