@@ -49,14 +49,16 @@ namespace AzureBankGui
         {
             guna2Button1.ImageSize = new Size(32, 32);
             // Authentication successful
-            if (passBox.Text == UserPage.user.getPassword())
+            if (passBox.Text == user.getPassword())
             {
                 this.DialogResult = DialogResult.OK;
                 this.Close();
             }
             // Authentication failed
             else
-                MessageBox.Show("Invalid password.");
+            {
+                passBox.Focus();
+            }
         }
     }
 }

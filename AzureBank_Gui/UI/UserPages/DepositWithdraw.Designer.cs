@@ -196,7 +196,7 @@
             this.transactICON.Name = "transactICON";
             this.transactICON.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.transactICON.Size = new System.Drawing.Size(128, 128);
-            this.transactICON.TabIndex = 30;
+            this.transactICON.TabIndex = 1;
             this.transactICON.Click += new System.EventHandler(this.transactICON_Click);
             // 
             // label1
@@ -223,7 +223,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 32;
+            this.guna2ImageButton1.TabIndex = 2;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // DepositWithdraw
@@ -243,6 +243,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amountBox);
             this.Controls.Add(this.guna2HtmlLabel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(914, 857);
+            this.MinimumSize = new System.Drawing.Size(914, 857);
             this.Name = "DepositWithdraw";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DepositWithdraw";

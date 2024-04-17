@@ -95,7 +95,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 30;
+            this.guna2ImageButton1.TabIndex = 1;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // DeleteUser
@@ -108,6 +108,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.nameBox);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(813, 665);
+            this.MinimumSize = new System.Drawing.Size(813, 665);
             this.Name = "DeleteUser";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "DeleteUser";

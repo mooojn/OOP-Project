@@ -17,6 +17,7 @@ using Guna.UI2.WinForms;
 using AzureBankDLL.DL.FH;
 using Guna.UI2.AnimatorNS;
 
+
 namespace AzureBank
 {
     public partial class ViewAccount : Form
@@ -60,7 +61,10 @@ namespace AzureBank
             else if (status == -2)
                 MessageUi.ShowMessage("Error", "Deposit Amount can't be Zero", MessageDialogIcon.Warning);
             else if (status == -3)
+            {
+                cashBox.Focus();
                 MessageUi.ShowMessage("Error", "Account can't have more than $1k", MessageDialogIcon.Warning);
+            }
             else
             {
                 MessageUi.ShowMessage("Success", "Cash Deposited Successfully", MessageDialogIcon.Information);

@@ -82,7 +82,7 @@
             this.type.Location = new System.Drawing.Point(531, 263);
             this.type.Name = "type";
             this.type.Size = new System.Drawing.Size(239, 36);
-            this.type.TabIndex = 1;
+            this.type.TabIndex = 4;
             // 
             // label2
             // 
@@ -107,7 +107,7 @@
             this.guna2Button1.Location = new System.Drawing.Point(488, 483);
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(180, 70);
-            this.guna2Button1.TabIndex = 2;
+            this.guna2Button1.TabIndex = 1;
             this.guna2Button1.Text = "Create";
             this.guna2Button1.Click += new System.EventHandler(this.CreateAcc);
             // 
@@ -133,6 +133,9 @@
             this.Controls.Add(this.type);
             this.Controls.Add(this.cashBox);
             this.Controls.Add(this.label1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1194, 894);
+            this.MinimumSize = new System.Drawing.Size(1194, 894);
             this.Name = "CreateAccount";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CreateAccount";

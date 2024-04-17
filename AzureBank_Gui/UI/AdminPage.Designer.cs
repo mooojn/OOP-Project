@@ -141,7 +141,7 @@
             this.guna2Button3.Name = "guna2Button3";
             this.guna2Button3.Size = new System.Drawing.Size(333, 77);
             this.guna2Button3.TabIndex = 2;
-            this.guna2Button3.Text = "Add Asset";
+            this.guna2Button3.Text = "Asset";
             this.guna2Button3.Click += new System.EventHandler(this.guna2Button3_Click);
             // 
             // guna2Button2
@@ -160,7 +160,7 @@
             this.guna2Button2.Name = "guna2Button2";
             this.guna2Button2.Size = new System.Drawing.Size(333, 77);
             this.guna2Button2.TabIndex = 1;
-            this.guna2Button2.Text = "Users";
+            this.guna2Button2.Text = "User";
             this.guna2Button2.Click += new System.EventHandler(this.guna2Button2_Click);
             // 
             // guna2Button1
@@ -179,7 +179,7 @@
             this.guna2Button1.Name = "guna2Button1";
             this.guna2Button1.Size = new System.Drawing.Size(333, 77);
             this.guna2Button1.TabIndex = 0;
-            this.guna2Button1.Text = "Dashboard";
+            this.guna2Button1.Text = "DashBoard";
             this.guna2Button1.Click += new System.EventHandler(this.guna2Button1_Click);
             // 
             // mainPanel
@@ -196,6 +196,9 @@
             this.ClientSize = new System.Drawing.Size(1548, 1129);
             this.Controls.Add(this.mainPanel);
             this.Controls.Add(this.guna2Panel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1574, 1200);
+            this.MinimumSize = new System.Drawing.Size(1500, 1086);
             this.Name = "AdminPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AdminPanel";

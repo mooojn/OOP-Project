@@ -88,7 +88,7 @@
             this.nameBox.PlaceholderText = "";
             this.nameBox.SelectedText = "";
             this.nameBox.Size = new System.Drawing.Size(457, 63);
-            this.nameBox.TabIndex = 26;
+            this.nameBox.TabIndex = 0;
             // 
             // guna2HtmlLabel1
             // 
@@ -125,7 +125,7 @@
             this.passBox.PlaceholderText = "";
             this.passBox.SelectedText = "";
             this.passBox.Size = new System.Drawing.Size(457, 63);
-            this.passBox.TabIndex = 27;
+            this.passBox.TabIndex = 2;
             this.passBox.UseSystemPasswordChar = true;
             // 
             // label9
@@ -152,7 +152,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 33;
+            this.guna2ImageButton1.TabIndex = 3;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // label1
@@ -179,7 +179,7 @@
             this.guna2ImageButton2.Name = "guna2ImageButton2";
             this.guna2ImageButton2.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton2.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton2.TabIndex = 35;
+            this.guna2ImageButton2.TabIndex = 4;
             this.guna2ImageButton2.Click += new System.EventHandler(this.guna2ImageButton2_Click);
             this.guna2ImageButton2.Leave += new System.EventHandler(this.guna2ImageButton2_Leave);
             // 
@@ -197,6 +197,9 @@
             this.Controls.Add(this.nameBox);
             this.Controls.Add(this.guna2HtmlLabel1);
             this.Controls.Add(this.passBox);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(937, 838);
+            this.MinimumSize = new System.Drawing.Size(937, 838);
             this.Name = "AddUser";
             this.Text = "AddUser";
             this.ResumeLayout(false);

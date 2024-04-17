@@ -42,9 +42,20 @@ namespace AzureBank
                 worthBox.Focus();
                 return;    // if the worth is invalid
             }
+            if (!Validation.ValidDepositAmount(Convert.ToInt32(worthBox.Text)))
+            {
+                worthBox.Focus();
+                MessageUi.ShowMessage("Invalid Amount", "Please provide a real amount", MessageDialogIcon.Warning);
+                return;    // if the worth is invalid
+            }
             // create the asset as all conditions are met
             ObjectHandler.GetAssetDL().Create(new Asset(name, worth));
             MessageUi.ShowMessage("Success", "Asset created successfully", MessageDialogIcon.Information);
+        }
+
+        private void AddAsset_Load(object sender, EventArgs e)
+        {
+             
         }
     }
 }

@@ -78,7 +78,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Consolas", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(332, 389);
+            this.label7.Location = new System.Drawing.Point(324, 388);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(103, 28);
             this.label7.TabIndex = 50;
@@ -110,6 +110,9 @@
             this.Controls.Add(this.guna2Button1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.passBox);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(826, 521);
+            this.MinimumSize = new System.Drawing.Size(826, 521);
             this.Name = "AuthPromptForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AuthPromptForm";

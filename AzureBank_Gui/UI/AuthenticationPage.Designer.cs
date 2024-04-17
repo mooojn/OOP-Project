@@ -37,12 +37,12 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.nameBox = new Guna.UI2.WinForms.Guna2TextBox();
+            this.passBoxBtn = new System.Windows.Forms.Button();
             this.guna2HtmlLabel1 = new Guna.UI2.WinForms.Guna2HtmlLabel();
             this.passBox = new Guna.UI2.WinForms.Guna2TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.guna2Button1 = new Guna.UI2.WinForms.Guna2Button();
             this.guna2AnimateWindow1 = new Guna.UI2.WinForms.Guna2AnimateWindow(this.components);
-            this.passBoxBtn = new System.Windows.Forms.Button();
             this.mainPanel.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -150,6 +150,20 @@
             this.nameBox.Size = new System.Drawing.Size(457, 63);
             this.nameBox.TabIndex = 0;
             // 
+            // passBoxBtn
+            // 
+            this.passBoxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.passBoxBtn.FlatAppearance.BorderSize = 0;
+            this.passBoxBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.passBoxBtn.ForeColor = System.Drawing.Color.Black;
+            this.passBoxBtn.Image = global::AzureBank.Properties.Resources.view;
+            this.passBoxBtn.Location = new System.Drawing.Point(897, 433);
+            this.passBoxBtn.Name = "passBoxBtn";
+            this.passBoxBtn.Size = new System.Drawing.Size(77, 52);
+            this.passBoxBtn.TabIndex = 4;
+            this.passBoxBtn.UseVisualStyleBackColor = true;
+            this.passBoxBtn.Click += new System.EventHandler(this.passBox_StateChange);
+            // 
             // guna2HtmlLabel1
             // 
             this.guna2HtmlLabel1.BackColor = System.Drawing.Color.Transparent;
@@ -215,20 +229,6 @@
             this.guna2Button1.Text = "SignIn";
             this.guna2Button1.Click += new System.EventHandler(this.SignIn);
             // 
-            // passBoxBtn
-            // 
-            this.passBoxBtn.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.passBoxBtn.FlatAppearance.BorderSize = 0;
-            this.passBoxBtn.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.passBoxBtn.ForeColor = System.Drawing.Color.Black;
-            this.passBoxBtn.Image = global::AzureBank.Properties.Resources.view;
-            this.passBoxBtn.Location = new System.Drawing.Point(897, 433);
-            this.passBoxBtn.Name = "passBoxBtn";
-            this.passBoxBtn.Size = new System.Drawing.Size(77, 52);
-            this.passBoxBtn.TabIndex = 4;
-            this.passBoxBtn.UseVisualStyleBackColor = true;
-            this.passBoxBtn.Click += new System.EventHandler(this.passBox_StateChange);
-            // 
             // AuthenticationPage
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
@@ -236,9 +236,13 @@
             this.ClientSize = new System.Drawing.Size(888, 894);
             this.Controls.Add(this.mainPanel);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(914, 965);
+            this.MinimumSize = new System.Drawing.Size(914, 965);
             this.Name = "AuthenticationPage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "AzureBank";
+            this.Load += new System.EventHandler(this.AuthenticationPage_Load);
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
             this.ResumeLayout(false);

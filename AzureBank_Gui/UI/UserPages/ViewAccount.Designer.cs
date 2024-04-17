@@ -52,8 +52,8 @@
             this.guna2GradientPanel3.Controls.Add(this.label5);
             this.guna2GradientPanel3.Controls.Add(this.label3);
             this.guna2GradientPanel3.Controls.Add(this.balance);
-            this.guna2GradientPanel3.FillColor = System.Drawing.Color.RoyalBlue;
-            this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(134)))), ((int)(((byte)(182)))), ((int)(((byte)(246)))));
+            this.guna2GradientPanel3.FillColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(71)))), ((int)(((byte)(171)))));
+            this.guna2GradientPanel3.FillColor2 = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(150)))), ((int)(((byte)(255)))));
             this.guna2GradientPanel3.Location = new System.Drawing.Point(392, 218);
             this.guna2GradientPanel3.Name = "guna2GradientPanel3";
             this.guna2GradientPanel3.Size = new System.Drawing.Size(461, 266);
@@ -182,7 +182,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 36;
+            this.guna2ImageButton1.TabIndex = 2;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // label7
@@ -209,7 +209,7 @@
             this.transactICON.Name = "transactICON";
             this.transactICON.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.transactICON.Size = new System.Drawing.Size(128, 128);
-            this.transactICON.TabIndex = 34;
+            this.transactICON.TabIndex = 1;
             this.transactICON.Click += new System.EventHandler(this.transactICON_Click);
             // 
             // ViewAccount

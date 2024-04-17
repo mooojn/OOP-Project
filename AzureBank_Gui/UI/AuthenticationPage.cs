@@ -146,5 +146,10 @@ namespace AzureBankGui
             form.Size = new Size(850, 550);
             form.Show();
         }
+
+        private void AuthenticationPage_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

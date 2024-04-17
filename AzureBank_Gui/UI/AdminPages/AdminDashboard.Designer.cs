@@ -310,7 +310,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(12F, 25F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1285, 930);
+            this.ClientSize = new System.Drawing.Size(1548, 1129);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.guna2ImageButton1);
             this.Controls.Add(this.label6);
@@ -319,6 +319,8 @@
             this.Controls.Add(this.guna2GradientPanel2);
             this.Controls.Add(this.guna2GradientPanel1);
             this.Controls.Add(this.guna2GradientPanel3);
+            this.MaximumSize = new System.Drawing.Size(1574, 1200);
+            this.MinimumSize = new System.Drawing.Size(1574, 1200);
             this.Name = "AdminDashboard";
             this.Text = "Dashboard";
             this.Load += new System.EventHandler(this.AdminDashboard_Load);

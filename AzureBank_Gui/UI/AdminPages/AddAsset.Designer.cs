@@ -140,7 +140,7 @@
             this.guna2ImageButton1.Name = "guna2ImageButton1";
             this.guna2ImageButton1.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.guna2ImageButton1.Size = new System.Drawing.Size(128, 128);
-            this.guna2ImageButton1.TabIndex = 38;
+            this.guna2ImageButton1.TabIndex = 2;
             this.guna2ImageButton1.Click += new System.EventHandler(this.guna2ImageButton1_Click);
             // 
             // guna2HtmlLabel1
@@ -164,8 +164,11 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.nameBox);
+            this.MaximumSize = new System.Drawing.Size(968, 794);
+            this.MinimumSize = new System.Drawing.Size(968, 794);
             this.Name = "AddAsset";
             this.Text = "AddAsset";
+            this.Load += new System.EventHandler(this.AddAsset_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

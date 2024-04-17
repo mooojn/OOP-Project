@@ -207,7 +207,7 @@
             this.transactICON.Name = "transactICON";
             this.transactICON.PressedState.ImageSize = new System.Drawing.Size(32, 32);
             this.transactICON.Size = new System.Drawing.Size(128, 128);
-            this.transactICON.TabIndex = 47;
+            this.transactICON.TabIndex = 1;
             this.transactICON.Click += new System.EventHandler(this.transactICON_Click);
             // 
             // Transfer
@@ -226,6 +226,9 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.amountBox);
             this.Controls.Add(this.guna2HtmlLabel1);
+            this.MaximizeBox = false;
+            this.MaximumSize = new System.Drawing.Size(1002, 924);
+            this.MinimumSize = new System.Drawing.Size(1002, 924);
             this.Name = "Transfer";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Transfer";
