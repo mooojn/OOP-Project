@@ -22,35 +22,24 @@ namespace AzureBankGui
             InitializeComponent();
             Common.AttachEvents(this);    // for the animation on tab change
         }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
-
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
             guna2ImageButton1.ImageSize = new Size(32, 32);
             if (!Validation.IsValid("Username", nameBox.Text))
             {
                 nameBox.Focus();
-                return;    // if the name is invalid
+                return;    // name is invalid
             }
             if (!Validation.IsValid("Password", passBox.Text, false))
             {
                 passBox.Focus();
-                return;    // if the password is invalid
+                return;    // password is invalid
             }
             if (ObjectHandler.GetUserDL().UserNameExists(nameBox.Text))
             {
                 nameBox.Focus();
                 MessageUi.ShowMessage("User exists", "User with this name already exists try a different one");
-                return;    // if the username already exists
+                return;    // username already exists
             }
             // create the user as all conditions are met
             ObjectHandler.GetUserDL().Create(new User(nameBox.Text, passBox.Text));
@@ -68,5 +57,14 @@ namespace AzureBankGui
         {
             
         }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void guna2HtmlLabel1_Click(object sender, EventArgs e) {}
     }
 }

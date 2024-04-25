@@ -22,10 +22,7 @@ namespace AzureBank
             InitializeComponent();
             Common.AttachEvents(this);    // for the animation on tab change
         }
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
@@ -35,18 +32,18 @@ namespace AzureBank
             if (!Validation.IsValid("Asset Name", name))
             {
                 nameBox.Focus();
-                return;    // if the name is invalid
+                return;    // name is invalid
             }
             if (!Validation.ConvertStringToVar(ref worth, worthBox.Text))
             {
                 worthBox.Focus();
-                return;    // if the worth is invalid
+                return;    // worth is invalid
             }
             if (!Validation.ValidDepositAmount(Convert.ToInt32(worthBox.Text)))
             {
                 worthBox.Focus();
                 MessageUi.ShowMessage("Invalid Amount", "Please provide a real amount", MessageDialogIcon.Warning);
-                return;    // if the worth is invalid
+                return;    // worth is invalid
             }
             // create the asset as all conditions are met
             ObjectHandler.GetAssetDL().Create(new Asset(name, worth));
@@ -56,6 +53,10 @@ namespace AzureBank
         private void AddAsset_Load(object sender, EventArgs e)
         {
              
+        }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

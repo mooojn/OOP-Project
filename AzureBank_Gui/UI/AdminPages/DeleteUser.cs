@@ -22,10 +22,7 @@ namespace AzureBank
             Common.AttachEvents(this);    // for the animation on tab change
         }
 
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
@@ -33,12 +30,16 @@ namespace AzureBank
             if (string.IsNullOrEmpty(nameBox.Text))
             {
                 MessageUi.ShowMessage("Empty Name", "Please select a user to remove", MessageDialogIcon.Warning);
-                return;    // if the name is empty
+                return;    // name is empty
             }
             // delete the user from the database
             ObjectHandler.GetUserDL().Delete(nameBox.Text);
             MessageUi.ShowMessage("Success", "User deleted Successfully", MessageDialogIcon.Information);
             Common.LoadComboBox(nameBox, AdminPage.admin);
+        }
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }

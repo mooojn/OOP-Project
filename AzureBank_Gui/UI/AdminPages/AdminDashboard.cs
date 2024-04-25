@@ -47,17 +47,6 @@ namespace AzureBank
             assetLiq.Text = assetFunds.ToString();
         }
 
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            
-        }
-
-        private void guna2Button1_Click(object sender, EventArgs e)
-        {
-            
-        }
-        private void cashAmount_Click(object sender, EventArgs e) {}
-
         private void guna2ImageButton2_Click(object sender, EventArgs e)
         {
             guna2ImageButton2.ImageSize = new Size(32, 32);
@@ -67,7 +56,7 @@ namespace AzureBank
         private void guna2ImageButton1_Click(object sender, EventArgs e)
         {
             guna2ImageButton1.ImageSize = new Size(32, 32);
-            // All of the data will be deleted
+            // all of the data will be deleted
             AuthPromptForm auth = new AuthPromptForm(AdminPage.admin);
             DialogResult result = auth.ShowDialog();
             if (result == DialogResult.OK)
@@ -78,5 +67,16 @@ namespace AzureBank
                 Application.Exit();
             }
         }
+        
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+        private void guna2Button1_Click(object sender, EventArgs e)
+        {
+            
+        }
+        private void cashAmount_Click(object sender, EventArgs e) {}
     }
 }
