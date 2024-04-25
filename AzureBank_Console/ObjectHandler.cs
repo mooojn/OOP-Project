@@ -13,10 +13,10 @@ namespace AzureBankConsole
     internal class ObjectHandler
     {
         // file paths
-        public const string USER_FILE = "users.csv";
-        public const string ASSET_FILE = "assets.csv";
-        public const string ACCOUNT_FILE = "accounts.csv";
-        public const string TRANSACTION_FILE = "transactions.csv";
+        public const string USER_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\users.csv";
+        public const string ASSET_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\assets.csv";
+        public const string ACCOUNT_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\accounts.csv";
+        public const string TRANSACTION_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\transactions.csv";
 
         // file_handling objects
         private static IUser userDL = UserFH.getInstance(USER_FILE);

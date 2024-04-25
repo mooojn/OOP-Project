@@ -12,18 +12,18 @@ namespace AzureBankGui
 {
     internal class ObjectHandler
     {
-                // file paths
-        public const string USER_FILE = "users.csv";
-        public const string ASSET_FILE = "assets.csv";
-        public const string ACCOUNT_FILE = "accounts.csv";
-        public const string TRANSACTION_FILE = "transactions.csv";
-        
+        // file paths
+        public const string USER_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\users.csv";
+        public const string ASSET_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\assets.csv";
+        public const string ACCOUNT_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\accounts.csv";
+        public const string TRANSACTION_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\transactions.csv";
+
         // file_handling objects
         //private static IUser userDL = UserFH.getInstance(USER_FILE);
         //private static ITransaction transactionDL = TransactionFH.getInstance(TRANSACTION_FILE);
         //private static IAsset assetDL = AssetFH.getInstance(ASSET_FILE);
         //private static IAccount accountDL = AccountFH.getInstance(ACCOUNT_FILE);
-        
+
         // database objects
         private static IUser userDL = UserDB.getInstance();
         private static ITransaction transactionDL = TransactionDB.getInstance();

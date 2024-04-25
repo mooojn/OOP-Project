@@ -39,18 +39,19 @@ namespace AzureBankConsole.Util
             UtilUi.Success("Password Changed Successfully");
         }
 
-        public static bool SignUp(IUser userDL)
+        public static bool SignUp()
         {
             MainUi.Header();
             string name = UserUi.GetName();
-            if (userDL.UserNameExists(name)) {
+            if (ObjectHandler.GetUserDL().UserNameExists(name)) {
                 UtilUi.Process();
                 UtilUi.Error("User already exists.");    //userName is not unique so back to menu
                 return false;
             }
             string password = UtilUi.GetMaskedInput();    // as user unique so getting password
             UtilUi.Process();
-            userDL.Create(new User(name, password));    // create new user
+            User user = new User(name, password);
+            ObjectHandler.GetUserDL().Create(user);    // create new user
             return true;
         }
     }

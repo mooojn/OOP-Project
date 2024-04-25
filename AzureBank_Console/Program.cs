@@ -67,7 +67,7 @@ namespace AzureBankConsole
                         break;
 
                     case Choice.USER_SIGN_UP:
-                        flag = Common.SignUp(ObjectHandler.GetUserDL());    // func to sign up user
+                        flag = Common.SignUp();    // func to sign up user
                         if (flag)    // user is created successfully
                             UtilUi.Success("User Created Successfully");
                         break;
@@ -111,7 +111,7 @@ namespace AzureBankConsole
                         char response = '5';    // def value
                         // loop to add multiple users if needed
                         while (response != '0') {
-                            flag = Common.SignUp(ObjectHandler.GetUserDL());
+                            flag = Common.SignUp();
                             if (flag)    // user creation was successful
                                 UtilUi.Success("User Created Successfully", false);
                             response = AdminUi.GetAnotherInput();

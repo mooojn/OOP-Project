@@ -29,6 +29,12 @@ namespace AzureBankConsole
 
             return name;
         }
+        public static void TransactionHeader()
+        {
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine($"type, amount, date");
+            Console.ResetColor();
+        }
         public static int GetAmount(string type)
         {
             int num = 0;
@@ -40,21 +46,6 @@ namespace AzureBankConsole
             else 
                 goto Again;
         }
-        public static void TransactionHeader()
-        {
-            Console.ForegroundColor = ConsoleColor.Cyan;
-            Console.WriteLine($"type, amount, date");
-            Console.ResetColor();
-        }
-        public static void AccountDeletionWarning(int cash, int accountBalance)
-        {
-            Console.WriteLine($"Your funds '${cash}' and account balance '${accountBalance}' would be lost");
-            Console.Write($"Press any key to ");
-            UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
-            Console.Write($" or Press(1) to ");
-            UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
-            Console.Write($"your account permanently: ");
-        }        
         public static string GetAccountType()
         {
         Again:
@@ -77,16 +68,8 @@ namespace AzureBankConsole
             string accType = UserUi.GetAccountType();
         Again:
             int amount = UserUi.GetAmount("Deposit initially: ");
-            if (amount < 0 || amount == 0)
-            {
-                UtilUi.Error("Please provide valid amount", false);
+            if (!ValidAmount(amount))
                 goto Again;
-            }
-            else if (amount > 100)
-            {
-                UtilUi.Error("Initial deposit must be less than $100", false);
-                goto Again;
-            }
 
             UtilUi.Success("Your account has been created successfully");
             if (accType == "Saving")
@@ -107,5 +90,29 @@ namespace AzureBankConsole
                 accountDL.Create(account);
             }
         }
+        private static bool ValidAmount(int amount)
+        {
+            if (amount < 0 || amount == 0)
+            {
+                UtilUi.Error("Please provide valid amount", false);
+                return false;
+            }
+            else if (amount > 100)
+            {
+                UtilUi.Error("Initial deposit must be less than $100", false);
+                return false;
+            }
+            else 
+                return true;
+        }
+        public static void AccountDeletionWarning(int cash, int accountBalance)
+        {
+            Console.WriteLine($"Your funds '${cash}' and account balance '${accountBalance}' would be lost");
+            Console.Write($"Press any key to ");
+            UtilUi.ShowWord($"Go Back", ConsoleColor.Green);
+            Console.Write($" or Press(1) to ");
+            UtilUi.ShowWord($"Delete ", ConsoleColor.DarkRed);
+            Console.Write($"your account permanently: ");
+        }        
     }
 }

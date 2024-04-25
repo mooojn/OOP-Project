@@ -11,7 +11,6 @@ namespace AzureBankConsole
         public static void Header()
         {
             Console.Clear();
-            
             UtilUi.ShowWord("...... ", ConsoleColor.DarkGreen);
             
             UtilUi.ShowWord("Azure ", ConsoleColor.DarkCyan);
