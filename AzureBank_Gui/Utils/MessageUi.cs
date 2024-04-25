@@ -46,14 +46,13 @@ namespace AzureBankGui
         public static void Error(string msg, string title = "Invalid Input")
         {
             Guna2MessageDialog guna2MessageDialog = new Guna2MessageDialog();
-
             // styles
             guna2MessageDialog.Caption = title;
             guna2MessageDialog.Text = msg;
             guna2MessageDialog.Buttons = MessageDialogButtons.OK; // Set the buttons you want to display
             guna2MessageDialog.Icon = MessageDialogIcon.Error; // Set the icon you want to display
             //guna2MessageDialog.Style = MessageDialogStyle.Dark; // Set the style you want to display
-
+            
             guna2MessageDialog.Show();
         }
     }

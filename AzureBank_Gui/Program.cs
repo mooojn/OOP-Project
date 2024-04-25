@@ -20,8 +20,6 @@ namespace AzureBankGui
         [STAThread]
         static void Main()
         {
-            //UserDL.LoadUsers();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new AuthenticationPage());

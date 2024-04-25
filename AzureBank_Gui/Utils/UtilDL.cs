@@ -18,11 +18,11 @@ namespace AzureBankGui
         public static Guna2Button activeButton;
         public static bool NullBoxIn(Control container)
         {
-            // Check if any textbox in the container is empty
+            // check if any textbox in the container is empty
             foreach (Control control in container.Controls)
             {
                 if (control is Guna2TextBox gunaTextBox && gunaTextBox.Text == "")
-                    return true; // Return true as soon as an empty textbox is found
+                    return true; // return true as soon as an empty textbox is found
                 else if (control is Guna2ComboBox guna2ComboBox && guna2ComboBox.Text == "")
                     return true;
             }
@@ -46,7 +46,7 @@ namespace AzureBankGui
         }
         public static void activeButtonStateChange(Guna2Button button)
         {
-            // Uncheck the previous button and check the new button
+            // uncheck the previous button and check the new button
             if (activeButton != null)
                 activeButton.Checked = false;
             activeButton = button;
@@ -56,7 +56,7 @@ namespace AzureBankGui
         {
             FormToClose.Close();
             Form authPage = new AuthenticationPage();
-            authPage.Show();    // Show the main authentication page
+            authPage.Show();    // show the main authentication page
         }
         public static void transactionClose()
         {

@@ -33,6 +33,7 @@ namespace AzureBankGui.Utils
                 return amount < balance;
             return false;
         }
+        // this single func can validate all type of inputs  :~)
         public static bool IsValid(string type, string check, bool flag = true)
         {
             if (string.IsNullOrWhiteSpace(check))

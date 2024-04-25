@@ -34,7 +34,7 @@ namespace AzureBank.Utils
         public static void LoadComboBox(Guna2ComboBox box, User user)
         {
             box.Items.Clear();
-            // Get all names from the user's data 
+            // get all names from the user's data 
             List<string> names = ObjectHandler.GetUserDL().ReadAllNames(user.getName());
             foreach (string name in names)
                 box.Items.Add(name);
@@ -55,9 +55,7 @@ namespace AzureBank.Utils
                     button.Leave += Button_Leave;
                 }
                 else if (control.HasChildren)
-                {
-                    AttachEvents(control); // Recursive call for child controls
-                }
+                    AttachEvents(control); // recursive call for child controls
             }
         }
         private static void ButtonIE(object sender, EventArgs e)
@@ -66,13 +64,13 @@ namespace AzureBank.Utils
             button.ImageSize = new Size(64, 64);    
         }
 
-        // Event handler for button Leave event
+        // event handler for button Leave event
         private static void ButtonIL(object sender, EventArgs e)
         {
             Guna2ImageButton button = (Guna2ImageButton)sender;
             button.ImageSize = new Size(32, 32);
         }
-        // Event handler for button Enter event
+        // event handler for button Enter event
         private static void Button_Enter(object sender, EventArgs e)
         {
             Guna2Button button = (Guna2Button)sender;
@@ -80,12 +78,12 @@ namespace AzureBank.Utils
             if (button.FillColor == Color.FromArgb(210, 43, 43)) 
                 button.BorderColor = Color.Black;  // as red so changing to black
             else
-                button.BorderColor = Color.Red; // Change border color
+                button.BorderColor = Color.Red; // change border color
             
-            button.BorderThickness = 2; // Increase border size
+            button.BorderThickness = 2; // increase border size
         }
 
-        // Event handler for button Leave event
+        // event handler for button Leave event
         private static void Button_Leave(object sender, EventArgs e)
         {
             Guna2Button button = (Guna2Button)sender;
