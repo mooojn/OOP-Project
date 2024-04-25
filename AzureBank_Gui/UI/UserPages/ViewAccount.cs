@@ -56,6 +56,7 @@ namespace AzureBank
             }
 
             int status = UserPage.user.getAccount().Deposit(amount);
+            // err msgs
             if (status == -1)
                 MessageUi.ShowMessage("Error", "Invalid Amount", MessageDialogIcon.Warning);
             else if (status == -2)
@@ -65,6 +66,7 @@ namespace AzureBank
                 cashBox.Focus();
                 MessageUi.ShowMessage("Error", "Account can't have more than $1k", MessageDialogIcon.Warning);
             }
+            // success msg
             else
             {
                 MessageUi.ShowMessage("Success", "Cash Deposited Successfully", MessageDialogIcon.Information);
@@ -88,12 +90,14 @@ namespace AzureBank
                 MessageBox.Show($"Balance: {UserPage.user.getAccount().getBalance()}\nAfter Profit: {UserPage.user.getAccount().getProfit()}");
 
             int status = UserPage.user.getAccount().Withdraw(amount);
+            // err msgs
             if (status == -1)
                 MessageUi.ShowMessage("Error", "Invalid Amount", MessageDialogIcon.Warning);
             else if (status == -2)
                 MessageUi.ShowMessage("Error", "Withdraw Amount can't be Zero", MessageDialogIcon.Warning);
             else if (status == -3)
                 MessageUi.ShowMessage("Error", "Withdraw Amount was greater than available Balance", MessageDialogIcon.Warning);
+            // success msg
             else
             {
                 MessageUi.ShowMessage("Success", "Cash Withdrawal Successful", MessageDialogIcon.Information);

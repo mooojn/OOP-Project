@@ -33,7 +33,7 @@ namespace AzureBankGui
             if (!UserPage.user.getTransactionStatus()) 
             {
                 MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
-                return;
+                return;     // err
             }
             Form f = new DepositWithdraw();
             f.Show();
@@ -45,7 +45,7 @@ namespace AzureBankGui
             if (!UserPage.user.getTransactionStatus())
             {
                 MessageUi.ShowMessage("Transaction Disabled", "Can not make a transaction", MessageDialogIcon.Warning);
-                return;
+                return;     // err
             }
             Form f = new Transfer();
             f.Show();
@@ -56,15 +56,11 @@ namespace AzureBankGui
             DialogResult result = promptForm.ShowDialog();
             if (result == DialogResult.OK)
             {
-                //MessageBox.Show("Account deleted successfully.");
                 ObjectHandler.GetUserDL().Delete(UserPage.user.getName());  // remove from the dataBase 
                 UtilDL.LogOut(userPage);
             }
         }
-        private void guna2Button2_Click(object sender, EventArgs e)
-        {
-            
-        }
+        
 
         private void guna2Button3_Click(object sender, EventArgs e)
         {
@@ -78,9 +74,6 @@ namespace AzureBankGui
             changeTransactionStatusIcon();
             cashAmount.Text = UserPage.user.getCash().ToString();   // set the cash amount
         }
-        private void guna2ImageButton2_Click(object sender, EventArgs e) {}
-        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e) {}
-
         private void guna2ImageButton3_Click(object sender, EventArgs e)
         {
             transactICON.ImageSize = new Size(32, 32);
@@ -88,17 +81,14 @@ namespace AzureBankGui
             UserPage.user.setTransactionStatus(flag);
             ObjectHandler.GetUserDL().Update(UserPage.user);
             changeTransactionStatusIcon();
-            // change the text of the button
-            //string msg = !flag ? "Enable" : "Disable";
-            //guna2Button3.Text = $"{msg} Transactions";
         }
         private void changeTransactionStatusIcon()
         {
+            // unlocked
             if (UserPage.user.getTransactionStatus())
-                // unlocked
                 transactICON.Image = AzureBank.Properties.Resources.credit_card_payment;
+            // locked
             else
-                // locked
                 transactICON.Image = AzureBank.Properties.Resources.no_credit_card;
         }
 
@@ -107,7 +97,12 @@ namespace AzureBankGui
             guna2ImageButton2.ImageSize = new Size(32, 32);
             Common.ChangePassword(UserPage.user);
         }
-
+        private void guna2ImageButton2_Click(object sender, EventArgs e) {}
+        private void guna2GradientPanel2_Paint(object sender, PaintEventArgs e) {}
+        private void guna2Button2_Click(object sender, EventArgs e)
+        {
+            
+        }
         private void label7_Click(object sender, EventArgs e)
         {
 

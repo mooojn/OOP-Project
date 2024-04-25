@@ -68,7 +68,7 @@ namespace AzureBankGui
             if (!Validation.ConvertStringToVar(ref cash, amountBox.Text))
             {
                 amountBox.Focus();
-                return;      // if the conversion fails, return
+                return;      // conversion fails, return
             }
             if (string.IsNullOrEmpty(transferNames.Text))
             {

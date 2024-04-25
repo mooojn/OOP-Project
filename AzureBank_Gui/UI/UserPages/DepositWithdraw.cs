@@ -23,14 +23,7 @@ namespace AzureBankGui
             InitializeComponent();
             Common.AttachEvents(this);     // for the animation on tab change
         }
-        private void DepositFunc(object sender, EventArgs e)
-        {
-            
-        }
-        private void WiithdrawFunc(object sender, EventArgs e)
-        {
-            
-        }
+        
         private void addAmount(int amount)
         {
             amountBox.Text = amount.ToString();
@@ -59,8 +52,6 @@ namespace AzureBankGui
         {
             UtilDL.transactionClose();
         }
-        private void DepositWithdraw_Load(object sender, EventArgs e) {}
-
         private void transactICON_Click(object sender, EventArgs e)
         {
             transactICON.ImageSize = new Size(32, 32);
@@ -113,6 +104,15 @@ namespace AzureBankGui
                 MessageUi.ShowMessage("Out of Balance", "Withdraw amount was greater than the balance of the Account");
             else
                 MessageUi.UnexpectedError();
+        }
+        private void DepositWithdraw_Load(object sender, EventArgs e) {}
+        private void DepositFunc(object sender, EventArgs e)
+        {
+            
+        }
+        private void WiithdrawFunc(object sender, EventArgs e)
+        {
+            
         }
     }
 }

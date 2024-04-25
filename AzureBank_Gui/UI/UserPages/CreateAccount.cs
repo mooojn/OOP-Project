@@ -30,8 +30,9 @@ namespace AzureBank
             if (String.IsNullOrEmpty(type.Text))
             {
                 MessageUi.ShowMessage("Error", "Please provide the type of account", MessageDialogIcon.Warning);
-                return;
+                return;     // err
             }
+            // get inputs
             string name = UserPage.user.getName();
             string randomNums = GenerateRandomString(3);
 
@@ -45,10 +46,9 @@ namespace AzureBank
             {
                 MessageUi.ShowMessage("Error", "Amount must be less than 100 and non negative", MessageDialogIcon.Warning);
                 cashBox.Focus();
-                return;
+                return;     // err
             }
-
-            
+            // creating acc
             if (accountType == "Saving")
                 account = new SavingAccount(accountNumber + "SAV", holderName, amount);
             else
@@ -58,13 +58,13 @@ namespace AzureBank
             ObjectHandler.GetAccountDL().Create(account);
 
             MessageUi.ShowMessage("Success","Your account has been created successfully", MessageDialogIcon.Information);
-            this.Close();
+            this.Close();   // success
         }
         private string GenerateRandomString(int length)
         {
             Random rand = new Random();
             string result = "";
-
+            // gen rand nums
             for (int i = 0; i < length; i++)
             {
                 int num = rand.Next(0, 10);
@@ -78,7 +78,7 @@ namespace AzureBank
             if (account == null)
             {
                 MessageUi.ShowMessage("Account Missing", "Please provide account details", MessageDialogIcon.Warning);
-                e.Cancel = true;
+                e.Cancel = true;    // err
             }
         }
     }

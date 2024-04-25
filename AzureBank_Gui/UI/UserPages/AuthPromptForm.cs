@@ -28,37 +28,34 @@ namespace AzureBankGui
             this.DialogResult = DialogResult.Cancel;
             this.Close();
         }
-        public void validatePass(object sender, EventArgs e)
-        {
-            
-        }
+        
         public void changePass(object sender, EventArgs e)
         {
             if (!Validation.IsValid("Password", passBox.Text, false))
-                return;     // if password is invalid
+                return;     // password is invalid
             // update the password in the database
             user.setPassword(passBox.Text);
             ObjectHandler.GetUserDL().Update(user);
             this.DialogResult = DialogResult.OK;
             this.Close();
         }
-        private void AuthPromptForm_Load(object sender, EventArgs e) {}
-        private void btnLogin_Click(object sender, EventArgs e) {}
-
         private void transactICON_Click(object sender, EventArgs e)
         {
             guna2Button1.ImageSize = new Size(32, 32);
-            // Authentication successful
+            
             if (passBox.Text == user.getPassword())
             {
-                this.DialogResult = DialogResult.OK;
+                this.DialogResult = DialogResult.OK;    // successful
                 this.Close();
             }
-            // Authentication failed
             else
-            {
-                passBox.Focus();
-            }
+                passBox.Focus();    // failed
+        }
+        private void AuthPromptForm_Load(object sender, EventArgs e) {}
+        private void btnLogin_Click(object sender, EventArgs e) {}
+        public void validatePass(object sender, EventArgs e)
+        {
+            
         }
     }
 }
