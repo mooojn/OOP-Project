@@ -55,3 +55,4 @@ D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.ViewAssets.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.AddAsset.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.CreateAccount.resources
 D:\c# files\OOP-Project\AzureBank_Gui\obj\Debug\AzureBank.ViewAccount.resources
+D:\c# files\OOP-Project\AzureBank_Gui\bin\Debug\AzureBankDLL.dll.config
