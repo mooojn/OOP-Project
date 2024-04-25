@@ -47,10 +47,7 @@ namespace AzureBankGui
             UtilDL.openChildForm(new ViewHistory(), mainPanel);
         }
 
-        private void mainPanel_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        
         private void AccountCheck()
         {
             // if account exists, set the account of the user
@@ -82,6 +79,10 @@ namespace AzureBankGui
                 ObjectHandler.GetUserDL().Delete(UserPage.user.getName());  // remove from the dataBase 
                 UtilDL.LogOut(this);
             }
+        }
+        private void mainPanel_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }
