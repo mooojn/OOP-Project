@@ -28,7 +28,7 @@ namespace AzureBankDLL.DL.DB
         {
             DataBase.openConnection();
 
-            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 0, 1)";    // 0 cash, 1 transactionStatus
+            string query = $"INSERT INTO Users VALUES ('{user.getName()}', '{user.getPassword()}', 1, 1)";    // 0 cash, 1 transactionStatus
             SqlCommand cmd = new SqlCommand(query, DataBase.connection);
             cmd.ExecuteNonQuery();
 
@@ -73,7 +73,7 @@ namespace AzureBankDLL.DL.DB
         {
             DataBase.openConnection();
             
-            // deleting from both tables
+            // deleting from all tables
             string query = $"DELETE FROM Users WHERE name = '{userName}'\n" +
                            $"DELETE FROM Transactions WHERE userName = '{userName}'" +
                            $"DELETE FROM Accounts WHERE userName = '{userName}'";

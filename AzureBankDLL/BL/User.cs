@@ -19,7 +19,6 @@ namespace AzureBankDLL.BL
         private bool transactionStatus;
         private Account account;
         private List<History> history;
-        
         // constructor for initializing
         public User(string name, string pass)
         {

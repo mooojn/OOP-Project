@@ -29,17 +29,15 @@ namespace AzureBankDLL.DL.FH
         {
             try
             {
-                // Open the file for appending
                 using (StreamWriter writer = File.AppendText(fileName))
                 {
-                    // Write asset information to the file
                     writer.WriteLine($"{asset.getName()}, {asset.getWorth()}");
                 }
-                return true; // Successfully written
+                return true; // successfully written    :)
             }
             catch (IOException)
             {
-                return false; // Failed to write
+                return false; // failed to write   :{
             }
         }
         public List<Asset> ReadAll()
@@ -51,10 +49,8 @@ namespace AzureBankDLL.DL.FH
                 using (StreamReader reader = new StreamReader(fileName))
                 {
                     string line;
-                    // Read each line until the end of the file
                     while ((line = reader.ReadLine()) != null)
                     {
-                        // Split the line into name and worth
                         string[] parts = line.Split(',');
                         if (parts.Length == 2)
                         {
