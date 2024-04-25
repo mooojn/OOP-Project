@@ -42,7 +42,7 @@ namespace AzureBankConsole
             Console.Write($"Enter the amount you want to {type}: $");
 
             if (Validation.IsValidNumber(ref num)) 
-                return num;    // return amount if all conditions pass
+                return num;    // all conditions pass
             else 
                 goto Again;
         }
@@ -61,6 +61,7 @@ namespace AzureBankConsole
         }
         public static Account CreateAcc(string name)
         {
+            // get inputs
             string randomNums = UtilUi.GenerateRandomString(3);
 
             string number = $"{name.ToLower()}{randomNums}@AzureBank";
@@ -70,7 +71,7 @@ namespace AzureBankConsole
             int amount = UserUi.GetAmount("Deposit initially: ");
             if (!ValidAmount(amount))
                 goto Again;
-
+            // create acc
             UtilUi.Success("Your account has been created successfully");
             if (accType == "Saving")
                 return new SavingAccount(number + "SAV", holderName, amount);
@@ -95,12 +96,12 @@ namespace AzureBankConsole
             if (amount < 0 || amount == 0)
             {
                 UtilUi.Error("Please provide valid amount", false);
-                return false;
+                return false;   // err
             }
             else if (amount > 100)
             {
                 UtilUi.Error("Initial deposit must be less than $100", false);
-                return false;
+                return false;   // err
             }
             else 
                 return true;

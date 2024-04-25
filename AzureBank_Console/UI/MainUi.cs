@@ -79,7 +79,6 @@ namespace AzureBankConsole
             Console.WriteLine("1. View Information");
             Console.WriteLine("2. Deposit Cash");
             Console.WriteLine("3. Withdraw Cash");
-            //Console.WriteLine("4. Change Account");
 
             Console.ForegroundColor = ConsoleColor.Green;
             Console.WriteLine("5. Go Back");

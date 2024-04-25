@@ -25,10 +25,10 @@ namespace AzureBankConsole
                 if (Validation.IsWorthValid(price))
                     return new Asset(name, price);    // return asset if all conditions pass
                 else
-                    goto Again;    // if amount is invalid then ask again
+                    goto Again;    // amount is invalid 
             }
             else
-                goto Again;    // if asset name is invalid then ask again
+                goto Again;    // asset name is invalid 
         }
         public static int GetDeletionIndex()
         {
