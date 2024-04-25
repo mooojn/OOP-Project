@@ -20,7 +20,7 @@ namespace AzureBankConsole
     {
         static void Main(string[] args)
         {
-   logout:    // goto label to logout admin/client
+   logout:   // goto label to logout admin/client
             // vars for main loop
             List<User> users;
             List<Asset> assets;
@@ -202,7 +202,7 @@ namespace AzureBankConsole
 
                     case Choice.DEPOSIT_CASH:
                         if (!user.getTransactionStatus()) {
-                            UtilUi.Error("Transactions are Blocked");    // if blocked, show error
+                            UtilUi.Error("Transactions are Blocked");    // blocked, show error
                             break;
                         }
                         MainUi.Header();
@@ -246,7 +246,7 @@ namespace AzureBankConsole
                   
                     case Choice.TRANSFER_CASH:
                         if (!user.getTransactionStatus()) {
-                            UtilUi.Error("Transactions are Blocked");   // if blocked, show error
+                            UtilUi.Error("Transactions are Blocked");   // blocked, show error
                             break;
                         }
                         MainUi.Header();
