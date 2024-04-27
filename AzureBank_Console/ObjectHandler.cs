@@ -19,16 +19,16 @@ namespace AzureBankConsole
         public const string TRANSACTION_FILE = "D:\\c# files\\OOP-Project\\FileHandling\\transactions.csv";
 
         // file_handling objects
-        private static IUser userDL = UserFH.getInstance(USER_FILE);
-        private static ITransaction transactionDL = TransactionFH.getInstance(TRANSACTION_FILE);
-        private static IAsset assetDL = AssetFH.getInstance(ASSET_FILE);
-        private static IAccount accountDL = AccountFH.getInstance(ACCOUNT_FILE);
+        //private static IUser userDL = UserFH.getInstance(USER_FILE);
+        //private static ITransaction transactionDL = TransactionFH.getInstance(TRANSACTION_FILE);
+        //private static IAsset assetDL = AssetFH.getInstance(ASSET_FILE);
+        //private static IAccount accountDL = AccountFH.getInstance(ACCOUNT_FILE);
 
         // database objects
-        //private static IUser userDL = UserDB.getInstance();
-        //private static ITransaction transactionDL = TransactionDB.getInstance();
-        //private static IAsset assetDL = AssetDB.getInstance();
-        //private static IAccount accountDL = AccountDB.getInstance();
+        private static IUser userDL = UserDB.getInstance();
+        private static ITransaction transactionDL = TransactionDB.getInstance();
+        private static IAsset assetDL = AssetDB.getInstance();
+        private static IAccount accountDL = AccountDB.getInstance();
 
         public static IUser GetUserDL()
         {

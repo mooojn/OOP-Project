@@ -8,3 +8,4 @@ D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.csproj.Core
 D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.csproj.CopyComplete
 D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.exe
 D:\c# files\OOP-Project\AzureBank_Console\obj\Debug\AzureBankConsole.pdb
+D:\c# files\OOP-Project\AzureBank_Console\bin\Debug\AzureBankDLL.dll.config
